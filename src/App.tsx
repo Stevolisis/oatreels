@@ -9,13 +9,20 @@ import './index.css';
 function App() {
   return (
     <div className=" w-full h-screen bg-bgPrimary">
+
+      <div>
+
+      <div className='fixed h-[100%] flex flex-col justify-center items-center'><Navbar/></div>
+      <div className='ml-[120px]'>
       <Header/>
-      <Navbar/>
       <BrowserRouter>
             <Routes>
               <Route path='/' element={<Home/>} />
             </Routes>
       </BrowserRouter>
+      </div>
+
+      </div>
     </div>
   );
 }
