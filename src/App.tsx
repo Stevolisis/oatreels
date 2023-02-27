@@ -1,7 +1,7 @@
 import 'font-awesome/css/font-awesome.min.css';
 import { Route, Routes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/THeader';
 import Navbar from './components/Navbar';
 import Home from './containers';
 import './index.css';
