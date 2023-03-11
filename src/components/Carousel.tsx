@@ -5,19 +5,19 @@ export default function Carousel({slides}:any){
     return(
         <>
 			<div className="mr-[30px] py-8">
-                <p className="font-bold text-4xl py-4 text-txtPrimary">Recent Release</p>
-			<div className="w-[100%]">
+                <p className="font-bold text-4xl py-4 text-txtPrimary ml-3">Recent Release</p>
+			<div className="w-[100%] flex justify-start items-center overflow-auto">
 				{slides.map((slide:string,i:number):any=>{
-					return  <div key={i} className='w-[18%]'>
+					return  <div key={i} className='w-[16%] mx-3 min-w-[16%]'>
                                 <Link to='/#'  className='w-[100%] h-[25vw] block'>
                                         <img src={slide} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
-                                <div>
-                                    <div><p>The Shawshank Redemption</p></div>
-                                    <div><p>Action/Rivelry</p></div>
+                                <div className="py-3">
+                                    <div><p className="font-bold text-txtPrimary text-lg ">The Shawshank Redemption</p></div>
+                                    <div><p className="text-sm text-txtSecondary ">Action/Rivelry</p></div>
                                     <div>
-                                        <i className="fa fa-star"/>
-                                        <p>7.4</p>
+                                        <i className="fa fa-star text-[gold]"/>
+                                        <span className="text-txtPrimary text-[12px] pl-2">7.4</span>
                                     </div>
                                 </div>
                             </div>

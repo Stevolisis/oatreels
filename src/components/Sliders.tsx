@@ -5,7 +5,7 @@ export default function Slider({slides}:any){
 	return(
 		<>
 			<div className="mr-[30px] mt-10">
-			<p className="font-bold text-4xl py-4 text-txtPrimary">Featured Actors</p>
+			<p className="font-bold text-4xl py-4 text-txtPrimary ml-3">Featured Actors</p>
 			<div className="flex overflow-auto w-[100%] ">
 				{slides.map((slide:string,i:number):any=>{
 					return <Link to='/#' key={i} className='w-[30%] min-w-[25%] m-3'>

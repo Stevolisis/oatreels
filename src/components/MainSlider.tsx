@@ -34,15 +34,16 @@ export default function MainSlider({slides}:any){
                             return null
                         }
                     }).map((slide:string,i:number)=>{
-                        return  <Link key={i} to='/' className="block w-[100%] h-[505px]">
+                        return  <><Link key={i} to='/' className="block w-[100%] h-[505px]">
                                     <img className="w-[100%] h-[100%]" src={slide} alt="mainslider"/>
-                                </Link>
+                                </Link>                
+                                <div className="flex items-center justify-between  ">
+                                <div><i className="fa fa-arrow-left p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>prevslide()}/></div>
+                                <div><i className="fa fa-arrow-right p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>nextslide()}/></div>
+                                </div>
+                                </>
                     })
                 }
-                <div className="flex items-center justify-between absolute mt-[-279px]">
-                <div><i className="fa fa-arrow-left p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>prevslide()}/></div>
-                <div><i className="fa fa-arrow-right p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>nextslide()}/></div>
-                </div>
             </div>
         </>
     )

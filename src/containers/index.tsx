@@ -15,6 +15,9 @@ export default function Home(){
                     <MainSlider slides={slides}/>
                     <Sliders slides={slides}/> 
                     <Carousel slides={slides}/>
+                    <Carousel slides={slides}/>
+                    <Carousel slides={slides}/>
+                    <Carousel slides={slides}/>
                 </div>
             </div>
         </>
