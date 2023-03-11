@@ -11,7 +11,7 @@ export default function Slider({slides}:any){
 									<img src={slide} className="rounded-md h-[150px] w-[100%]" alt='movie'/>
 								</div>
 								<div className="text-txtPrimary pt-2">
-									<p>2019.PG.{slide}</p>
+									<p className="text-[11px]">2019.PG.{slide}</p>
 									<p>Beyond Earth</p>
 								</div>
 						   </Link>
