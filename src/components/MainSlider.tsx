@@ -18,13 +18,13 @@ export default function MainSlider({slides}:any){
     useEffect(()=>{
         const resetVal=setTimeout(() => {
             nextslide();
-        }, 3000);
+        }, 4000);
        return ()=> clearTimeout(resetVal) ;
     },[currentslide,nextslide]);
     
     return (
         <>
-            <div className="mr-[340px]">
+            <div className="mr-[340px] block">
 
                 {
                     slides.filter((slide:string,i:number)=>{
@@ -39,7 +39,7 @@ export default function MainSlider({slides}:any){
                                 </Link>
                     })
                 }
-                <div className="flex items-center justify-between mt-[-279px]">
+                <div className="flex items-center justify-between absolute mt-[-279px]">
                 <div><i className="fa fa-arrow-left p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>prevslide()}/></div>
                 <div><i className="fa fa-arrow-right p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>nextslide()}/></div>
                 </div>
