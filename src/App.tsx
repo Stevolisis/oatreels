@@ -8,12 +8,11 @@ import './index.css';
 
 function App() {
   return (
-    <div className=" w-full h-screen bg-bgPrimary">
+    <div className=" w-full h-auto bg-bgPrimary">
 
       <div>
 
       <div className='fixed h-[100%] flex flex-col justify-center items-center'><Navbar/></div>
-      <div className='ml-[120px]'>
       <Header/>
       <BrowserRouter>
             <Routes>
@@ -23,7 +22,6 @@ function App() {
       </div>
 
       </div>
-    </div>
   );
 }
 

@@ -1,4 +1,6 @@
+import MainSlider from '../components/MainSlider';
 import Sliders from '../components/Sliders';
+import Sidelist from "../components/Sidelist";
 
 export default function Home(){
     const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg','/pexel13.jpg',
@@ -7,7 +9,11 @@ export default function Home(){
     return(
         <>
             <div className="text-primary">
-                <Sliders slides={slides}/> 
+                <Sidelist slides={slides}/>
+                <div className='ml-[120px] mr-[350px]'>
+                    <MainSlider slides={slides}/>
+                    <Sliders slides={slides}/> 
+                </div>
             </div>
         </>
     )
