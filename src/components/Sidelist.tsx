@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
 
-export default function Sidelist({slides}:any){
+export default function Sidelist(){
+    const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg'];
     return (
         <>
             <div className=" float-right mr-5 w-[300px]">
+                <div><p className="font-bold text-4xl text-txtPrimary pb-2">Top Rated</p></div>
                 {
                     slides.map((slide:string,i:number)=>{
                         return <Link to='/' key={i} className='border-txtPrimary border rounded-md my-3 flex justify-center items-center'>

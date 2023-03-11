@@ -9,8 +9,8 @@ export default function Home(){
     return(
         <>
             <div className="text-primary">
-                <Sidelist slides={slides}/>
-                <div className='ml-[120px] mr-[350px]'>
+                <Sidelist/>
+                <div className='ml-[120px]'>
                     <MainSlider slides={slides}/>
                     <Sliders slides={slides}/> 
                 </div>
