@@ -6,9 +6,7 @@
   .scrollBtn {
     z-index: 10;
     background-color: black;
-    border: 1px solid #cccbce;
-    border-radius: 5px;
-    color: #cccbce;
-    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 10px;
   }
 }

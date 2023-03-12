@@ -39,8 +39,8 @@ export default function MainSlider({slides}:any){
                                         <img className="w-[100%] h-[100%]" src={slide} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
-                                        <MdChevronLeft size={60} onClick={()=>prevslide} className='ml-[-20px] cursor-pointer mt-[-507px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
-                                        <MdChevronRight size={60} onClick={()=>prevslide} className='mr-[-20px] cursor-pointer mt-[-507px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
+                                        <MdChevronLeft size={60} onClick={()=>prevslide} className='ml-[-20px] mt-[-507px] scrollBtn'/>
+                                        <MdChevronRight size={60} onClick={()=>prevslide} className='mr-[-20px] mt-[-507px] scrollBtn'/>
                                     </div>
                                 </Fragment>
 

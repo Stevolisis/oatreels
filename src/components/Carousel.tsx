@@ -26,7 +26,7 @@ export default function Carousel({slides}:any){
                     Recent Release
                 </p>                
             <div className="flex justify-between items-center">
-            <MdChevronLeft size={60} onClick={()=>prevslide()} className='cursor-pointer mr-[-40px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
+            <MdChevronLeft size={60} onClick={()=>prevslide()} className='mr-[-40px] scrollBtn'/>
 			<div id={`${id}`} className="w-[100%] flex justify-start items-center scrollbar-hide overflow-x-scroll py-4 scroll-smooth">
 				{slides.map((slide:string,i:number):any=>{
 					return  <div key={i}  className='duration-300 hover:scale-105  w-[16%] mx-3 min-w-[16%]'>
@@ -44,7 +44,7 @@ export default function Carousel({slides}:any){
                             </div>
 				})}
 			</div>
-            <MdChevronRight size={60} onClick={()=>nextslide()} className='cursor-pointer ml-[-40px] p-[-20px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
+            <MdChevronRight size={60} onClick={()=>nextslide()} className='ml-[-40px] scrollBtn'/>
             </div>
 			</div>        
         </>

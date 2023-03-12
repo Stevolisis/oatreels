@@ -17,24 +17,24 @@ export default function Slider({slides}:any){
 	return(
 		<>
 			<div className="mr-[30px] mt-10">
-			<p className="font-bold text-4xl py-4 text-txtPrimary ml-3">Featured Actors</p>
-			<div className="flex justify-between items-center">
-			<MdChevronLeft size={60} onClick={()=>prevslide()} className='cursor-pointer mr-[-40px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
-			<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
-				{slides.map((slide:string,i:number):any=>{
-					return <Link to='/#' key={i} className='w-[30%] min-w-[25%] m-3'>
-								<div className="w-[100%]">
-									<img src={slide} className="object-cover rounded-md h-[150px] w-[100%]" alt='movie'/>
-								</div>
-								<div className="text-txtPrimary pt-2">
-									<p className="text-[11px]">2019.PG.{slide}</p>
-									<p>Beyond Earth</p>
-								</div>
-						   </Link>
-				})}
-			</div>
-			<MdChevronRight size={60} onClick={()=>nextslide()} className='cursor-pointer ml-[-40px] p-[-20px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
-			</div>
+				<p className="font-bold text-4xl py-4 text-txtPrimary ml-3">Featured Actors</p>
+					<div className="flex justify-between items-center">
+						<MdChevronLeft size={60} onClick={()=>prevslide()} className='mr-[-40px] scrollBtn'/>
+						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
+							{slides.map((slide:string,i:number):any=>{
+								return <Link to='/#' key={i} className='w-[30%] min-w-[25%] m-3'>
+											<div className="w-[100%]">
+												<img src={slide} className="object-cover rounded-md h-[150px] w-[100%]" alt='movie'/>
+											</div>
+											<div className="text-txtPrimary pt-2">
+												<p className="text-[11px]">2019.PG.{slide}</p>
+												<p>Beyond Earth</p>
+											</div>
+									</Link>
+							})}
+						</div>
+						<MdChevronRight size={60} onClick={()=>nextslide()} className='ml-[-40px] p-[-20px] scrollBtn'/>
+					</div>
 			</div>
 		</>
 	)
