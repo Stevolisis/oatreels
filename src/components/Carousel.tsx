@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom"
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { useCallback, useState } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
-// import { Carousel } from 'react-responsive-carousel';
+
+
 
 export default function Carousel({slides}:any){
-    const [trans,setTrans]=useState<number>(0);
-    const [id,setId]=useState<string>(()=>{return ''+Math.random()})
+    const id=''+Math.random();
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -28,9 +27,9 @@ export default function Carousel({slides}:any){
                 </p>                
             <div className="flex justify-between items-center">
             <MdChevronLeft size={60} onClick={()=>prevslide()} className='cursor-pointer mr-[-40px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
-			<div id={`${id}`} className="w-[100%] flex justify-start items-center overflow-x-scroll py-4 scroll-smooth">
+			<div id={`${id}`} className="w-[100%] flex justify-start items-center scrollbar-hide overflow-x-scroll py-4 scroll-smooth">
 				{slides.map((slide:string,i:number):any=>{
-					return  <div key={i}  className='duration-300 hover:scale-105  w-[16%] mx-3 min-w-[16%]' style={{translate:`${trans}%`}}>
+					return  <div key={i}  className='duration-300 hover:scale-105  w-[16%] mx-3 min-w-[16%]'>
                                 <Link to='/#' className='w-[100%] h-[25vw] block'>
                                         <img src={slide} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
