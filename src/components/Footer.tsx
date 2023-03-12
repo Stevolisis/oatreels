@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom'
 export default function Footer(){
 
     return(
-        <footer className='text-txtPrimary'>
-            <div>
-                <div><img src='/favicon.svg' alt='logo'/>OATREELS</div>
+        <footer className='text-txtPrimary flex justify-between p-12 border-t border-brPrimary '>
+            <div className='w-3/5 '>
+                <div className='flex items-center'>
+                    <img className='w-12 h-12' src='/logo192.png' alt='logo'/>
+                    <span className='pl-3 font-bold text-brPrimary'>OATREELS</span>
+                </div>
+
                 <div>
                 Oatreels is top of free streaming website, where to watch movies online 
                 free without registration required. With a big database and great features, 
@@ -21,18 +25,18 @@ export default function Footer(){
                 </div>
             </div>
 
-            <div>
-            <Link to='/'>Action Movies</Link>
-            <Link to='/'>Horror Movies</Link>
-            <Link to='/'>Thriller Movies</Link>
-            <Link to='/'>Sci-fi Movies</Link>
+            <div className=''>
+            <Link to='/' className='block'>Action Movies</Link>
+            <Link to='/' className='block'>Horror Movies</Link>
+            <Link to='/' className='block'>Thriller Movies</Link>
+            <Link to='/' className='block'>Sci-fi Movies</Link>
             </div>
 
-            <div>
-            <Link to='/'>Help Center</Link>
-            <Link to='/'>Terms Of Use</Link>
-            <Link to='/'>Privacy</Link>
-            <Link to='/'>Contact Us</Link>
+            <div className=''>
+            <Link to='/' className='block'>Help Center</Link>
+            <Link to='/' className='block'>Terms Of Use</Link>
+            <Link to='/' className='block'>Privacy</Link>
+            <Link to='/' className='block'>Contact Us</Link>
             </div>
 
         </footer>
