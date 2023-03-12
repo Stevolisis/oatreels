@@ -3,6 +3,7 @@ import Sliders from '../components/Sliders';
 import Sidelist from "../components/Sidelist";
 import Carousel from '../components/Carousel';
 import Listings from '../components/Listings';
+import Footer from '../components/Footer';
 
 export default function Home(){
     const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg','/pexel13.jpg',
@@ -20,6 +21,8 @@ export default function Home(){
                     <Listings slides={slides}/>
                     <Carousel slides={slides}/>
                     <Carousel slides={slides}/>
+                    <Listings slides={slides}/>
+                    <Footer/>
                 </div>
             </div>
         </>
