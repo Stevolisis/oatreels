@@ -1,5 +1,6 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 
 export default function MainSlider({slides}:any){
     const [currentslide,setCurrentslide]=useState(0);
@@ -24,7 +25,7 @@ export default function MainSlider({slides}:any){
     
     return (
         <>
-            <div className="mr-[340px] block">
+            <div className="mr-[340px] block px-5">
                 {
                     slides.filter((slide:string,i:number)=>{
                         if(i===currentslide){
@@ -38,8 +39,8 @@ export default function MainSlider({slides}:any){
                                         <img className="w-[100%] h-[100%]" src={slide} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
-                                        <div className="mt-[-507px]"><i className="fa fa-arrow-left p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>prevslide()}/></div>
-                                        <div className="mt-[-507px]"><i className="fa fa-arrow-right p-4 bg-black border border-txtPrimary rounded-md text-txtPrimary" onClick={()=>nextslide()}/></div>
+                                        <MdChevronLeft size={60} onClick={()=>prevslide} className='ml-[-20px] cursor-pointer mt-[-507px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
+                                        <MdChevronRight size={60} onClick={()=>prevslide} className='mr-[-20px] cursor-pointer mt-[-507px] z-10 bg-black border border-txtPrimary rounded-md text-txtPrimary'/>
                                     </div>
                                 </Fragment>
 
