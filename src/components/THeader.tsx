@@ -9,7 +9,8 @@ export default function Header(){
                 </h2>
             </div>
             <div className="flex-1">
-                <input type='search' className="outline-none text-txtPrimary px-5 py-4 w-full bg-bgTertiary rounded-full"/>
+                <input type='search' className="outline-none 
+                text-bgPrimary px-5 py-4 w-full bg-brTertiary rounded-full"/>
                 <i className="fa fa-search ml-[-30px] text-white"/>
             </div>
         </header>
