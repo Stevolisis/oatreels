@@ -8,7 +8,7 @@ import './index.css';
 
 function App() {
   return (
-    <div className=" w-full h-auto bg-bgPrimary">
+    <div className=" w-full h-auto">
 
       <div>
 
