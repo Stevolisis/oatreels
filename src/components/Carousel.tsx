@@ -22,9 +22,11 @@ export default function Carousel({slides}:any){
     return(
         <>
 			<div className="mr-[30px] py-8">
-                <p className="font-bold text-4xl py-4 text-txtPrimary ml-3">
-                    Recent Release
-                </p>                
+                <div className="border-l-8 pl-3 border-brTertiary bg-gradient-to-r from-brSecondary">
+                    <p className="font-bold text-4xl py-4 text-txtPrimary">
+                        Recent Release
+                    </p>   
+                </div>             
             <div className="flex justify-between items-center">
             <MdChevronLeft size={60} onClick={()=>prevslide()} className='mr-[-40px] scrollBtn'/>
 			<div id={`${id}`} className="w-[100%] flex justify-start items-center scrollbar-hide overflow-x-scroll py-4 scroll-smooth">

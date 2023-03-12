@@ -11,8 +11,9 @@ module.exports = {
         bgTertiary:'#2a2b37',
         txtPrimary:'#cccbce',
         txtSecondary:'#5a5c68',
-        brPrimary:'#FFFCE4',
-        brSecondary:'#E0D6B4'
+        brPrimary:'#B39B68',
+        brSecondary:'#CAAE81',
+        brTertiary:'#D8C29D'
       }
     },
   },

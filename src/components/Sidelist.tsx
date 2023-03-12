@@ -5,7 +5,7 @@ export default function Sidelist(){
     return (
         <>
             <div className=" float-right mr-5 w-[300px]">
-                <div><p className="font-bold text-4xl text-txtPrimary pb-2">Top Rated</p></div>
+                <div><p className="font-bold text-4xl text-txtPrimary border-l-8 pl-3 border-brTertiary pb-2">Top Rated</p></div>
                 {
                     slides.map((slide:string,i:number)=>{
                         return <Link to='/' key={i} className='border-txtPrimary border rounded-md my-3 flex justify-center items-center'>
