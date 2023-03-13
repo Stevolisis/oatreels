@@ -13,8 +13,15 @@ export default function Filter({slides}:any){
                 </div>
                 <div className="z-20 absolute w-[42vw] mt-2 rounded-xl bg-brSecondary px-2">
                     {slides.map((slide:string,i:number):any=>{
-                        return <Link to='/' key={i} className='block p-3 border-b'>
-                                    {slide}
+                        return <Link to='/' key={i} className='flex py-2 border-b'>
+                                    <div className="w-[60px] h-[80px]">
+                                        <img src={slide} alt='filterImg' className="w-full h-full object-cover"/>
+                                    </div>
+                                    <div className="pl-3">
+                                    <p className="font-bold text-[15px]">Scooby Doo! Mystery Incoperated</p>
+                                    <p className="text-[10px]">2010</p>
+                                    <p className="text-[12px]">Frank Welker, Mindy Cohn</p>
+                                    </div>
                                </Link>
                     })}
                 </div>
