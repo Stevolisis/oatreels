@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useState } from "react";
 
 
 
 export default function Carousel({slides}:any){
     const id=''+Math.random();
+	const [favourite,setFavourite]=useState(false);
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -43,7 +45,7 @@ export default function Carousel({slides}:any){
                                         <i className="fa fa-star text-[gold]"/>
                                         <span className=" text-[12px] pl-2">7.4</span>
                                         </div>
-                                        <div> <FaRegHeart/> </div>
+                                        <div> {favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>} </div>
                                         
                                     </div>
                                 </div>

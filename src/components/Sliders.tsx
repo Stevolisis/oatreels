@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Slider({slides}:any){
     const id=''+Math.random();
+	const [favourite,setFavourite]=useState(false);
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -34,7 +36,7 @@ export default function Slider({slides}:any){
 											</div>
 											<div className="flex justify-between text-txtPrimary">
 												<p className="font-bold">Beyond Earth</p>
-												<FaRegHeart/>
+												{favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>}
 											</div>
 									</Link>
 							})}
