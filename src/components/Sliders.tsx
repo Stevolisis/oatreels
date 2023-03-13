@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
+import { FaRegHeart } from "react-icons/fa";
 
 export default function Slider({slides}:any){
     const id=''+Math.random();
@@ -30,7 +31,10 @@ export default function Slider({slides}:any){
 											</div>
 											<div className="text-txtPrimary pt-2">
 												<p className="text-[11px]">2019.PG.{slide}</p>
-												<p>Beyond Earth</p>
+											</div>
+											<div className="flex justify-between text-txtPrimary">
+												<p className="font-bold">Beyond Earth</p>
+												<FaRegHeart/>
 											</div>
 									</Link>
 							})}
