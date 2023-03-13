@@ -1,5 +1,8 @@
+import Filter from "./Filter";
 
 export default function Header(){
+    const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg','/pexel13.jpg',
+    '/pexel14.jpg','/pexel1.jpg','/pexel8.jpg','/pexel9.jpg'];
 
     return(
         <header className="ml-[100px] flex p-10 justify-between">
@@ -8,11 +11,7 @@ export default function Header(){
                 Find your favourite Movies, Tv Shows and more...
                 </h2>
             </div>
-            <div className="flex-1">
-                <input type='search' className="outline-none 
-                text-bgPrimary px-5 py-4 w-full bg-brTertiary rounded-full"/>
-                <i className="fa fa-search ml-[-30px] text-white"/>
-            </div>
+            <Filter slides={slides}/>
         </header>
     )
 }

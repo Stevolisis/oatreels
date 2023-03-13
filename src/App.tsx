@@ -13,11 +13,12 @@ function App() {
       <div>
 
       <div className='fixed h-[100%] flex flex-col justify-center items-center'><Navbar/></div>
-      <Header/>
+      
       <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<Home/>} />
-            </Routes>
+          <Header/>
+          <Routes>
+            <Route path='/' element={<Home/>} />
+          </Routes>
       </BrowserRouter>
       </div>
 

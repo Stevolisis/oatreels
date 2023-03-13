@@ -18,11 +18,11 @@ export default function Footer(){
                     best free movies online website in the space that you can't simply miss!
                     </div>
                     <div className='flex py-5'>
-                        <Link className='px-3' to='/'><FaTwitter/></Link>
-                        <Link className='px-3' to='/'><FaInstagram/></Link>
-                        <Link className='px-3' to='/'><FaFacebook/></Link>
-                        <Link className='px-3' to='/'><FaTiktok/></Link>
-                        <Link className='px-3' to='/'><FaYoutube/></Link>
+                        <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaTwitter/></Link>
+                        <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaInstagram/></Link>
+                        <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaFacebook/></Link>
+                        <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaTiktok/></Link>
+                        <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaYoutube/></Link>
                     </div>
                 </div>
 
