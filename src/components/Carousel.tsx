@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 
 
@@ -37,9 +38,13 @@ export default function Carousel({slides}:any){
                                 <div className="py-3">
                                     <div><p className="font-bold text-txtPrimary text-lg ">The Shawshank Redemption</p></div>
                                     <div><p className="text-sm text-txtSecondary ">Action/Rivelry</p></div>
-                                    <div>
+                                    <div className="flex justify-between text-txtPrimary">
+                                        <div>
                                         <i className="fa fa-star text-[gold]"/>
-                                        <span className="text-txtPrimary text-[12px] pl-2">7.4</span>
+                                        <span className=" text-[12px] pl-2">7.4</span>
+                                        </div>
+                                        <div> <FaRegHeart/> </div>
+                                        
                                     </div>
                                 </div>
                             </div>
