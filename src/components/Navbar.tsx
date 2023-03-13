@@ -1,3 +1,5 @@
+import { FaBookmark, FaFilm, FaHeart, FaTv } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Navbar(){
 
@@ -6,11 +8,11 @@ export default function Navbar(){
             <div className="flex justify-center items-center pt-5">
                 <i className="fa fa-film text-bgPrimary"/>
             </div>
-            <div className="flex flex-col items-center">
-            <i className="fa fa-gallery text-bgPrimary py-5"/>
-            <i className="fa fa-grid text-bgPrimary py-5"/>
-            <i className="fa fa-tv text-bgPrimary py-5"/>
-            <i className="fa fa-bookmark text-bgPrimary py-5"/>
+            <div className="flex flex-col items-center justify-center flex-1">
+                <Link to='/'><FaTv size={17} className="my-3"/></Link>
+                <Link to='/'><FaFilm size={17} className="my-3"/></Link>
+                <Link to='/'><FaBookmark size={17} className="my-3"/></Link>
+                <Link to='/'><FaHeart size={17} className="my-3"/></Link>
             </div>
 
             <div>
