@@ -6,9 +6,11 @@ export default function Header(){
 
     return(
         <header className="ml-[100px] flex p-10 justify-between">
-            <div className="flex-1 border-l-8 pl-3 border-brTertiary">
+            <div className="flex-1 border-l-8 pl-3 border-brTertiary animateBorder">
                 <h2 className="flex-1 font-bold text-5xl text-txtPrimary">
-                Find your favourite Movies, Tv Shows and more...
+                <p className="animateText">Find your favourite</p>
+                <p className="animateText2">Movies, Tv Shows </p> 
+                <p className="animateText3">and more...</p>
                 </h2>
             </div>
             <Filter slides={slides}/>

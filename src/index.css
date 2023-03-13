@@ -11,4 +11,61 @@
     color: #CAAE81;
     cursor: pointer;
   }
+
+  .animateText{
+    animation: slide 1s linear;
+    z-index: -1;
+  }
+
+  .animateText2{
+    animation: slide 1s linear 1s;
+    z-index: -1;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animateText3{
+    animation: slide 1s linear 2s;
+    z-index: -1;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .animateBorder{
+    animation: fades 3s linear;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes slide {
+    0%{
+      translate: 100%;
+      opacity: 0;
+    }
+    50% {
+      translate: 50%;
+      opacity: .1;
+    }
+    100% {
+      translate: 0%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fades {
+    0%{
+      border-left: 0;
+    }
+    25%{
+      border-left: 2px solid #D8C29D;
+    }
+    50% {
+        border-left: 4px solid #D8C29D;
+    }
+    75%{
+      border-left: 6px solid #D8C29D;
+    }
+    100% {
+       border-left: 8px solid #D8C29D;
+    }
+  }
 }
