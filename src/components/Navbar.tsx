@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export default function Navbar(){
 
     return(
-        <nav className="flex flex-row mt-2 md:mt-0 md:flex-col h-auto w-full md:w-auto
-         bg-brPrimary md:h-[90%] p-5 mx-5 rounded-full">
+        <nav className="flex flex-row mt-0 sm:mt-2 md:flex-col h-auto w-full md:w-auto
+         bg-brPrimary md:h-[90%] py-3 px-4 sm:p-5 mx-5 rounded-none sm:rounded-full">
             <div className="flex justify-center items-center md:pt-5 pt-0">
                 <i className="fa fa-film text-bgPrimary"/>
             </div>
