@@ -13,18 +13,18 @@ export default function Sidelist(){
                 <div className="flex md:block flex-wrap justify-evenly">
                 {
                     slides.map((slide:string,i:number)=>{
-                        return <Link to='/' key={i} className='flex-2 w-[47%] md:w-auto border-txtPrimary border my-3 flex justify-center items-center'>
+                        return <Link to='/' key={i} className='flex-2  w-[47%] md:w-auto border-txtPrimary border my-3 flex justify-start items-center'>
                                     <div className="w-[70px] h-[100px]">
                                         <img src={slide} alt='sidelist' className=" rounded-bl-md object-cover w-[100%] h-[100%]"/>
                                     </div> 
                                     <div className="text-txtPrimary px-3">
                                         <div className="text-txtPrimary text-[11px]">
-                                        <i className="fa fa-film pr-2 text-md"/>
-                                        <span className="text-txtPrimary">1:23</span>
+                                        <i className="fa fa-film pr-1"/>
+                                        <span className="text-[10px] md:text-[13px] text-txtPrimary">1:23</span>
                                         </div>
 
                                         <div>
-                                            <h3 className="text-[13px] sm:text-[15px] font-bold break-all">The Super Mario Movvvvvvvie</h3>
+                                            <h3 className="text-[13px] sm:text-[15px] font-bold break-all">The Super Mario Movie</h3>
                                             <p className="text-[10px] md:text-[13px]">Watch the new trailer</p>
                                         </div>
 

@@ -24,7 +24,7 @@ export default function Slider({slides}:any){
 						<p className="font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">Featured Actors</p>
 					</div>
 					<div className="flex justify-between items-center">
-						<MdChevronLeft size={60} onClick={()=>prevslide()} className='mr-[-40px] scrollBtn'/>
+						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
 							{slides.map((slide:string,i:number):any=>{
 								return <Link to='/#' key={i} className='w-[30%] min-w-[25%] m-3'>
@@ -41,7 +41,7 @@ export default function Slider({slides}:any){
 									</Link>
 							})}
 						</div>
-						<MdChevronRight size={60} onClick={()=>nextslide()} className='ml-[-40px] p-[-20px] scrollBtn'/>
+						<MdChevronRight size={60} onClick={()=>nextslide()} className='hidden sm:block ml-[-40px] p-[-20px] scrollBtn'/>
 					</div>
 			</div>
 		</>

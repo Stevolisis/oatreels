@@ -23,7 +23,7 @@ export default function Listings({slides}:any){
                 </p>   
             </div>             
         <div className="flex justify-between items-center">
-        <MdChevronLeft size={60} onClick={()=>prevslide()} className='mr-[-40px] scrollBtn'/>
+        <MdChevronLeft size={60} onClick={()=>prevslide()} className='mr-[-40px] scrollBtn hidden sm:block'/>
         <div id={`${id}`} className="w-[100%] flex justify-start items-center scrollbar-hide overflow-x-scroll py-4 scroll-smooth">
             {slides.map((slide:string,i:number):any=>{
                 return  <Link to='/' key={i}  className='flex duration-300  w-[100%] mx-3 min-w-[30%]'>
@@ -37,7 +37,7 @@ export default function Listings({slides}:any){
             </Link>
             })}
         </div>
-        <MdChevronRight size={60} onClick={()=>nextslide()} className='ml-[-40px] scrollBtn'/>
+        <MdChevronRight size={60} onClick={()=>nextslide()} className='hidden sm:block ml-[-40px] scrollBtn'/>
         </div>
         </div>     
         </>
