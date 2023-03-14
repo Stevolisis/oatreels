@@ -38,7 +38,7 @@ export default function MainSlider({slides}:any){
                     }).map((slide:string,i:number)=>{
                         return  <Fragment key={i}>
                                     <Link  to='/' className="block w-[100%] md:h-[37vw] h-[43vw]">
-                                        <img className="w-[100%] h-[100%]" src={slide} alt="mainslider"/>
+                                        <img className="object-cover w-[100%] h-[100%]" src={slide} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
                                         <MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block ml-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>

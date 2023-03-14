@@ -18,7 +18,7 @@ export default function Listings({slides}:any){
     <>
         <div className="mr-[30px] py-8">
             <div className="border-l-8 pl-3 border-brTertiary">
-                <p className="font-bold text-3xl py-4 text-txtPrimary">
+                <p className="font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
                     Top Box Office
                 </p>   
             </div>             

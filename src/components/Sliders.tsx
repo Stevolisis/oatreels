@@ -21,7 +21,7 @@ export default function Slider({slides}:any){
 		<>
 			<div className="mr-[30px] mt-10">
 					<div className="border-l-8 pl-3 border-brTertiary">
-						<p className="font-bold text-3xl py-4 text-txtPrimary">Featured Actors</p>
+						<p className="font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">Featured Actors</p>
 					</div>
 					<div className="flex justify-between items-center">
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='mr-[-40px] scrollBtn'/>
