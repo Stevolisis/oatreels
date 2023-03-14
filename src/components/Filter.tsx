@@ -6,7 +6,7 @@ export default function Filter({slides}:any){
     return(
         <>
         <div className="flex-1">
-                <div className=" mx-2 sm:w-[46vw] flex items-center  border-brPrimary sm:border-none">
+                <div className=" mx-2 sm:w-[46vw] flex items-center border-b border-brPrimary sm:border-none">
                     <input type='search' placeholder="Search movies, series, novellas ..."
                     className="outline-none text-brTertiary sm:text-bgPrimary text-sm md:text-base
                      placeholder-txtSecondary px-5 py-2 sm:py-4 w-full 
