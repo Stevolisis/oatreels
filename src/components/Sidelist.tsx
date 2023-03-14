@@ -26,7 +26,7 @@ export default function Sidelist(){
 
                                         <div>
                                             <h3 className="text-[13px] sm:text-[15px] font-semibold md:font-bold break-all">The Super Mario Movie</h3>
-                                            <p className="text-[10px] md:text-[13px]">Watch the new trailer</p>
+                                            <p className="text-txtSecondary text-[10px] md:text-[13px]">Watch the new trailer</p>
                                         </div>
 
                                     </div>

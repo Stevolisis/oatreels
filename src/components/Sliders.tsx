@@ -32,7 +32,7 @@ export default function Slider({slides}:any){
 												<img src={slide} className="object-cover rounded-md h-[130px] md:h-[150px] w-[100%]" alt='movie'/>
 											</div>
 											<div className="text-txtPrimary pt-2">
-												<p className="text-[11px]">2019.PG.{slide}</p>
+												<p className="text-txtSecondary text-[11px]">2019.PG.{slide}</p>
 											</div>
 											<div className="flex justify-between items-center text-txtPrimary">
 												<p className="font-semibold md:font-bold">Beyond Earth</p>
