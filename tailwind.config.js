@@ -13,7 +13,7 @@ module.exports = {
         txtSecondary:'#5a5c68',
         brPrimary:'#B39B68',
         brSecondary:'#CAAE81',
-        brTertiary:'#D8C29D'
+        brTertiary:'#D8C29D',
       },
       screens:{
         md:'800px'
