@@ -35,7 +35,7 @@ export default function Slider({slides}:any){
 												<p className="text-txtSecondary text-[11px]">2019.PG.{slide}</p>
 											</div>
 											<div className="flex justify-between items-center text-txtPrimary">
-												<p className="font-semibold md:font-bold">Beyond Earth</p>
+												<p className="font-semibold md:font-bold line-clamp-2">Beyond Earth</p>
 												{favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>}
 											</div>
 									</Link>
