@@ -27,9 +27,9 @@ export default function Slider({slides}:any){
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
 							{slides.map((slide:string,i:number):any=>{
-								return <Link to='/#' key={i} className='w-[30%] min-w-[25%] m-3'>
+								return <Link to='/#' key={i} className='w-[250px] min-w-[250px]  md:w-[300px] md:min-w-[300px] m-3'>
 											<div className="w-[100%]">
-												<img src={slide} className="object-cover rounded-md h-[150px] w-[100%]" alt='movie'/>
+												<img src={slide} className="object-cover rounded-md h-[130px] md:h-[150px] w-[100%]" alt='movie'/>
 											</div>
 											<div className="text-txtPrimary pt-2">
 												<p className="text-[11px]">2019.PG.{slide}</p>
