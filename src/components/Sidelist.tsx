@@ -4,11 +4,12 @@ export default function Sidelist(){
     const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg'];
     return (
         <>
-            <div className=" float-right mr-12 w-[300px]  ">
+            <div className=" md:float-right mr-12 w-full md:w-[300px]">
                 <div><p className="font-bold text-3xl text-txtPrimary border-l-8 pl-3 border-brTertiary pb-2">Top Rated</p></div>
+                <div className="flex md:block flex-wrap justify-evenly">
                 {
                     slides.map((slide:string,i:number)=>{
-                        return <Link to='/' key={i} className='border-txtPrimary border my-3 flex justify-center items-center'>
+                        return <Link to='/' key={i} className='m-3 flex-2 md:w-auto border-txtPrimary border my-3 flex justify-center items-center'>
                                     <div className="w-[70px] h-[100px]">
                                         <img src={slide} alt='sidelist' className=" rounded-bl-md object-cover w-[100%] h-[100%]"/>
                                     </div> 
@@ -27,6 +28,7 @@ export default function Sidelist(){
                                 </Link>
                     })
                 }
+                </div>
             </div>
         </>
     )
