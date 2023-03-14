@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
+import Sidelist from "./Sidelist";
 
 export default function MainSlider({slides}:any){
     const [currentslide,setCurrentslide]=useState(0);
@@ -25,7 +26,8 @@ export default function MainSlider({slides}:any){
     
     return (
         <>
-            <div className="md:mr-[340px] mr-[30px] block px-5">
+            <div className="flex flex-col md:flex-row justify-between">
+                <div className="flex-1 py-3 md:pr-10">
                 {
                     slides.filter((slide:string,i:number)=>{
                         if(i===currentslide){
@@ -46,6 +48,12 @@ export default function MainSlider({slides}:any){
 
                     })
                 }
+                </div>
+                <div>
+                    <Sidelist/>
+                </div>
+
+                    
             </div>
         </>
     )

@@ -5,7 +5,7 @@ export default function Header(){
     '/pexel14.jpg','/pexel1.jpg','/pexel8.jpg','/pexel9.jpg'];
 
     return(
-        <header className="md:ml-[100px] ml-0 flex sm:p-10 justify-between">
+        <header className="md:ml-[100px] ml-0 flex sm:p-7 justify-between">
             <div className=" hidden sm:block flex-1 border-l-8 pl-3 border-brTertiary animateBorder">
                 <h2 className="flex-1 font-bold text-4xl md:text-5xl text-txtPrimary">
                 <p className="animateText">Find your favourite</p>

@@ -17,8 +17,8 @@ export default function Home(){
     return(
         <>
             <div className="text-primary">
-                <Sidelist/>
-                <div className='md:ml-[120px] ml-[30px]'>
+                
+                <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
                     <MainSlider slides={slides}/>
                     <Sliders slides={slides}/> 
                     <Carousel slides={slides}/>
