@@ -14,7 +14,9 @@ function App() {
 
       
       <BrowserRouter>
-         <div className='fixed h-[100%] flex flex-col justify-center items-center'><Navbar/></div>
+         <div className='md:fixed relative h-[100%] flex flex-col justify-center items-center'>
+          <Navbar/>
+         </div>
           <Header/>
           <Routes>
             <Route path='/' element={<Home/>} />

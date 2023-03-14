@@ -25,7 +25,7 @@ export default function MainSlider({slides}:any){
     
     return (
         <>
-            <div className="mr-[340px] block px-5">
+            <div className="md:mr-[340px] mr-[30px] block px-5">
                 {
                     slides.filter((slide:string,i:number)=>{
                         if(i===currentslide){
@@ -35,12 +35,12 @@ export default function MainSlider({slides}:any){
                         }
                     }).map((slide:string,i:number)=>{
                         return  <Fragment key={i}>
-                                    <Link  to='/' className="block w-[100%] h-[505px]">
+                                    <Link  to='/' className="block w-[100%] md:h-[37vw] h-[43vw]">
                                         <img className="w-[100%] h-[100%]" src={slide} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
-                                        <MdChevronLeft size={60} onClick={()=>prevslide()} className='ml-[-20px] mt-[-507px] scrollBtn'/>
-                                        <MdChevronRight size={60} onClick={()=>nextslide()} className='mr-[-20px] mt-[-507px] scrollBtn'/>
+                                        <MdChevronLeft size={60} onClick={()=>prevslide()} className='ml-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>
+                                        <MdChevronRight size={60} onClick={()=>nextslide()} className='mr-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>
                                     </div>
                                 </Fragment>
 

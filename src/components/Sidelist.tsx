@@ -4,7 +4,7 @@ export default function Sidelist(){
     const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg'];
     return (
         <>
-            <div className=" float-right mr-5 w-[300px]">
+            <div className=" float-right mr-5 w-[300px] md:block hidden ">
                 <div><p className="font-bold text-3xl text-txtPrimary border-l-8 pl-3 border-brTertiary pb-2">Top Rated</p></div>
                 {
                     slides.map((slide:string,i:number)=>{
