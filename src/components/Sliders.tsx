@@ -19,7 +19,7 @@ export default function Slider({slides}:any){
 
 	return(
 		<>
-			<div className="mr-[30px] mt-10">
+			<div className="md:mr-[30px] mt-10">
 					<div className="border-l-8 pl-3 border-brTertiary">
 						<p className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">Featured Actors</p>
 					</div>
@@ -34,7 +34,7 @@ export default function Slider({slides}:any){
 											<div className="text-txtPrimary pt-2">
 												<p className="text-[11px]">2019.PG.{slide}</p>
 											</div>
-											<div className="flex justify-between text-txtPrimary">
+											<div className="flex justify-between items-center text-txtPrimary">
 												<p className="font-semibold md:font-bold">Beyond Earth</p>
 												{favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>}
 											</div>
