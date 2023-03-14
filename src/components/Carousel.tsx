@@ -38,7 +38,7 @@ export default function Carousel({slides}:any){
                                         <img src={slide} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
                                 <div className="py-3">
-                                    <div><p className=" truncate font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">The Shawshank Redemption</p></div>
+                                    <div><p className="line-clamp-2 font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">The Shawggggshank Redemption</p></div>
                                     <div><p className="text-[12px] sm:text-sm text-txtSecondary ">Action/Rivelry</p></div>
                                     <div className="flex justify-between items-center text-txtPrimary">
                                         <div>
