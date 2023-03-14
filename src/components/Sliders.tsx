@@ -21,7 +21,7 @@ export default function Slider({slides}:any){
 		<>
 			<div className="mr-[30px] mt-10">
 					<div className="border-l-8 pl-3 border-brTertiary">
-						<p className="font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">Featured Actors</p>
+						<p className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">Featured Actors</p>
 					</div>
 					<div className="flex justify-between items-center">
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
@@ -35,7 +35,7 @@ export default function Slider({slides}:any){
 												<p className="text-[11px]">2019.PG.{slide}</p>
 											</div>
 											<div className="flex justify-between text-txtPrimary">
-												<p className="font-bold">Beyond Earth</p>
+												<p className="font-semibold md:font-bold">Beyond Earth</p>
 												{favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>}
 											</div>
 									</Link>

@@ -6,7 +6,8 @@ export default function Sidelist(){
         <>
             <div className="mt-5 md:mt-0 md:float-right mr-12 w-full md:w-[300px]">
                 <div>
-                    <p className="font-bold text-2xl md:text-3xl text-txtPrimary border-l-8 pl-2 md:pl-3 border-brTertiary pb-2">
+                    <p className="font-semibold md:font-bold text-2xl md:text-3xl text-txtPrimary border-l-8 pl-2
+                     md:pl-3 border-brTertiary md-pb-2">
                         Top Rated
                     </p>
                 </div>
@@ -24,7 +25,7 @@ export default function Sidelist(){
                                         </div>
 
                                         <div>
-                                            <h3 className="text-[13px] sm:text-[15px] font-bold break-all">The Super Mario Movie</h3>
+                                            <h3 className="text-[13px] sm:text-[15px] font-semibold md:font-bold break-all">The Super Mario Movie</h3>
                                             <p className="text-[10px] md:text-[13px]">Watch the new trailer</p>
                                         </div>
 

@@ -25,7 +25,7 @@ export default function Carousel({slides}:any){
         <>
 			<div className="mr-[30px] py-8">
                 <div className="border-l-8 pl-3 border-brTertiary">
-                    <p className="font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
+                    <p className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
                         Recent Release
                     </p>   
                 </div>             
@@ -38,7 +38,7 @@ export default function Carousel({slides}:any){
                                         <img src={slide} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
                                 <div className="py-3">
-                                    <div><p className="font-bold text-txtPrimary text-lg ">The Shawshank Redemption</p></div>
+                                    <div><p className="font-semibold md:font-bold text-txtPrimary text-lg ">The Shawshank Redemption</p></div>
                                     <div><p className="text-sm text-txtSecondary ">Action/Rivelry</p></div>
                                     <div className="flex justify-between text-txtPrimary">
                                         <div>

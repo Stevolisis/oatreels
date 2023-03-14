@@ -37,7 +37,7 @@ export default function MainSlider({slides}:any){
                         }
                     }).map((slide:string,i:number)=>{
                         return  <Fragment key={i}>
-                                    <Link  to='/' className="block w-[100%] md:h-[37vw] h-[43vw]">
+                                    <Link  to='/' className="block w-[100%] md:h-[37vw] h-[47vw]">
                                         <img className="object-cover w-[100%] h-[100%]" src={slide} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
