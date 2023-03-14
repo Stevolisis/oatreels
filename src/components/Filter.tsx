@@ -7,8 +7,10 @@ export default function Filter({slides}:any){
         <>
         <div className="flex-1">
                 <div className="w-full sm:w-[46vw] flex items-center">
-                    <input type='search' placeholder="Search movies, series, novellas ..." className="outline-none 
-                    text-bgPrimary text-sm md:text-base placeholder-txtSecondary px-5 py-2 sm:py-4 w-full bg-brTertiary rounded-none sm:rounded-full"/>
+                    <input type='search' placeholder="Search movies, series, novellas ..."
+                    className="outline-none text-bgPrimary text-sm md:text-base
+                     placeholder-txtSecondary px-5 py-2 sm:py-4 w-full 
+                     bg-brTertiary rounded-none sm:rounded-full"/>
                     <i className="fa fa-search  ml-[-30px] text-bgSecondary"/>
                 </div>
                 {/* <div className="z-20 absolute w-[46vw] mt-2 rounded-xl bg-brSecondary px-2">
