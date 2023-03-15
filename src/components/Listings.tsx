@@ -31,8 +31,8 @@ export default function Listings({slides}:any){
                     <img src={slide} alt='listings' className='object-cover w-full h-full'/>
                 </div>
                 <div className='flex-1 px-3 text-txtPrimary'>
-                    <p className='font-semibold md:font-bold'>Oscar Preview: Maybe the multiverse Will Give Us the Best Picture Winner We Deserve</p>
-                    <p className='text-[11px] pt-2'>March 11 / VarietyL Tv News</p>
+                    <p className='font-semibold md:font-bold line-clamp-3'>Oscar Preview: Maybe the multiverse Will Give Us the Best Picture Winner We Deserve</p>
+                    <p className='text-[11px] pt-2 line-clamp-2 text-txtSecondary'>March 11 / VarietyL Tv News</p>
                 </div>
             </Link>
             })}
