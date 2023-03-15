@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function Footer(){
 
     return(
-        <footer className='text-txtPrimary mt-21 sm:mt-28  border-t border-brPrimary '>
+        <footer className='text-txtPrimary mt-20 sm:mt-28  border-t border-brPrimary '>
             <div className='text-sm md:text-base flex-col sm:flex-row flex  py-9 md:py-12 px-5 sm:px-16 md:px-28'>
                 <div className='sm:w-3/5 '>
                     <div className='flex items-center'>

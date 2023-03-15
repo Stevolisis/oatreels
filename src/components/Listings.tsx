@@ -16,7 +16,7 @@ export default function Listings({slides}:any){
 
     return(
     <>
-        <div className="mr-0 md:mr-[30px] py-8">
+        <div className="mr-0 md:mr-[30px] pt-8 pb-0  sm:py-8">
             <div className="border-l-8 pl-3 border-brTertiary">
                 <p className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
                     Top Box Office

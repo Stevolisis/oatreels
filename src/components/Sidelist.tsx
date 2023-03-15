@@ -25,8 +25,8 @@ export default function Sidelist(){
                                         </div>
 
                                         <div>
-                                            <h3 className="text-[13px] sm:text-[15px] font-semibold md:font-bold break-all line-clamp-2">The Super Mario Movie</h3>
-                                            <p className="text-txtSecondary text-[10px] md:text-[13px] line-clamp-2">Watch the new trailer</p>
+                                            <h3 className="text-[13px] leading-4 sm:text-[15px] font-semibold md:font-bold break-all line-clamp-2">The Super Mario Movie</h3>
+                                            <p className="text-txtSecondary leading-3 py-1 text-[10px] md:text-[13px] line-clamp-2">Watch the new trailer</p>
                                         </div>
 
                                     </div>
