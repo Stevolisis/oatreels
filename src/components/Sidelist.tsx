@@ -14,8 +14,8 @@ export default function Sidelist(){
                 <div className="flex md:block flex-wrap justify-evenly">
                 {
                     slides.map((slide:string,i:number)=>{
-                        return <Link to='/' key={i} className='flex-2  w-[47%] md:w-auto border-txtPrimary border my-3 flex justify-start items-center'>
-                                    <div className="w-[70px] h-[100px]">
+                        return <Link to='/' key={i} className='flex-2 h-[90px] sm:h-[100px]  w-[47%] md:w-auto border-txtPrimary border my-3 flex justify-start items-center'>
+                                    <div className="w-[70px] h-[100%]">
                                         <img src={slide} alt='sidelist' className=" rounded-bl-md object-cover w-[100%] h-[100%]"/>
                                     </div> 
                                     <div className="text-txtPrimary px-3">
@@ -26,7 +26,7 @@ export default function Sidelist(){
 
                                         <div>
                                             <h3 className="text-[13px] sm:text-[15px] font-semibold md:font-bold break-all line-clamp-2">The Super Mario Movie</h3>
-                                            <p className="text-txtSecondary text-[10px] md:text-[13px]">Watch the new trailer</p>
+                                            <p className="text-txtSecondary text-[10px] md:text-[13px] line-clamp-2">Watch the new trailer</p>
                                         </div>
 
                                     </div>

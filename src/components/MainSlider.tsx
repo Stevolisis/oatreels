@@ -27,7 +27,7 @@ export default function MainSlider({slides}:any){
     return (
         <>
             <div className="flex flex-col md:flex-row justify-between">
-                <div className="flex-1 py-3 md:pr-10">
+                <div className="flex-1 py-3 sm:py-0 md:pr-10">
                 {
                     slides.filter((slide:string,i:number)=>{
                         if(i===currentslide){

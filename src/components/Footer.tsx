@@ -4,14 +4,14 @@ export default function Footer(){
 
     return(
         <footer className='text-txtPrimary mt-21 sm:mt-28  border-t border-brPrimary '>
-            <div className='text-[12px] sm:text-sm md:text-base flex justify-between py-9 md:py-12 px-5 sm:px-16 md:px-28'>
-                <div className='w-3/5 '>
+            <div className='text-sm md:text-base flex-col sm:flex-row flex  py-9 md:py-12 px-5 sm:px-16 md:px-28'>
+                <div className='sm:w-3/5 '>
                     <div className='flex items-center'>
                         <img className='w-12 h-12' src='/logo192.png' alt='logo'/>
                         <span className='pl-3 font-bold text-brPrimary'>OATREELS</span>
                     </div>
 
-                    <div className='pr-5 md:pr-2'>
+                    <div className='md:pr-2'>
                     Oatreels is top of free streaming website, where to watch movies online 
                     free without registration required. With a big database and great features, 
                     we're confident FMovies is the 
@@ -26,6 +26,7 @@ export default function Footer(){
                     </div>
                 </div>
 
+                <div className='flex justify-around sm:w-2/5 sm:pl-3'>
                 <div className='pr-5 md:pr-2'>
                 <Link to='/' className='block hover:text-brSecondary transition-5 py-2'>Action Movies</Link>
                 <Link to='/' className='block hover:text-brSecondary transition-5 py-2'>Horror Movies</Link>
@@ -38,6 +39,7 @@ export default function Footer(){
                 <Link to='/' className='block hover:text-brSecondary transition-5 py-2'>Terms Of Use</Link>
                 <Link to='/' className='block hover:text-brSecondary transition-5 py-2'>Privacy</Link>
                 <Link to='/' className='block hover:text-brSecondary transition-5 py-2'>Contact Us</Link>
+                </div>
                 </div>
             </div>
 
