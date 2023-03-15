@@ -14,7 +14,7 @@ export default function Footer(){
                     <div className='md:pr-2'>
                     Oatreels is top of free streaming website, where to watch movies online 
                     free without registration required. With a big database and great features, 
-                    we're confident FMovies is the 
+                    we're confident Oatreels is the 
                     best free movies online website in the space that you can't simply miss!
                     </div>
                     <div className='flex py-5 pr-5 md:pr-2'>
