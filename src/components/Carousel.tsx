@@ -23,7 +23,7 @@ export default function Carousel({slides}:any){
 
     return(
         <>
-			<div className="md:mr-[30px] py-8">
+			<div className="md:mr-[30px] pt-8">
                 <div className="border-l-8 pl-3 border-brTertiary">
                     <p className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
                         Recent Release
