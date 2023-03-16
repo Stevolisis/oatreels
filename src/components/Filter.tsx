@@ -13,7 +13,7 @@ export default function Filter(){
             dispatch(searchMovies(e));
         }
         if(e.length<=2){
-            dispatch(resetSearch(''))
+            dispatch(resetSearch())
         }
     }
 

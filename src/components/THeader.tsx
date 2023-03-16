@@ -13,7 +13,7 @@ export default function Header(){
                 <p className="animateText3">and more...</p>
                 </h2>
             </div>
-            <Filter slides={slides}/>
+            <Filter/>
         </header>
     )
 }
