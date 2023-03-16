@@ -19,7 +19,7 @@ const searchSlice=createSlice({
     name:'search',
     initialState,
     reducers:{
-        resetSearch:(state)=>{
+        resetSearch:(state,{payload}:PayloadAction<any>)=>{
             state.searches=[];
         }
     },
