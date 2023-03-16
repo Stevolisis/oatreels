@@ -45,8 +45,19 @@ export default function MainSlider({slides}:any){
                                         src={process.env.REACT_APP_MOVIE_IMAGE+slide.backdrop_path} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
-                                        <MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block ml-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>
-                                        <MdChevronRight size={60} onClick={()=>nextslide()} className='hidden sm:block mr-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>
+                                        <MdChevronLeft size={60} onClick={()=>prevslide()} className='ml-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>
+                                        <MdChevronRight size={60} onClick={()=>nextslide()} className='mr-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>
+                                    </div>
+
+                                    <div className="flex px-3 sm:px-7 pb-6 sm:pb-7 mt-[-38px] sm:mt-[-60px] items-end text-txtPrimary bg-bgDark">
+                                        <div className="w-[70px] min-w-[70px] h-[100px] sm:w-[90px] sm:h-[140px] md:w-[100px] md:h-[150px] border-[5px] sm:border-[8px] border-bgDark">
+                                            <img className="object-cover w-[100%] h-[100%]" 
+                                            src={process.env.REACT_APP_MOVIE_IMAGE+slide.poster_path} alt="mainslider"/>
+                                        </div>
+                                        <div className="pl-3 sm:px-7">
+                                        <p className="font-semibold text-xl sm:text-2xl sm:font-bold line-clamp-1">{slide.original_title}</p>
+                                        <p className="text-[12px] sm:pt-2">Released On {slide.release_date}</p>
+                                        </div>
                                     </div>
                                 </Fragment>
 
