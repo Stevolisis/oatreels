@@ -2,13 +2,14 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import Sidelist from "./Sidelist";
-import { useAppSelector } from "../Redux/store";
-import { getMovies } from "../Redux/movies";
+import { UseAppDispatch, useAppSelector } from "../Redux/store";
+import { fetchTopRatedMovies, getMovies, getTopRated } from "../Redux/movies";
 
 export default function MainSlider({slides}:any){
     const [currentslide,setCurrentslide]=useState(0);
     const trends=useAppSelector(getMovies);
-
+    const dispatch=UseAppDispatch();
+    const topRated=useAppSelector(getTopRated);
     
     const nextslide=useCallback(()=>{
         setCurrentslide(currentslide===slides.length-1 ? 0 : currentslide+1)
@@ -26,6 +27,10 @@ export default function MainSlider({slides}:any){
         }, 4000);
        return ()=> clearTimeout(resetVal) ;
     },[currentslide,nextslide]);
+
+    useEffect(()=>{
+        dispatch(fetchTopRatedMovies())
+    },[])
     
     return (
         <>
@@ -65,7 +70,7 @@ export default function MainSlider({slides}:any){
                 }
                 </div>
                 <div>
-                    <Sidelist/>
+                    <Sidelist slides={topRated} heading='Top Rated'/>
                 </div>
 
                     

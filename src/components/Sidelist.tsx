@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom"
 
-export default function Sidelist(){
-    const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg'];
+export default function Sidelist({heading,slides}:any){
+
     return (
         <>
             <div className="mt-5 md:mt-0 md:float-right mr-12 w-full md:w-[300px]">
                 <div>
                     <p className="font-semibold md:font-bold text-2xl md:text-3xl text-txtPrimary border-l-8 pl-2
                      md:pl-3 border-brTertiary md-pb-2">
-                        Top Rated
+                        {heading}
                     </p>
                 </div>
                 <div className="flex md:block flex-wrap justify-evenly">
                 {
-                    slides.map((slide:string,i:number)=>{
-                        return <Link to='/' key={i} className='flex-2 h-[90px] sm:h-[100px]  w-[47%] md:w-auto border-txtPrimary border my-3 flex justify-start items-center'>
+                    slides.map((slide:any,i:number)=>{
+                        return i<5&& <Link to='/' key={i} className='flex-2 h-[90px] sm:h-[100px]  w-[47%] md:w-auto border-txtPrimary border my-3 flex justify-start items-center'>
                                     <div className="w-[70px] h-[100%]">
-                                        <img src={slide} alt='sidelist' className=" rounded-bl-md object-cover w-[100%] h-[100%]"/>
+                                        <img src={process.env.REACT_APP_MOVIE_IMAGE+slide.poster_path} alt='sidelist' className=" rounded-bl-md object-cover w-[100%] h-[100%]"/>
                                     </div> 
                                     <div className="text-txtPrimary px-3">
                                         <div className="text-txtPrimary text-[11px]">
@@ -25,7 +25,7 @@ export default function Sidelist(){
                                         </div>
 
                                         <div>
-                                            <h3 className="text-[13px] leading-4 sm:text-[15px] font-semibold md:font-bold break-all line-clamp-2">The Super Mario Movie</h3>
+                                            <h3 className="text-[13px] leading-4 sm:text-[15px] font-semibold md:font-bold break-all line-clamp-2">{slide.original_name||slide.original_title}</h3>
                                             <p className="text-txtSecondary leading-3 py-1 text-[10px] md:text-[13px] line-clamp-2">Watch the new trailer</p>
                                         </div>
 
