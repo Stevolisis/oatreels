@@ -2,29 +2,39 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export const fetchMovies=createAsyncThunk('movies/fetchMovies',async(id)=>{
+export const fetchMovies=createAsyncThunk('movies/fetchMovies',async()=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/discover/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
-    return {id:id,data:response.data};
+    return response.data;
 });
 
-export const fetchTrends=createAsyncThunk('movies/fetchTrends',async(id)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/week?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
-    return {id:id,data:response.data};
+export const fetchTrends=createAsyncThunk('movies/fetchTrends',async()=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    return response.data;
 });
 
-export const fetchLatestMovies=createAsyncThunk('movies/fetchLatestMovies',async(id)=>{
+export const fetchLatestMovies=createAsyncThunk('movies/fetchLatestMovies',async()=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/latest?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
-    return {id:id,data:response.data};
+    return response.data;
 });
 
-export const fetchPopularMovies=createAsyncThunk('movies/fetchPopularMovies',async(id)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/latest?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
-    return {id:id,data:response.data};
+export const fetchPopularMovies=createAsyncThunk('movies/fetchPopularMovies',async()=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    return response.data;
 });
 
-export const fetchTopRatedMovies=createAsyncThunk('movies/fetchTopRatedMovies',async(id)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/latest?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
-    return {id:id,data:response.data};
+export const fetchTopRatedMovies=createAsyncThunk('movies/fetchTopRatedMovies',async()=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    return response.data;
+});
+
+export const fetchUpComingMovies=createAsyncThunk('movies/fetchUpComingMovies',async()=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    return response.data;
+});
+
+export const fetchGenres=createAsyncThunk('movies/fetchGenres',async()=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/genre/movie/list?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    return response.data;
 });
 
 type InitialState={
@@ -35,6 +45,7 @@ type InitialState={
     top_rated:any[],
     latest_persons:any[],
     popular_persons:any[],
+    up_coming:any[],
     genres:any[],
 }
 
@@ -46,6 +57,7 @@ const initialState:InitialState={
     top_rated:[],
     latest_persons:[],
     popular_persons:[],
+    up_coming:[],
     genres:[],
 };
 
@@ -60,7 +72,7 @@ const moviesSlice=createSlice({
     extraReducers:(builder)=>{
         builder.addCase(fetchMovies.fulfilled,(state,{payload})=>{
             console.log('payload',payload)
-            state.movies=payload.data.results;
+            state.movies=payload.results;
         })
         builder.addCase(fetchMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -72,7 +84,7 @@ const moviesSlice=createSlice({
         })
         builder.addCase(fetchTrends.fulfilled,(state,{payload})=>{
             console.log('payload',payload)
-            state.trends=payload.data.results;
+            state.trends=payload.results;
         })
         builder.addCase(fetchTrends.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -84,7 +96,7 @@ const moviesSlice=createSlice({
         })
         builder.addCase(fetchLatestMovies.fulfilled,(state,{payload})=>{
             console.log('payload',payload)
-            state.latest=payload.data.results;
+            state.latest=payload.results;
         })
         builder.addCase(fetchLatestMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -96,7 +108,7 @@ const moviesSlice=createSlice({
         })
         builder.addCase(fetchPopularMovies.fulfilled,(state,{payload})=>{
             console.log('payload',payload)
-            state.popular=payload.data.results;
+            state.popular=payload.results;
         })
         builder.addCase(fetchPopularMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -108,9 +120,33 @@ const moviesSlice=createSlice({
         })
         builder.addCase(fetchTopRatedMovies.fulfilled,(state,{payload})=>{
             console.log('payload',payload)
-            state.top_rated=payload.data.results;
+            state.top_rated=payload.results;
         })
         builder.addCase(fetchTopRatedMovies.rejected,(state,{error})=>{
+            console.log('error Redux',error)
+            Swal.fire(
+                'Error Occured',
+                error.message,
+                'error'
+            )
+        })
+        builder.addCase(fetchUpComingMovies.fulfilled,(state,{payload})=>{
+            console.log('payload',payload)
+            state.up_coming=payload.results;
+        })
+        builder.addCase(fetchUpComingMovies.rejected,(state,{error})=>{
+            console.log('error Redux',error)
+            Swal.fire(
+                'Error Occured',
+                error.message,
+                'error'
+            )
+        })
+        builder.addCase(fetchGenres.fulfilled,(state,{payload})=>{
+            console.log('payload',payload)
+            state.genres=payload.data['genres'];
+        })
+        builder.addCase(fetchGenres.rejected,(state,{error})=>{
             console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
@@ -123,4 +159,12 @@ const moviesSlice=createSlice({
 
 
 export const getMovies=(state:any)=>state.moviesReducer.movies;
+export const getTrends=(state:any)=>state.moviesReducer.trends;
+export const getPopular=(state:any)=>state.moviesReducer.popular;
+export const getLatest=(state:any)=>state.moviesReducer.latest;
+export const getUpComing=(state:any)=>state.moviesReducer.up_coming;
+export const getGenres=(state:any)=>state.moviesReducer.genres;
+export const getTopRated=(state:any)=>state.moviesReducer.top_rated;
+export const getLatestPersons=(state:any)=>state.moviesReducer.latest_persons;
+export const getPopularPersons=(state:any)=>state.moviesReducer.popular_persons;
 export default moviesSlice.reducer;
