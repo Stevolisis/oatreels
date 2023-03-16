@@ -34,6 +34,9 @@ export default function Sidelist({heading,slides}:any){
                     })
                 }
                 </div>
+                <div className="w-full text-txtPrimary p-2">
+                    <Link to='/' className="border-b border-b-brPrimary">See More</Link>
+                </div>
             </div>
         </>
     )

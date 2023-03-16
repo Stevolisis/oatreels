@@ -43,7 +43,7 @@ export default function Home(){
                     <Listings slides={slides}/>
                     {/* <Carousel slides={latest} heading='Latest Movies'/> */}
                     <Carousel slides={upComing} heading='UpComing Movies'/>
-                    <Listings slides={slides} />
+                    <Listings slides={slides} heading='Top Box Office'/>
                     <Footer/>
                 </div>
             </div>
