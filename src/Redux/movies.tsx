@@ -1,9 +1,9 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from 'axios';
 
-export const fetchMovies=createAsyncThunk('movies/fetchMovies',async()=>{
-    const response=await axios.get(`${process.env.MOVIE_BASEURL}/discover/movie?api_key=${process.env.MOVIE_KEY}`);
-    return response;
+export const fetchMovies=createAsyncThunk('movies/fetchMovies',async(id)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/discover/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    return {id:id,data:response.data};
 });
 
 type InitialState={
@@ -26,11 +26,17 @@ const moviesSlice=createSlice({
             state.movies=[payload]
         }
     },
-    extraReducers:{
-        // [fetchMovies.fulfilled]:(state,{payload}:PayloadAction<any>)=>{
-
-        // }
+    extraReducers:(builder)=>{
+        builder.addCase(fetchMovies.fulfilled,(state,{payload})=>{
+            console.log('payload',payload)
+            state.movies=payload.data.results;
+        })
+        builder.addCase(fetchMovies.rejected,(state,{error})=>{
+            console.log('error Redux',error)
+        })
     }
 });
 
+
+export const getMovies=(state:any)=>state.moviesReducer.movies;
 export default moviesSlice.reducer;

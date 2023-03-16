@@ -1,8 +1,11 @@
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import { Link } from 'react-router-dom';
+import { fetchMovies } from '../Redux/movies';
+import { UseAppDispatch } from '../Redux/store';
 
 export default function Listings({slides}:any){
     const id=''+Math.random();
+    const dispatch=UseAppDispatch();
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -18,7 +21,7 @@ export default function Listings({slides}:any){
     <>
         <div className="mr-0 md:mr-[30px] pt-8 pb-0  sm:py-8">
             <div className="border-l-8 pl-3 border-brTertiary">
-                <p className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
+                <p onClick={()=>dispatch(fetchMovies())} className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
                     Top Box Office
                 </p>   
             </div>             

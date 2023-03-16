@@ -2,9 +2,12 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import Sidelist from "./Sidelist";
+import { useAppSelector } from "../Redux/store";
+import { getMovies } from "../Redux/movies";
 
 export default function MainSlider({slides}:any){
     const [currentslide,setCurrentslide]=useState(0);
+    const trends=useAppSelector(getMovies);
 
     
     const nextslide=useCallback(()=>{
@@ -29,16 +32,17 @@ export default function MainSlider({slides}:any){
             <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex-1 py-3 sm:py-0 md:pr-10">
                 {
-                    slides.filter((slide:string,i:number)=>{
+                    trends.filter((slide:any,i:number)=>{
                         if(i===currentslide){
                             return slide
                         }else{
                             return null
                         }
-                    }).map((slide:string,i:number)=>{
+                    }).map((slide:any,i:number)=>{
                         return  <Fragment key={i}>
                                     <Link  to='/' className="block w-[100%] md:h-[37vw] h-[47vw]">
-                                        <img className="object-cover w-[100%] h-[100%]" src={slide} alt="mainslider"/>
+                                        <img className="object-cover w-[100%] h-[100%]" 
+                                        src={process.env.REACT_APP_MOVIE_IMAGE+slide.backdrop_path} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
                                         <MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block ml-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>
