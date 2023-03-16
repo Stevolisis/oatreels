@@ -33,7 +33,7 @@ export default function Carousel({slides,heading}:any){
             <MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 			<div id={`${id}`} className="w-[100%] flex justify-start items-start scrollbar-hide overflow-x-scroll py-4 scroll-smooth">
 				{slides&&slides.map((slide:any,i:number):any=>{
-					return  <div key={i}  className='duration-300 hover:scale-105 mx-3 w-[120px] min-w-[120px] sm:w-[150px] sm:min-w-[150px] md:w-[180px] md:min-w-[180px]'>
+					return  <div key={i}  className='duration-300 hover:scale-105 mx-3 w-[130px] min-w-[130px] sm:w-[150px] sm:min-w-[150px] md:w-[180px] md:min-w-[180px]'>
                                 <Link to='/#' className='w-[100%] h-[280px] sm:h-[343px] block'>
                                         <img src={process.env.REACT_APP_MOVIE_IMAGE+slide.poster_path} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
