@@ -35,7 +35,7 @@ export default function Filter(){
                                     </div>
                                     <div className="pl-3">
                                     <p className="font-bold text-[13px] md:text-[15px] line-clamp-2">{filter.original_name||filter.original_title}</p>
-                                    <p className="text-[9px] md:text-[10px]">2010</p>
+                                    <p className="text-[9px] md:text-[10px]">{filter.release_date.split('-')[0]}</p>
                                     <p className="text-[11px] md:text-[12px] line-clamp-2">Frank Welker, Mindy Cohn</p>
                                     </div>
                                </Link>
