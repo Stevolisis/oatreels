@@ -71,7 +71,6 @@ const moviesSlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder.addCase(fetchMovies.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
             state.movies=payload.results;
         })
         builder.addCase(fetchMovies.rejected,(state,{error})=>{
@@ -83,7 +82,6 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchTrends.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
             state.trends=payload.results;
         })
         builder.addCase(fetchTrends.rejected,(state,{error})=>{
@@ -95,8 +93,7 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchLatestMovies.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
-            state.latest=payload.results;
+            state.latest=payload;
         })
         builder.addCase(fetchLatestMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -107,7 +104,6 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchPopularMovies.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
             state.popular=payload.results;
         })
         builder.addCase(fetchPopularMovies.rejected,(state,{error})=>{
@@ -119,7 +115,6 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchTopRatedMovies.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
             state.top_rated=payload.results;
         })
         builder.addCase(fetchTopRatedMovies.rejected,(state,{error})=>{
@@ -131,7 +126,6 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchUpComingMovies.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
             state.up_coming=payload.results;
         })
         builder.addCase(fetchUpComingMovies.rejected,(state,{error})=>{
@@ -143,7 +137,6 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchGenres.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
             state.genres=payload.data['genres'];
         })
         builder.addCase(fetchGenres.rejected,(state,{error})=>{

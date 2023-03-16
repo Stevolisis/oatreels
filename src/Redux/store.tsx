@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
-import moviesReducer from './movies'
+import moviesReducer from './movies';
+import searchReducer from './searches';
 
 
 const combinedReducers=combineReducers({
-    moviesReducer:moviesReducer
+    moviesReducer:moviesReducer,
+    searchReducer:searchReducer
 });
 
 export const store=configureStore({

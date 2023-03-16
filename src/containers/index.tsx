@@ -40,7 +40,7 @@ export default function Home(){
                     <Sliders slides={topRated} heading='Top Rated Movies'/> 
                     <Carousel slides={trends} heading='Trending Movies'/>
                     <Carousel slides={popular} heading='Popular Movies'/>
-                    <Listings slides={slides}/>
+                    <Listings slides={slides} heading='Top Box Office'/>
                     {/* <Carousel slides={latest} heading='Latest Movies'/> */}
                     <Carousel slides={upComing} heading='UpComing Movies'/>
                     <Listings slides={slides} heading='Top Box Office'/>
