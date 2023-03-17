@@ -7,8 +7,8 @@ export const fetchLatestPersons=createAsyncThunk('movies/fetchLatestPersons',asy
     return response.data;
 });
 
-export const fetchPopularPersons=createAsyncThunk('movies/fetchPopularPersons',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/person/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+export const fetchPopularPersons=createAsyncThunk('movies/fetchPopularPersons',async(page:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/person/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });
 
@@ -41,6 +41,10 @@ const personsSlice=createSlice({
             )
         })
         builder.addCase(fetchPopularPersons.fulfilled,(state,{payload})=>{
+            const li:any=[];
+            payload.results.forEach((reso:any):any=>{
+                li.push(reso)
+            })
             state.popular_persons=payload.results;
         })
         builder.addCase(fetchPopularPersons.rejected,(state,{error})=>{

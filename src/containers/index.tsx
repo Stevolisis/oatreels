@@ -31,7 +31,7 @@ export default function Home(){
         dispatch(fetchLatestMovies());
         dispatch(fetchUpComingMovies());
         dispatch(fetchTopRatedMovies());
-        dispatch(fetchPopularPersons());
+        dispatch(fetchPopularPersons(3));
     },[])
 
     return(

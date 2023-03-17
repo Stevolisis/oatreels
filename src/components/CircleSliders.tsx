@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
-import SliderLoader from "./loaders/RectangleSliders";
+import CircleSliderLoader from "./loaders/circlesliders";
 
 export default function CircleSlider({slides,heading}:any){
     const id=''+Math.random();
@@ -26,15 +26,15 @@ export default function CircleSlider({slides,heading}:any){
 					<div className="flex justify-between items-center">
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
-							{slides.length===0? <SliderLoader/> :slides.map((slide:any,i:number):any=>{
-								return <div className="mx-3 my-4">
-                                        <div className="w-[200px] h-[200px]">
-                                        <Link to='/#' key={i} className='block w-[200px] h-[200px]'>
-                                            <img className="object-cover w-full h-full" src={process.env.REACT_APP_MOVIE_IMAGE+slide.profile_path} alt='actors'/>
+							{slides.length===0? <CircleSliderLoader/> :slides.map((slide:any,i:number):any=>{
+								return <div className="mx-3 my-4" key={i}>
+                                        <div className="w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]">
+                                        <Link to='/#' key={i} className='w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]'>
+                                            <img className="object-cover w-full h-full rounded-full" src={process.env.REACT_APP_MOVIE_IMAGE+slide.profile_path} alt='actors'/>
                                         </Link>
                                         </div>
-                                        <div>
-                                            <p>{slide.name}</p>
+                                        <div className="flex justify-center items-center py-3 text-txtPrimary">
+                                            <p className="font-semibold text-base sm:text-lg">{slide.name}</p>
                                         </div>
                                        </div>
 							})}

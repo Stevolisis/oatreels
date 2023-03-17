@@ -14,7 +14,8 @@ module.exports = {
         brPrimary:'#B39B68',
         brSecondary:'#CAAE81',
         brTertiary:'#D8C29D',
-        bgDark:'#11100b'
+        bgDark:'#11100b',
+        loaderShade:'#4d442f'
       },
       screens:{
         md:'800px'
