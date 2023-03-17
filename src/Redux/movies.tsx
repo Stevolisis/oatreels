@@ -8,7 +8,7 @@ export const fetchMovies=createAsyncThunk('movies/fetchMovies',async()=>{
 });
 
 export const fetchTrends=createAsyncThunk('movies/fetchTrends',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=2`);
     return response.data;
 });
 
@@ -18,12 +18,12 @@ export const fetchLatestMovies=createAsyncThunk('movies/fetchLatestMovies',async
 });
 
 export const fetchPopularMovies=createAsyncThunk('movies/fetchPopularMovies',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=2`);
     return response.data;
 });
 
 export const fetchTopRatedMovies=createAsyncThunk('movies/fetchTopRatedMovies',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=2`);
     return response.data;
 });
 
