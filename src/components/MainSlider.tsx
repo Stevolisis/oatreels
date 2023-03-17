@@ -46,7 +46,7 @@ export default function MainSlider({slides}:any){
                         }
                     }).map((slide:any,i:number)=>{
                         return  <Fragment key={i}>
-                                    <Link  to='/' className="block w-[100%] md:h-[37vw] h-[47vw]">
+                                    <Link  to='/' className="bg-loaderShade block w-[100%] md:h-[37vw] h-[47vw]">
                                         <img className="object-cover w-[100%] h-[100%]" 
                                         src={process.env.REACT_APP_MOVIE_IMAGE+slide.backdrop_path} alt="mainslider"/>
                                     </Link>                
@@ -56,7 +56,7 @@ export default function MainSlider({slides}:any){
                                     </div>
 
                                     <div className="flex px-3 sm:px-7 pb-6 sm:pb-9 mt-[-38px] sm:mt-[-60px] items-end text-txtPrimary bg-bgDark">
-                                        <div className="w-[70px] min-w-[70px] h-[100px] sm:w-[90px] sm:h-[140px] md:w-[100px] md:h-[150px] border-[5px] sm:border-[8px] border-bgDark">
+                                        <div className="bg-loaderShade w-[70px] min-w-[70px] h-[100px] sm:w-[90px] sm:h-[140px] md:w-[100px] md:h-[150px] border-[5px] sm:border-[8px] border-bgDark">
                                             <img className="object-cover w-[100%] h-[100%]" 
                                             src={process.env.REACT_APP_MOVIE_IMAGE+slide.poster_path} alt="mainslider"/>
                                         </div>

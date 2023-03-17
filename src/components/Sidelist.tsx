@@ -16,7 +16,7 @@ export default function Sidelist({heading,slides}:any){
                 {
                     slides.length===0?<SidelistLoader/>:slides.map((slide:any,i:number)=>{
                         return (i<4) && <Link to='/' key={i} className='flex-2 h-[90px] sm:h-[100px]  w-[47%] md:w-auto border-txtPrimary border my-3 flex justify-start items-center'>
-                                    <div className="w-[70px] h-[100%]">
+                                    <div className="w-[70px] h-[100%] bg-loaderShade">
                                         <img src={process.env.REACT_APP_MOVIE_IMAGE+slide.poster_path} alt='sidelist' className=" rounded-bl-md object-cover w-[100%] h-[100%]"/>
                                     </div> 
                                     <div className="text-txtPrimary px-3">
