@@ -12,10 +12,10 @@ export default function CarouselLoader(){
                             <Link to='/#' className='skeleton-load w-[100%] h-[280px] sm:h-[343px] block'>
                             </Link>
                             <div className="py-3">
-                                <div><p className="w-[200px] h-2 rounded-full skeleton-load">-----</p></div>
-                                <div><p className="text-[12px] sm:text-sm text-txtSecondary ">-----</p></div>
-                                <div className="flex justify-between items-center text-txtPrimary">
-                                    <div>----</div>                                    
+                                <div><p className="w-[150px] h-2 rounded-full skeleton-load"></p></div>
+                                <div><p className="my-2 w-[80px] h-2 rounded-full skeleton-load"></p></div>
+                                <div className="flex justify-between items-center">
+                                    <div className="w-[110px] h-2 rounded-full skeleton-load">----</div>                                    
                                 </div>
                             </div>
                         </div>
