@@ -4,6 +4,7 @@ import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import Sidelist from "./Sidelist";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import { fetchTopRatedMovies, getMovies, getTopRated } from "../Redux/movies";
+import MainSliderLoader from "./loaders/MainSlider";
 
 export default function MainSlider({slides}:any){
     const [currentslide,setCurrentslide]=useState(0);
@@ -37,7 +38,7 @@ export default function MainSlider({slides}:any){
             <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex-1 py-3 sm:py-0 md:pr-10">
                 {
-                    trends.filter((slide:any,i:number)=>{
+                    trends.length===0?<MainSliderLoader/>:trends.filter((slide:any,i:number)=>{
                         if(i===currentslide){
                             return slide
                         }else{
