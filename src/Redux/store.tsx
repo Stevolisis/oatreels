@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import moviesReducer from './movies';
 import searchReducer from './searches';
+import personReducer from './persons';
 
 
 const combinedReducers=combineReducers({
     moviesReducer:moviesReducer,
-    searchReducer:searchReducer
+    searchReducer:searchReducer,
+    personReducer:personReducer
 });
 
 export const store=configureStore({

@@ -43,8 +43,6 @@ type InitialState={
     latest:any,
     popular:any[],
     top_rated:any[],
-    latest_persons:any[],
-    popular_persons:any[],
     up_coming:any[],
     genres:any[],
 }
@@ -55,8 +53,6 @@ const initialState:InitialState={
     latest:{},
     popular:[],
     top_rated:[],
-    latest_persons:[],
-    popular_persons:[],
     up_coming:[],
     genres:[],
 };
@@ -158,6 +154,4 @@ export const getLatest=(state:any)=>state.moviesReducer.latest;
 export const getUpComing=(state:any)=>state.moviesReducer.up_coming;
 export const getGenres=(state:any)=>state.moviesReducer.genres;
 export const getTopRated=(state:any)=>state.moviesReducer.top_rated;
-export const getLatestPersons=(state:any)=>state.moviesReducer.latest_persons;
-export const getPopularPersons=(state:any)=>state.moviesReducer.popular_persons;
 export default moviesSlice.reducer;

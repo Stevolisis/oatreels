@@ -7,6 +7,8 @@ import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import { fetchLatestMovies, fetchMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrends, fetchUpComingMovies, getLatest, getPopular, getTopRated, getTrends, getUpComing } from '../Redux/movies';
 import { UseAppDispatch, useAppSelector } from '../Redux/store';
+import { fetchPopularPersons, getPopularPersons } from '../Redux/persons';
+import CircleSlider from '../components/CircleSliders';
 
 export default function Home(){
     const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg','/pexel13.jpg',
@@ -17,6 +19,7 @@ export default function Home(){
     const latest=useAppSelector(getLatest);
     const upComing=useAppSelector(getUpComing);
     const topRated=useAppSelector(getTopRated);
+    const popularPersons=useAppSelector(getPopularPersons);
 
     useEffect(()=>{
         console.log(window.innerWidth)
@@ -29,6 +32,7 @@ export default function Home(){
         dispatch(fetchLatestMovies());
         dispatch(fetchUpComingMovies());
         dispatch(fetchTopRatedMovies());
+        dispatch(fetchPopularPersons());
     },[])
 
     return(
@@ -43,6 +47,7 @@ export default function Home(){
                     <Listings slides={slides} heading='Top Box Office'/>
                     {/* <Carousel slides={latest} heading='Latest Movies'/> */}
                     <Carousel slides={upComing} heading='UpComing Movies'/>
+                    <CircleSlider slides={popularPersons} heading='Popular Movies Stars'/>
                     <Listings slides={slides} heading='Top Box Office'/>
                     <Footer/>
                 </div>
