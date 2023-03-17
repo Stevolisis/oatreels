@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
+import SliderLoader from "./loaders/sliders";
 
 export default function Slider({slides,heading}:any){
     const id=''+Math.random();
@@ -28,7 +29,7 @@ export default function Slider({slides,heading}:any){
 					<div className="flex justify-between items-center">
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
-							{slides.map((slide:any,i:number):any=>{
+							{slides.length===0? <SliderLoader/> :slides.map((slide:any,i:number):any=>{
 								return <Link to='/#' key={i} className='w-[250px] min-w-[250px]  md:w-[300px] md:min-w-[300px] m-3'>
 											<div className="w-[100%]">
 												<img src={process.env.REACT_APP_MOVIE_IMAGE+slide.backdrop_path} className="object-cover h-[130px] md:h-[150px] w-[100%]" alt='movie'/>

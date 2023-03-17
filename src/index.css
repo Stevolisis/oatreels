@@ -36,6 +36,11 @@
     animation-iteration-count: 1;
   }
 
+  .skeleton-load{
+    opacity: .7;
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+
   @keyframes slide {
     0%{
       translate: 100%;
@@ -68,4 +73,14 @@
        border-left: 8px solid #D8C29D;
     }
   }
+
+  @keyframes skeleton-loading {
+    0%{
+        background-color: hsl(200, 20%, 70%);
+    }
+    100%{
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+
 }
