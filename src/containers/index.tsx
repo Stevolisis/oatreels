@@ -1,6 +1,5 @@
 import MainSlider from '../components/MainSlider';
-import Sliders from '../components/Sliders';
-import Sidelist from "../components/Sidelist";
+import RectangleSliders from '../components/RectangleSliders';
 import Carousel from '../components/Carousel';
 import Listings from '../components/Listings';
 import Footer from '../components/Footer';
@@ -41,7 +40,7 @@ export default function Home(){
                 
                 <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
                     <MainSlider slides={slides}/>
-                    <Sliders slides={topRated} heading='Top Rated Movies'/> 
+                    <RectangleSliders slides={topRated} heading='Top Rated Movies'/> 
                     <Carousel slides={trends} heading='Trending Movies'/>
                     <Carousel slides={popular} heading='Popular Movies'/>
                     <Listings slides={slides} heading='Top Box Office'/>
