@@ -23,9 +23,9 @@ export default function MainSliderLoader(){
                                         <div className="skeleton-load w-[70px] min-w-[70px] h-[100px] sm:w-[90px] sm:h-[140px] md:w-[100px] md:h-[150px] border-[5px] sm:border-[8px] border-bgDark">
                                             
                                         </div>
-                                        <div className="pl-3 sm:px-7">
-                                        <p className="w-[500px] h-2 rounded-full skeleton-load my-3"></p>
-                                        <p className="w-[200px] h-2 rounded-full skeleton-load"></p>
+                                        <div className="pl-3 sm:px-7 w-full">
+                                        <p className="w-full h-2 rounded-full skeleton-load my-3"></p>
+                                        <p className="w-[70%] h-2 rounded-full skeleton-load"></p>
                                         </div>
                                     </div>
                                 </Fragment>

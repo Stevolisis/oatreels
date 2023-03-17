@@ -1,34 +1,41 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 import { getSearches, resetSearch, searchMovies } from "../Redux/searches";
 import { UseAppDispatch, useAppSelector } from "../Redux/store"
+import FiltersLoader from "./loaders/filters";
 
 
 export default function Filter(){
     const dispatch=UseAppDispatch();
     const filters=useAppSelector(getSearches);
+    const [searchKey,setSearchkey]=useState('')
 
-    function searching(e:any){
-        console.log('ttt',e)
-        if(e.length>2){
-            dispatch(searchMovies(e));
+    function searching(){
+
+        if(searchKey.length>2){
+            dispatch(searchMovies(searchKey));
         }
-        if(e.length<=2){
+        if(searchKey.length<=2){
             dispatch(resetSearch())
         }
     }
+
+    useEffect(()=>{
+        searching();
+    },[searchKey])
 
     return(
         <>
         <div className="flex-1">
                 <div className=" mx-2 sm w-[95%] sm:w-[46vw] flex items-center border-b border-brPrimary sm:border-none">
-                    <input onChange={(e:any)=>searching(e.target.value)} type='text' placeholder="Search movies, series, novellas ..."
+                    <input onChange={(e:any)=>setSearchkey(e.target.value)} type='text' placeholder="Search movies, series, novellas ..."
                     className="outline-none text-brTertiary sm:text-bgPrimary text-sm md:text-base
                      placeholder-txtSecondary px-5 py-2 sm:py-4 w-full 
                     bg-transparent sm:bg-brTertiary rounded-none sm:rounded-full"/>
                     <i className="fa fa-search  ml-[-30px] text-brSecondary sm:text-bgSecondary"/>
                 </div>
                 <div className="z-20 absolute mx-2 w-[95%] sm:w-[46vw] mt-2 rounded-xl bg-brSecondary px-2">
-                    {filters.map((filter:any,i:number):any=>{
+                    {(filters.length===20&&searchKey.length>2)?<FiltersLoader/>:filters.map((filter:any,i:number):any=>{
                         return <Link to='/' key={i} className='flex py-2 border-b'>
                                     <div className="w-[50px] h-[60px] sm:w-[60px] sm:h-[80px]">
                                         <img src={process.env.REACT_APP_MOVIE_IMAGE+filter.poster_path} alt='filterImg' className="w-full h-full object-cover"/>
