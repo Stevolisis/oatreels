@@ -30,7 +30,7 @@ export default function MainSlider({slides}:any){
     },[currentslide,nextslide]);
 
     useEffect(()=>{
-        dispatch(fetchTopRatedMovies())
+        dispatch(fetchTopRatedMovies(1))
     },[])
     
     return (

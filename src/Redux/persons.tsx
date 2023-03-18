@@ -30,7 +30,14 @@ const personsSlice=createSlice({
     reducers:{},
     extraReducers:(builder)=>{
         builder.addCase(fetchLatestPersons.fulfilled,(state,{payload})=>{
-            state.latest_persons=payload.results;
+            state.latest_persons=state.latest_persons.concat(payload.results);
+            const uniqueLatestPersons = state.latest_persons.reduce((a:any,b:any) => {
+                if (!a.find((movie:any) => movie.id === b.id)) {
+                  a.push(b);
+                }
+                return a;
+              }, []);
+              state.latest_persons=uniqueLatestPersons;
         })
         builder.addCase(fetchLatestPersons.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -41,11 +48,14 @@ const personsSlice=createSlice({
             )
         })
         builder.addCase(fetchPopularPersons.fulfilled,(state,{payload})=>{
-            const li:any=[];
-            payload.results.forEach((reso:any):any=>{
-                li.push(reso)
-            })
-            state.popular_persons=payload.results;
+            state.popular_persons=state.popular_persons.concat(payload.results);
+            const uniquePopularPersons = state.popular_persons.reduce((a:any,b:any) => {
+                if (!a.find((movie:any) => movie.id === b.id)) {
+                  a.push(b);
+                }
+                return a;
+              }, []);
+              state.popular_persons=uniquePopularPersons
         })
         builder.addCase(fetchPopularPersons.rejected,(state,{error})=>{
             console.log('error Redux',error)

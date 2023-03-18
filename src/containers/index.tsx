@@ -31,12 +31,18 @@ export default function Home(){
         dispatch(fetchMovies(4));
         dispatch(fetchMovies(3));
         dispatch(fetchMovies(2));
-        dispatch(fetchTrends());
-        dispatch(fetchPopularMovies());
-        dispatch(fetchLatestMovies());
-        dispatch(fetchUpComingMovies());
-        dispatch(fetchTopRatedMovies());
+        dispatch(fetchTrends(2));
+        dispatch(fetchTrends(3));
+        dispatch(fetchPopularMovies(2));
+        dispatch(fetchPopularMovies(3));
+        dispatch(fetchLatestMovies(2));
+        dispatch(fetchLatestMovies(3));
+        dispatch(fetchUpComingMovies(2));
+        dispatch(fetchUpComingMovies(3));
+        dispatch(fetchTopRatedMovies(2));
+        dispatch(fetchTopRatedMovies(3));
         dispatch(fetchPopularPersons(3));
+        dispatch(fetchPopularPersons(2));
     },[])
 
     return(

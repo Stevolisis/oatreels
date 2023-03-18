@@ -7,28 +7,28 @@ export const fetchMovies=createAsyncThunk('movies/fetchMovies',async(page:number
     return response.data;
 });
 
-export const fetchTrends=createAsyncThunk('movies/fetchTrends',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=2`);
+export const fetchTrends=createAsyncThunk('movies/fetchTrends',async(page:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
     return response.data;
 });
 
-export const fetchLatestMovies=createAsyncThunk('movies/fetchLatestMovies',async()=>{
+export const fetchLatestMovies=createAsyncThunk('movies/fetchLatestMovies',async(page:number)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/latest?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
     return response.data;
 });
 
-export const fetchPopularMovies=createAsyncThunk('movies/fetchPopularMovies',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=2`);
+export const fetchPopularMovies=createAsyncThunk('movies/fetchPopularMovies',async(page:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
     return response.data;
 });
 
-export const fetchTopRatedMovies=createAsyncThunk('movies/fetchTopRatedMovies',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=2`);
+export const fetchTopRatedMovies=createAsyncThunk('movies/fetchTopRatedMovies',async(page:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
     return response.data;
 });
 
-export const fetchUpComingMovies=createAsyncThunk('movies/fetchUpComingMovies',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+export const fetchUpComingMovies=createAsyncThunk('movies/fetchUpComingMovies',async(page:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
     return response.data;
 });
 
@@ -85,7 +85,14 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchTrends.fulfilled,(state,{payload})=>{
-            state.trends=payload.results;
+            state.trends=state.trends.concat(payload.results);
+            const uniqueTrends = state.trends.reduce((a:any,b:any) => {
+                if (!a.find((movie:any) => movie.id === b.id)) {
+                  a.push(b);
+                }
+                return a;
+              }, []);
+              state.trends=uniqueTrends
         })
         builder.addCase(fetchTrends.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -107,7 +114,14 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchPopularMovies.fulfilled,(state,{payload})=>{
-            state.popular=payload.results;
+            state.popular=state.popular.concat(payload.results);
+            const uniquePopular = state.popular.reduce((a:any,b:any) => {
+                if (!a.find((movie:any) => movie.id === b.id)) {
+                  a.push(b);
+                }
+                return a;
+              }, []);
+              state.popular=uniquePopular
         })
         builder.addCase(fetchPopularMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -118,7 +132,14 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchTopRatedMovies.fulfilled,(state,{payload})=>{
-            state.top_rated=payload.results;
+            state.top_rated=state.top_rated.concat(payload.results);
+            const uniqueTopRated = state.top_rated.reduce((a:any,b:any) => {
+                if (!a.find((movie:any) => movie.id === b.id)) {
+                  a.push(b);
+                }
+                return a;
+              }, []);
+              state.top_rated=uniqueTopRated
         })
         builder.addCase(fetchTopRatedMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -129,7 +150,14 @@ const moviesSlice=createSlice({
             )
         })
         builder.addCase(fetchUpComingMovies.fulfilled,(state,{payload})=>{
-            state.up_coming=payload.results;
+            state.up_coming=state.up_coming.concat(payload.results);
+            const uniqueUpComing = state.up_coming.reduce((a:any,b:any) => {
+                if (!a.find((movie:any) => movie.id === b.id)) {
+                  a.push(b);
+                }
+                return a;
+              }, []);
+              state.up_coming=uniqueUpComing
         })
         builder.addCase(fetchUpComingMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
