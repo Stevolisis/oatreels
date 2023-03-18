@@ -40,7 +40,7 @@ export default function MainSlider({slides}:any){
                         }
                     }).map((slide:any,i:number)=>{
                         return  (i<10) && <Fragment key={i}>
-                                    <Link  to='/' className="bg-loaderShade block w-[100%] md:h-[37vw] h-[47vw]">
+                                    <Link  to={`/movie/${slide.id}`} className="bg-loaderShade block w-[100%] md:h-[37vw] h-[47vw]">
                                         <img className="object-cover w-[100%] h-[100%]" 
                                         src={`${process.env.REACT_APP_MOVIE_IMAGE}/w780${slide.backdrop_path}`} alt="mainslider"/>
                                     </Link>                

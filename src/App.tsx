@@ -7,6 +7,7 @@ import Home from './containers';
 import './index.css';
 import TvShows from './containers/tvshows';
 import Footer from './components/Footer';
+import Movie from './containers/movie';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/tvshows' element={<TvShows/>} />
+            <Route path='/movie/:id' element={<Movie/>} />
           </Routes>
           <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
           <Footer/>

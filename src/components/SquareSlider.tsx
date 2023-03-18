@@ -29,7 +29,7 @@ export default function SquareSlider({slides,heading}:any){
 							{slides.length===0? <SquareSliderLoader/> :slides.map((slide:any,i:number):any=>{
 								return <div className="mx-3 my-4" key={i}>
                                 <div className="bg-loaderShade w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]">
-                                <Link to='/#' key={i} className='block w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]'>
+                                <Link to={`/movie/${slide.id}`} key={i} className='block w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]'>
                                     <img className="object-cover w-full h-full" src={process.env.REACT_APP_MOVIE_IMAGE+slide.profile_path} alt='actors'/>
                                 </Link>
                                 </div>

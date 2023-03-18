@@ -30,7 +30,7 @@ export default function RectangleSlider({slides,heading}:any){
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
 							{slides.length===0? <RectangleSliderLoader/> :slides.map((slide:any,i:number):any=>{
-								return <Link to='/#' key={i} className='w-[250px] min-w-[250px]  md:w-[300px] md:min-w-[300px] m-3'>
+								return <Link to={`/movie/${slide.id}`} key={i} className='w-[250px] min-w-[250px]  md:w-[300px] md:min-w-[300px] m-3'>
 											<div className="bg-loaderShade w-[100%]">
 												<img src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.backdrop_path}`} className="object-cover h-[130px] md:h-[150px] w-[100%]" alt='movie'/>
 											</div>
