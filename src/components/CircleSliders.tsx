@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import CircleSliderLoader from "./loaders/circlesliders";
 
-export default function CircleSlider({slides,heading}:any){
+export default function CircleSlider({slides,heading,gender}:any){
     const id=''+Math.random();
 
     const nextslide=()=>{
@@ -26,7 +26,7 @@ export default function CircleSlider({slides,heading}:any){
 					<div className="flex justify-between items-center">
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
-							{slides.length===0? <CircleSliderLoader/> :slides.map((slide:any,i:number):any=>{
+							{slides.length===0? <CircleSliderLoader/> :slides.filter((fill:any)=>fill.gender===gender).map((slide:any,i:number):any=>{
 								return <div className="mx-3 my-4" key={i}>
                                         <div className="bg-loaderShade rounded-full w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]">
                                         <Link to='/#' key={i} className='w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]'>

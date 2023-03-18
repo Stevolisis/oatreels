@@ -50,14 +50,15 @@ export default function Home(){
             <div className="text-primary">
                 
                 <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
-                    <MainSlider slides={slides}/>
+                    <MainSlider slides={popular}/>
                     <RectangleSliders slides={topRated} heading='Top Rated Movies'/> 
                     <Carousel slides={trends} heading='Trending Movies'/>
                     <Carousel slides={popular} heading='Popular Movies'/>
                     <Listings slides={slides} heading='Top Box Office'/>
                     <Carousel slides={movies} heading='Movies'/>
                     <Carousel slides={upComing} heading='UpComing Movies'/>
-                    <CircleSlider slides={popularPersons} heading='Popular Movies Stars'/>
+                    <CircleSlider gender={2} slides={popularPersons} heading='Popular Actors'/>
+                    <CircleSlider gender={1} slides={popularPersons} heading='Popular Actresses'/>
                     <Listings slides={slides} heading='Top Box Office'/>
                     <Footer/>
                 </div>

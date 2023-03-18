@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
+import { getTopRated } from "../Redux/movies"
+import { useAppSelector } from "../Redux/store"
 import SidelistLoader from "./loaders/sidelist"
 
-export default function Sidelist({heading,slides}:any){
+export default function Sidelist({heading}:any){
+    const slides:any=useAppSelector(getTopRated)
 
     return (
         <>

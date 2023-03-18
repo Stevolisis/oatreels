@@ -3,14 +3,10 @@ import { Link } from "react-router-dom";
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import Sidelist from "./Sidelist";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
-import { fetchTopRatedMovies, getMovies, getTopRated } from "../Redux/movies";
 import MainSliderLoader from "./loaders/MainSlider";
 
 export default function MainSlider({slides}:any){
     const [currentslide,setCurrentslide]=useState(0);
-    const trends=useAppSelector(getMovies);
-    const dispatch=UseAppDispatch();
-    const topRated=useAppSelector(getTopRated);
     
     const nextslide=useCallback(()=>{
         setCurrentslide(currentslide===slides.length-1 ? 0 : currentslide+1)
@@ -29,23 +25,21 @@ export default function MainSlider({slides}:any){
        return ()=> clearTimeout(resetVal) ;
     },[currentslide,nextslide]);
 
-    useEffect(()=>{
-        dispatch(fetchTopRatedMovies(1))
-    },[])
+
     
     return (
         <>
             <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex-1 py-3 sm:py-0 md:pr-10">
                 {
-                    trends.length===0?<MainSliderLoader/>:trends.filter((slide:any,i:number)=>{
+                    slides.length===0?<MainSliderLoader/>:slides.filter((slide:any,i:number)=>{
                         if(i===currentslide){
                             return slide
                         }else{
                             return null
                         }
                     }).map((slide:any,i:number)=>{
-                        return  <Fragment key={i}>
+                        return  (i<10) && <Fragment key={i}>
                                     <Link  to='/' className="bg-loaderShade block w-[100%] md:h-[37vw] h-[47vw]">
                                         <img className="object-cover w-[100%] h-[100%]" 
                                         src={process.env.REACT_APP_MOVIE_IMAGE+slide.backdrop_path} alt="mainslider"/>
@@ -71,7 +65,7 @@ export default function MainSlider({slides}:any){
                 }
                 </div>
                 <div>
-                    <Sidelist slides={topRated} heading='Top Rated'/>
+                    <Sidelist heading='Top Rated'/>
                 </div>
 
                     
