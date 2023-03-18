@@ -3,12 +3,12 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export const fetchMovies=createAsyncThunk('movies/fetchMovies',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/discover/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/discover/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });
 
 export const fetchTrends=createAsyncThunk('movies/fetchTrends',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });
 
@@ -18,17 +18,17 @@ export const fetchLatestMovies=createAsyncThunk('movies/fetchLatestMovies',async
 });
 
 export const fetchPopularMovies=createAsyncThunk('movies/fetchPopularMovies',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });
 
 export const fetchTopRatedMovies=createAsyncThunk('movies/fetchTopRatedMovies',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });
 
 export const fetchUpComingMovies=createAsyncThunk('movies/fetchUpComingMovies',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });
 

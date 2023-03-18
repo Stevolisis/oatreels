@@ -4,12 +4,14 @@ import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import moviesReducer from './movies';
 import searchReducer from './searches';
 import personReducer from './persons';
+import tvReducer from './tv';
 
 
 const combinedReducers=combineReducers({
     moviesReducer:moviesReducer,
     searchReducer:searchReducer,
-    personReducer:personReducer
+    personReducer:personReducer,
+    tvReducer:tvReducer,
 });
 
 export const store=configureStore({

@@ -8,6 +8,7 @@ import { fetchLatestMovies, fetchMovies, fetchPopularMovies, fetchTopRatedMovies
 import { UseAppDispatch, useAppSelector } from '../Redux/store';
 import { fetchPopularPersons, getPopularPersons } from '../Redux/persons';
 import CircleSlider from '../components/CircleSliders';
+import { fetchPopularTvs, getPopularTvs } from '../Redux/tv';
 
 export default function Home(){
     const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg','/pexel13.jpg',
@@ -19,9 +20,8 @@ export default function Home(){
     const upComing=useAppSelector(getUpComing);
     const topRated=useAppSelector(getTopRated);
     const popularPersons=useAppSelector(getPopularPersons);
-    const arr:any=[{id:1,data:'nice'},{id:2,data:'job'},{id:3,data:'doing'},{id:3,data:'this'}];
-    const newArr:any=arr.filter((fill:any,i:number)=>arr.indexOf(fill)===i);
-    // console.log('Neww Arr',newArr)
+    const popularTvs=useAppSelector(getPopularTvs);
+
 
     useEffect(()=>{
         console.log(window.innerWidth)
@@ -43,6 +43,7 @@ export default function Home(){
         dispatch(fetchTopRatedMovies(3));
         dispatch(fetchPopularPersons(3));
         dispatch(fetchPopularPersons(2));
+        dispatch(fetchPopularTvs(2));
     },[])
 
     return(
@@ -59,6 +60,7 @@ export default function Home(){
                     <Carousel slides={upComing} heading='UpComing Movies'/>
                     <CircleSlider gender={2} slides={popularPersons} heading='Popular Actors'/>
                     <CircleSlider gender={1} slides={popularPersons} heading='Popular Actresses'/>
+                    <RectangleSliders slides={popularTvs} heading='Popular Tv Shows'/>
                     <Listings slides={slides} heading='Top Box Office'/>
                     <Footer/>
                 </div>
