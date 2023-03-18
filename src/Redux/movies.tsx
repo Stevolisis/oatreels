@@ -2,8 +2,8 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export const fetchMovies=createAsyncThunk('movies/fetchMovies',async()=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/discover/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}`);
+export const fetchMovies=createAsyncThunk('movies/fetchMovies',async(page:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/discover/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}`);
     return response.data;
 });
 
@@ -67,7 +67,14 @@ const moviesSlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder.addCase(fetchMovies.fulfilled,(state,{payload})=>{
-            state.movies=payload.results;
+            state.movies=state.movies.concat(payload.results);
+            const uniqueMovies = state.movies.reduce((a:any,b:any) => {
+                if (!a.find((movie:any) => movie.id === b.id)) {
+                  a.push(b);
+                }
+                return a;
+              }, []);
+              state.movies=uniqueMovies
         })
         builder.addCase(fetchMovies.rejected,(state,{error})=>{
             console.log('error Redux',error)
