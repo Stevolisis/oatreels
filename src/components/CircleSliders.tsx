@@ -30,7 +30,7 @@ export default function CircleSlider({slides,heading,gender}:any){
 								return <div className="mx-3 my-4" key={i}>
                                         <div className="bg-loaderShade rounded-full w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]">
                                         <Link to='/#' key={i} className='w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]'>
-                                            <img className="object-cover w-full h-full rounded-full" src={process.env.REACT_APP_MOVIE_IMAGE+slide.profile_path} alt='actors'/>
+                                            <img className="object-cover w-full h-full rounded-full" src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.profile_path}`} alt='actors'/>
                                         </Link>
                                         </div>
                                         <div className="flex justify-center items-center py-3 text-txtPrimary">

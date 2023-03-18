@@ -10,8 +10,8 @@ export default function Navbar(){
                 <i className="fa fa-film text-bgPrimary"/>
             </div>
             <div className="flex md:flex-col flex-row items-center justify-center flex-1">
-                <Link to='/tvshows'  className="my-0 md:my-3 mx-3"><FaTv size={17}/></Link>
                 <Link to='/'  className="my-0 md:my-3 mx-3"><FaFilm size={17}/></Link>
+                <Link to='/tvshows'  className="my-0 md:my-3 mx-3"><FaTv size={17}/></Link>
                 <Link to='/'  className="my-0 md:my-3 mx-3"><FaBookmark size={17}/></Link>
                 <Link to='/'  className="my-0 md:my-3 mx-3"><FaHeart size={17}/></Link>
             </div>

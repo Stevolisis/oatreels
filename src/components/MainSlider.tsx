@@ -42,7 +42,7 @@ export default function MainSlider({slides}:any){
                         return  (i<10) && <Fragment key={i}>
                                     <Link  to='/' className="bg-loaderShade block w-[100%] md:h-[37vw] h-[47vw]">
                                         <img className="object-cover w-[100%] h-[100%]" 
-                                        src={process.env.REACT_APP_MOVIE_IMAGE+slide.backdrop_path} alt="mainslider"/>
+                                        src={`${process.env.REACT_APP_MOVIE_IMAGE}/w780${slide.backdrop_path}`} alt="mainslider"/>
                                     </Link>                
                                     <div className="flex items-center justify-between ">
                                         <MdChevronLeft onClick={()=>prevslide()} className='text-[40px] sm:text-[55px] md:text-[65px] md:ml-[-20px] md:mt-[-37vw] mt-[-43vw] scrollBtn'/>

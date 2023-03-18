@@ -59,7 +59,6 @@ export default function Home(){
                     <CircleSlider gender={1} slides={popularPersons} heading='Popular Actresses'/>
                     <RectangleSliders slides={popularTvs} heading='Popular Tv Shows'/>
                     <Listings slides={slides} heading='Top Box Office'/>
-                    <Footer/>
                 </div>
             </div>
         </>
