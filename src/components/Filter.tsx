@@ -38,7 +38,7 @@ export default function Filter(){
                 <div className="z-20 absolute mx-2 w-[95%] sm:w-[46vw] mt-2 rounded-xl bg-brSecondary px-2">
                     {(filters.length===0&&searchKey.length>2)?<FiltersLoader/>:filters.map((filter:any,i:number):any=>{
                         return <Link to='/' key={i} className='flex py-2 border-b'>
-                                    <div className="w-[50px] h-[60px] sm:w-[60px] sm:h-[80px]">
+                                    <div className="bg-loaderShade w-[50px] h-[60px] sm:w-[60px] sm:h-[80px]">
                                         <img src={process.env.REACT_APP_MOVIE_IMAGE+filter.poster_path} alt='filterImg' className="w-full h-full object-cover"/>
                                     </div>
                                     <div className="pl-3">
