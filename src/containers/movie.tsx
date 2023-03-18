@@ -24,7 +24,7 @@ export default function Movie(){
                             <p className="p-1 sm:p-2 mx-1 sm:mx-2 my-1 text-sm rounded-full border border-txtPrimary bg-bgPrimary min-w-[80px] sm:min-w-[100px] w-[80px] sm:w-[100px] flex justify-center items-center">Romance</p>
                             <p className="p-1 sm:p-2 mx-1 sm:mx-2 my-1 text-sm rounded-full border border-txtPrimary bg-bgPrimary min-w-[80px] sm:min-w-[100px] w-[80px] sm:w-[100px] flex justify-center items-center">Romance</p>
                         </div>
-                        <div className="flex items-center py-4 flex-wrap">
+                        <div className="flex items-center py-4 flex-wrap text-bgDark">
                             <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-sm w-[47%] sm:w-[200px] justify-center"><FaPlay size={15} className="mr-2"/>Watch Now</button>
                             <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-sm w-[47%] sm:w-[200px] justify-center"><FaHeart size={15} className="mr-1 sm:mr-2"/>Add to Favourites</button>
                             <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-sm"><FaShare size={15}/></button>
