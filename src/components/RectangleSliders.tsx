@@ -35,7 +35,7 @@ export default function RectangleSlider({slides,heading}:any){
 												<img src={process.env.REACT_APP_MOVIE_IMAGE+slide.backdrop_path} className="object-cover h-[130px] md:h-[150px] w-[100%]" alt='movie'/>
 											</div>
 											<div className="text-txtPrimary pt-2">
-												<p className="text-txtSecondary text-[11px]">{slide.vote_count}.{slide.adult?'PG':'All'}.{slide.release_date}</p>
+												<p className="text-txtSecondary text-[11px]">{slide.vote_count}.{slide.adult?'PG':'All'}.{slide.release_date||slide.first_air_date}</p>
 											</div>
 											<div className="flex justify-between items-center text-txtPrimary">
 												<p className="font-semibold md:font-bold line-clamp-2">{slide.original_name||slide.original_title}</p>
