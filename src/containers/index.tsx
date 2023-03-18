@@ -24,15 +24,11 @@ export default function Home(){
 
 
     useEffect(()=>{
-        console.log(window.innerWidth)
-    },[window.innerWidth])
-
-    useEffect(()=>{
         dispatch(fetchMovies(4));
         dispatch(fetchMovies(3));
         dispatch(fetchMovies(2));
-        dispatch(fetchTrends(2));
-        dispatch(fetchTrends(3));
+        dispatch(fetchTrends({type:'movie',page:2}));
+        dispatch(fetchTrends({type:'movie',page:3}));
         dispatch(fetchPopularMovies(2));
         dispatch(fetchPopularMovies(3));
         dispatch(fetchLatestMovies(2));
@@ -43,8 +39,8 @@ export default function Home(){
         dispatch(fetchTopRatedMovies(3));
         dispatch(fetchPopularPersons(3));
         dispatch(fetchPopularPersons(2));
-        dispatch(fetchPopularTvs(2));
         dispatch(fetchPopularTvs(3));
+        dispatch(fetchPopularTvs(2));
     },[])
 
     return(
