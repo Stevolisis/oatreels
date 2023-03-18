@@ -41,6 +41,13 @@
     animation: skeleton-loading 1s linear infinite alternate;
   }
 
+  .bgImageGrad{
+    background-image: linear-gradient(180deg,rgba(24,24,24,0.4),rgba(24,24,24,0.7),rgba(24,24,24,0.9),rgba(24,24,24,1)),url('http://localhost:3000/pexel8.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
   @keyframes slide {
     0%{
       translate: 100%;
