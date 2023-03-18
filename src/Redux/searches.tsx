@@ -2,8 +2,8 @@ import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export const searchMovies=createAsyncThunk('search/searchMovies',async(key:string)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/search/movie?query=${key}&api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`);
+export const searchMovies=createAsyncThunk('search/searchMovies',async({type:type,key:key}:any)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/search/${type}?query=${key}&api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`);
     return response.data;
 });
 

@@ -7,8 +7,8 @@ export const fetchMovies=createAsyncThunk('movies/fetchMovies',async(page:number
     return response.data;
 });
 
-export const fetchTrends=createAsyncThunk('movies/fetchTrends',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/all/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
+export const fetchTrends=createAsyncThunk('movies/fetchTrends',async({type:type,page:page}:any)=>{
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/${type}/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });
 

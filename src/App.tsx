@@ -5,6 +5,8 @@ import Header from './components/THeader';
 import Navbar from './components/Navbar';
 import Home from './containers';
 import './index.css';
+import TvShows from './containers/tvshows';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -20,10 +22,13 @@ function App() {
           <Header/>
           <Routes>
             <Route path='/' element={<Home/>} />
+            <Route path='/tvshows' element={<TvShows/>} />
           </Routes>
+          <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
+          <Footer/>
+          </div>
       </BrowserRouter>
       </div>
-
       </div>
   );
 }
