@@ -5,6 +5,7 @@ import moviesReducer from './movies';
 import searchReducer from './searches';
 import personReducer from './persons';
 import tvReducer from './tv';
+import movieReducer from './movie';
 
 
 const combinedReducers=combineReducers({
@@ -12,6 +13,7 @@ const combinedReducers=combineReducers({
     searchReducer:searchReducer,
     personReducer:personReducer,
     tvReducer:tvReducer,
+    movieReducer:movieReducer,
 });
 
 export const store=configureStore({

@@ -60,11 +60,7 @@ const initialState:InitialState={
 const moviesSlice=createSlice({
     name:'movies',
     initialState,
-    reducers:{
-        addPerson:(state,{payload}:PayloadAction<any>)=>{
-            state.movies=[payload]
-        }
-    },
+    reducers:{},
     extraReducers:(builder)=>{
         builder.addCase(fetchMovies.fulfilled,(state,{payload})=>{
             state.movies=state.movies.concat(payload.results);
