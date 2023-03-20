@@ -67,6 +67,12 @@ const movieSlice=createSlice({
     reducers:{
         resetMovie:(state)=>{
             state.movie={};
+        },
+        resetRecommendedMovies:(state)=>{
+            state.recommended_movies=[];
+        },
+        resetSimilarMovies:(state)=>{
+            state.similar_movies=[];
         }
     },
     extraReducers:(builder)=>{
@@ -135,7 +141,7 @@ const movieSlice=createSlice({
         builder.addCase(fetchRecommendedMovies.fulfilled,(state,{payload})=>{
             state.recommended_movies=state.recommended_movies.concat(payload.results);
             const uniqueRecommended_movies = state.recommended_movies.reduce((a:any,b:any) => {
-                if (!a.find((review:any) => review.id === b.id)) {
+                if (!a.find((movie:any) => movie.id === b.id)) {
                   a.push(b);
                 }
                 return a;
@@ -153,7 +159,7 @@ const movieSlice=createSlice({
         builder.addCase(fetchSimilarMovies.fulfilled,(state,{payload})=>{
             state.similar_movies=state.similar_movies.concat(payload.results);
             const uniqueSimilar_movies = state.similar_movies.reduce((a:any,b:any) => {
-                if (!a.find((review:any) => review.id === b.id)) {
+                if (!a.find((movie:any) => movie.id === b.id)) {
                   a.push(b);
                 }
                 return a;
@@ -179,5 +185,5 @@ export const getPhotos=(state:any)=>state.movieReducer.photos;
 export const getVideos=(state:any)=>state.movieReducer.videos;
 export const getRecommendedMovies=(state:any)=>state.movieReducer.recommended_movies;
 export const getSimilarMovies=(state:any)=>state.movieReducer.similar_movies;
-export const {resetMovie}=movieSlice.actions;
+export const {resetMovie, resetRecommendedMovies, resetSimilarMovies}=movieSlice.actions;
 export default movieSlice.reducer;

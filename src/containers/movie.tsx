@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { FaHeart, FaMoneyBill, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar } from "react-icons/fa";
 import { useParams } from "react-router-dom"
-import { fetchMovie, getMovie, resetMovie } from "../Redux/movie";
+import Carousel from "../components/Carousel";
+import { fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getMovie, getRecommendedMovies, getSimilarMovies, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
@@ -9,13 +10,21 @@ export default function Movie(){
     const {id}:any=useParams();
     const dispatch=UseAppDispatch();
     const movie:any=useAppSelector(getMovie);
+    const recommendedMovies:any=useAppSelector(getRecommendedMovies);
+    const similarMovies:any=useAppSelector(getSimilarMovies);
     const genres=useAppSelector(getGenres);
     const [image_path,setImage_path]=useState('')
 
     useEffect(()=>{
         if(id){
             dispatch(resetMovie());
+            dispatch(resetRecommendedMovies());
+            dispatch(resetSimilarMovies());
             dispatch(fetchMovie(id));
+            dispatch(fetchRecommendedMovies({id:id,page:1}));
+            dispatch(fetchRecommendedMovies({id:id,page:2}));
+            dispatch(fetchSimilarMovies({id:id,page:1}));
+            dispatch(fetchSimilarMovies({id:id,page:2}));
             setImage_path(movie&&process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.backdrop_path);
         }
     },[id]);
@@ -29,7 +38,7 @@ console.log(image_path)
     return(
         <>
         <div className="text-primary">                
-            <div className='md:ml-[120px] ml-0 sm:px-5'>
+            <div className='md:ml-[120px] ml-0'>
                 <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+movie.backdrop_path)})`}} 
                 className='bgImageGrad w-full h-full text-txtPrimary px-5 sm:px-0'>
                     <div className="py-5 sm:py-7 sm:px-16 md:px-20">
@@ -63,8 +72,8 @@ console.log(image_path)
                         </div>
                         <div className="flex mb-3">
                             <div className="flex mx-2 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
-                            <div className="flex mx-2 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
-                            <div className="flex mx-2 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
+                            <div className="flex mx-2 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.vote_count}</p></div>
+                            <div className="flex mx-2 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie.vote_average&&movie.vote_average.toFixed(2)}</p></div>
                             <div className="flex mx-2 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&moneyFormat.format(movie.revenue)}</p></div>
                         </div>
                         <div>
@@ -79,6 +88,11 @@ console.log(image_path)
                     </div>
                 </div>
 
+
+                <div className="px-3 sm:px-0">
+                    <Carousel heading='Similar Movies' slides={similarMovies}/>
+                    <Carousel heading='Recommended Movies' slides={recommendedMovies}/>                    
+                </div>
             </div>
         </div>
 
