@@ -49,6 +49,7 @@ export default function Movie(){
             dispatch(fetchVideos(id))
         }
     },[videos]);
+    
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
@@ -117,11 +118,11 @@ export default function Movie(){
                         </div>
 
                         <div className="flex justify-evenly items-center py-4 flex-wrap text-bgDark">
-                            <button onClick={()=>setCheckPhotos(false)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                            <button onClick={()=>setCheckPhotos(true)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaImages className="text-[12px] sm:text-[15px] mr-2"/>Photos</button>
-                            <button onClick={()=>setCheckVideos(false)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                            <button onClick={()=>setCheckVideos(true)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaVideo className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Vidoes</button>
-                            <button onClick={()=>setCheckCrew(false)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                            <button onClick={()=>setCheckCrew(true)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaPeopleArrows className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>All Crew</button>
                     </div>
                     </div>
@@ -132,6 +133,7 @@ export default function Movie(){
                 <div className="px-3 sm:px-0">
                     {checkPhotos&&<RectangleSlider heading='Photos' slides={photos}/>}
                     {checkVideos&&<RectangleSlider heading='Videos' slides={videos}/>}
+                    {checkCrew&&<CircleSlider heading='Crew' slides={crew} character={true} gender={2}/>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
                     <Carousel heading='Similar Movies' slides={similarMovies}/>
