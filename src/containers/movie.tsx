@@ -25,6 +25,7 @@ export default function Movie(){
     const [checkVideos,setCheckVideos]=useState(false);
     const [checkCrew,setCheckCrew]=useState(false);
     const [playVideo,setPlayVideo]=useState(false);
+    const [videoId,setVideoId]=useState('');
     const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
 
 
@@ -39,6 +40,7 @@ export default function Movie(){
             dispatch(fetchRecommendedMovies({id:id,page:2}));
             dispatch(fetchSimilarMovies({id:id,page:1}));
             dispatch(fetchSimilarMovies({id:id,page:2}));
+            setVideoId(movie.videos&&movie.videos[0].key)
         }
     },[id]);
 
@@ -49,13 +51,9 @@ export default function Movie(){
     // }
     
 
-
-console.log(playVideo)
-
-
     return(
         <>
-        {playVideo&&<VideoPlayer setPlayVideo={setPlayVideo} id={videos&&videos[0].key}/>}
+        {playVideo&&<VideoPlayer setVideoId={setVideoId} setPlayVideo={setPlayVideo} id={videoId}/>}
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0'>
                 <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+movie.backdrop_path)})`}} 
