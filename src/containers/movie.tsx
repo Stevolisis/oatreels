@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHeart, FaPlay, FaShare } from "react-icons/fa";
+import { FaHeart, FaMoneyBill, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import { fetchMovie, getMovie, resetMovie } from "../Redux/movie";
 import { getGenres } from "../Redux/movies";
@@ -24,6 +24,7 @@ console.log(image_path)
     //     return genres.filter((genre:any)=>genre.id===id);
         
     // }
+    const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
 
     return(
         <>
@@ -60,11 +61,17 @@ console.log(image_path)
                         <div>
                             <p className="py-5">{movie&&movie.overview}</p>
                         </div>
+                        <div className="flex mb-3">
+                            <div className="flex mx-2 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
+                            <div className="flex mx-2 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
+                            <div className="flex mx-2 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
+                            <div className="flex mx-2 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&moneyFormat.format(movie.revenue)}</p></div>
+                        </div>
                         <div>
-                            <p>{movie&&movie.original_title}</p>
-                            <p>{movie&&movie.original_title}</p>
-                            <p>{movie&&movie.original_title}</p>
-                            <p>{movie&&movie.original_title}</p>
+                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
+                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
+                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
+                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
                         </div>
                     </div>
                     <div className="flex-2 hidden sm:block">
