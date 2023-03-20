@@ -14,7 +14,6 @@ export default function Movie(){
     useEffect(()=>{
         if(id){
             dispatch(fetchMovie(id));
-            console.log(movie.genres)
         }
     },[id]);
 
@@ -38,7 +37,7 @@ export default function Movie(){
                         </div>
                         <div className="flex items-center py-4 flex-wrap">
                             {movie.genres&&movie.genres.map((genre:any,i:number)=>{
-                                return <p key={i} className="p-1 sm:p-2 mx-1 sm:mx-2 my-1 text-sm rounded-full border border-txtPrimary bg-bgPrimary min-w-[80px] sm:min-w-[100px] w-[80px] sm:w-[100px] flex justify-center items-center">{genre.name}</p>
+                                return <p key={i} className="py-2 px-5 sm:px-6 mx-1 sm:mx-2 my-1 text-sm rounded-full border border-txtPrimary bg-bgPrimary  flex justify-center items-center">{genre.name}</p>
                             })}
                         </div>
                         <div className="flex items-center py-4 flex-wrap text-bgDark">
