@@ -8,6 +8,7 @@ import './index.css';
 import TvShows from './containers/tvshows';
 import Footer from './components/Footer';
 import Movie from './containers/movie';
+import ScrollToTop from './components/Scroll-To-Top';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
       
       <BrowserRouter>
+      <ScrollToTop/>
          <div className='md:fixed relative h-[100%] flex flex-col justify-center items-center'>
           <Navbar/>
          </div>
