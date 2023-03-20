@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import SquareSliderLoader from "./loaders/squaresliders";
 
-export default function SquareSlider({slides,heading}:any){
+export default function SquareSlider({slides,heading,character}:any){
     const id=''+Math.random();
 
     const nextslide=()=>{
@@ -30,11 +30,12 @@ export default function SquareSlider({slides,heading}:any){
 								return <div className="mx-3 my-4" key={i}>
                                 <div className="bg-loaderShade w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]">
                                 <Link to={`/movie/${slide.id}`} key={i} className='block w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]'>
-                                    <img className="object-cover w-full h-full" src={process.env.REACT_APP_MOVIE_IMAGE+slide.profile_path} alt='actors'/>
+                                    <img className="object-cover w-full h-full" src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.profile_path}`} alt='actors'/>
                                 </Link>
                                 </div>
-                                <div className="flex justify-center items-center py-3 text-txtPrimary">
-                                    <p className="font-semibold text-lg">{slide.name}</p>
+								<div className="align-center py-3 text-txtPrimary">
+									<p className="font-semibold text-base text-center sm:text-lg">{slide.name||slide.original_name}</p>
+									{character&&<p className="text-sm text-center text-brSecondary">{slide.character||slide.job}</p>}
                                 </div>
                                </div>
 							})}

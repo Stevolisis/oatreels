@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaHeart, FaImages, FaMoneyBill, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaVideo } from "react-icons/fa";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import RectangleSlider from "../components/RectangleSliders";
+import SquareSlider from "../components/SquareSlider";
 import { fetchCasts, fetchMovie, fetchPhotos, fetchRecommendedMovies, fetchSimilarMovies, fetchVideos, getCasts, getCrew, getMovie, getPhotos, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
@@ -11,6 +12,7 @@ import { UseAppDispatch, useAppSelector } from "../Redux/store";
 export default function Movie(){
     const {id}:any=useParams();
     const dispatch=UseAppDispatch();
+    const navigate=useNavigate();
     const movie:any=useAppSelector(getMovie);
     const casts:any=useAppSelector(getCasts);
     const crew:any=useAppSelector(getCrew);
@@ -40,15 +42,24 @@ export default function Movie(){
 
     useEffect(()=>{
         if(id&&checkPhotos){
+            console.log(photos)
+            navigate('#photos')
             dispatch(fetchPhotos(id))
         }
-    },[photos]);
+    },[id,dispatch,checkPhotos]);
 
     useEffect(()=>{
         if(id&&checkVideos){
+            navigate('#videos')
             dispatch(fetchVideos(id))
         }
-    },[videos]);
+    },[id,dispatch,checkVideos]);
+
+    useEffect(()=>{
+        if(id&&checkCrew){
+            navigate('#crew');
+        }
+    },[id,dispatch,checkCrew]);
     
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
@@ -131,9 +142,9 @@ export default function Movie(){
 
 
                 <div className="px-3 sm:px-0">
-                    {checkPhotos&&<RectangleSlider heading='Photos' slides={photos}/>}
-                    {checkVideos&&<RectangleSlider heading='Videos' slides={videos}/>}
-                    {checkCrew&&<CircleSlider heading='Crew' slides={crew} character={true} gender={2}/>}
+                    {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>}
+                    {checkVideos&&<div id="videos"><RectangleSlider heading='Videos' slides={videos}/></div>}
+                    {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
                     <Carousel heading='Similar Movies' slides={similarMovies}/>

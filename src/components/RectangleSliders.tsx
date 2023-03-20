@@ -38,7 +38,7 @@ export default function RectangleSlider({slides,heading}:any){
 												<p className="text-txtSecondary text-[11px]">{slide.vote_count}.{slide.adult?'PG':'All'}.{slide.release_date||slide.first_air_date}</p>
 											</div>
 											<div className="flex justify-between items-center text-txtPrimary">
-												<p className="font-semibold md:font-bold line-clamp-2">{slide.original_name||slide.original_title}</p>
+												<p className="font-semibold md:font-bold line-clamp-2">{slide.original_name||slide.original_title||slide.name}</p>
 												{favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>}
 											</div>
 									</Link>
