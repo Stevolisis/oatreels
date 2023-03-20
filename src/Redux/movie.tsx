@@ -64,7 +64,11 @@ const initialState:InitialState={
 const movieSlice=createSlice({
     name:'movie',
     initialState,
-    reducers:{},
+    reducers:{
+        resetMovie:(state)=>{
+            state.movie={};
+        }
+    },
     extraReducers:(builder)=>{
         builder.addCase(fetchMovie.fulfilled,(state,{payload})=>{
               state.movie=payload;
@@ -175,4 +179,5 @@ export const getPhotos=(state:any)=>state.movieReducer.photos;
 export const getVideos=(state:any)=>state.movieReducer.videos;
 export const getRecommendedMovies=(state:any)=>state.movieReducer.recommended_movies;
 export const getSimilarMovies=(state:any)=>state.movieReducer.similar_movies;
+export const {resetMovie}=movieSlice.actions;
 export default movieSlice.reducer;
