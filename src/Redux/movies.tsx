@@ -73,7 +73,6 @@ const moviesSlice=createSlice({
               state.movies=uniqueMovies
         })
         builder.addCase(fetchMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -91,7 +90,6 @@ const moviesSlice=createSlice({
               state.trends=uniqueTrends
         })
         builder.addCase(fetchTrends.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -102,7 +100,6 @@ const moviesSlice=createSlice({
             state.latest=payload;
         })
         builder.addCase(fetchLatestMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -120,7 +117,6 @@ const moviesSlice=createSlice({
               state.popular=uniquePopular
         })
         builder.addCase(fetchPopularMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -138,7 +134,6 @@ const moviesSlice=createSlice({
               state.top_rated=uniqueTopRated
         })
         builder.addCase(fetchTopRatedMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -156,7 +151,6 @@ const moviesSlice=createSlice({
               state.up_coming=uniqueUpComing
         })
         builder.addCase(fetchUpComingMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -167,7 +161,6 @@ const moviesSlice=createSlice({
             state.genres=payload.data['genres'];
         })
         builder.addCase(fetchGenres.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
