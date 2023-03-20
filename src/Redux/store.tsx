@@ -10,10 +10,10 @@ import movieReducer from './movie';
 
 const combinedReducers=combineReducers({
     moviesReducer:moviesReducer,
-    searchReducer:searchReducer,
-    personReducer:personReducer,
-    tvReducer:tvReducer,
     movieReducer:movieReducer,
+    tvReducer:tvReducer,
+    personReducer:personReducer,
+    searchReducer:searchReducer,
 });
 
 export const store=configureStore({
