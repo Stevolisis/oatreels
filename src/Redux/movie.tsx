@@ -44,6 +44,7 @@ export const fetchSimilarMovies=createAsyncThunk('movie/fetchSimilarMovies',asyn
 type InitialState={
     movie:any,
     casts:any[],
+    crew:any[],
     photos:any[],
     recommended_movies:any[],
     reviews:any[],
@@ -54,6 +55,7 @@ type InitialState={
 const initialState:InitialState={
     movie:{},
     casts:[],
+    crew:[],
     reviews:[],
     photos:[],
     videos:[],
@@ -89,6 +91,7 @@ const movieSlice=createSlice({
         })
         builder.addCase(fetchCasts.fulfilled,(state,{payload})=>{
             state.casts=payload.cast;
+            state.crew=payload.crew;
         })
         builder.addCase(fetchCasts.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -180,6 +183,7 @@ const movieSlice=createSlice({
 
 export const getMovie=(state:any)=>state.movieReducer.movie;
 export const getCasts=(state:any)=>state.movieReducer.casts;
+export const getCrew=(state:any)=>state.movieReducer.crew;
 export const getReviews=(state:any)=>state.movieReducer.reviews;
 export const getPhotos=(state:any)=>state.movieReducer.photos;
 export const getVideos=(state:any)=>state.movieReducer.videos;

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { FaHeart, FaImages, FaMoneyBill, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaVideo } from "react-icons/fa";
+import { FaHeart, FaImages, FaMoneyBill, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaVideo } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import RectangleSlider from "../components/RectangleSliders";
-import { fetchCasts, fetchMovie, fetchPhotos, fetchRecommendedMovies, fetchSimilarMovies, fetchVideos, getCasts, getMovie, getPhotos, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
+import { fetchCasts, fetchMovie, fetchPhotos, fetchRecommendedMovies, fetchSimilarMovies, fetchVideos, getCasts, getCrew, getMovie, getPhotos, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
@@ -13,12 +13,14 @@ export default function Movie(){
     const dispatch=UseAppDispatch();
     const movie:any=useAppSelector(getMovie);
     const casts:any=useAppSelector(getCasts);
+    const crew:any=useAppSelector(getCrew);
     const photos:any=useAppSelector(getPhotos);
     const videos:any=useAppSelector(getVideos);
     const recommendedMovies:any=useAppSelector(getRecommendedMovies);
     const similarMovies:any=useAppSelector(getSimilarMovies);
     const [checkPhotos,setCheckPhotos]=useState(false);
     const [checkVideos,setCheckVideos]=useState(false);
+    const [checkCrew,setCheckCrew]=useState(false);
     const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
 
 
@@ -104,10 +106,14 @@ export default function Movie(){
                             <div className="flex mx-2 my-1 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&moneyFormat.format(movie.revenue)}</p></div>
                         </div>
                         <div className="text-sm sm:text-base">
-                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
-                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
-                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
-                            <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Director:</span> {crew&&crew.filter((person:any)=>person.job==='Director')
+                                .map((person:any)=>{return person.original_name+', '})}</p>
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Producers:</span> {crew&&crew.filter((person:any)=>person.job==='Producer')
+                                .map((person:any)=>{return person.original_name+', '})}</p>
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Writers:</span> {crew&&crew.filter((person:any)=>person.job==='Writer')
+                                .map((person:any)=>{return person.original_name+', '})}</p>
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Music: </span>{crew&&crew.filter((person:any)=>person.job==='Director')
+                                .map((person:any)=>{return person.original_name+', '})}</p>
                         </div>
 
                         <div className="flex justify-evenly items-center py-4 flex-wrap text-bgDark">
@@ -115,6 +121,8 @@ export default function Movie(){
                                 <FaImages className="text-[12px] sm:text-[15px] mr-2"/>Photos</button>
                             <button onClick={()=>setCheckVideos(false)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaVideo className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Vidoes</button>
+                            <button onClick={()=>setCheckCrew(false)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                                <FaPeopleArrows className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>All Crew</button>
                     </div>
                     </div>
 

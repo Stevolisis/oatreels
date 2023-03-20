@@ -4,7 +4,6 @@ import CircleSliderLoader from "./loaders/circlesliders";
 
 export default function CircleSlider({slides,heading,gender,character}:any){
     const id=''+Math.random();
-console.log('ttt',slides)
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
         element.scrollLeft=element.scrollLeft+400;
@@ -35,7 +34,7 @@ console.log('ttt',slides)
                                         </div>
                                         <div className="align-center py-3 text-txtPrimary">
 											<p className="font-semibold text-base text-center sm:text-lg">{slide.name||slide.original_name}</p>
-											{character&&<p className="text-sm text-center text-brSecondary">Character: {slide.character}</p>}
+											{character&&<p className="text-sm text-center text-brSecondary">{slide.character}</p>}
                                         </div>
                                        </div>
 							})}
