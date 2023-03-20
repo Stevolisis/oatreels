@@ -42,9 +42,9 @@
   }
 
   .bgImageGrad{
-    background: linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),
-    /* url('https://image.tmdb.org/t/p/w500/3jcbDmRFiQ83drXNOvRDeKHxS0C.jpg'); */
-
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   @keyframes slide {

@@ -28,7 +28,8 @@ console.log(image_path)
         <>
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0 sm:px-5'>
-                <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.backdrop_path)}) cover no-repeat`}} className={`w-full h-full text-txtPrimary px-5 sm:px-0`}>
+                <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.backdrop_path)})`}} 
+                className='bgImageGrad w-full h-full text-txtPrimary px-5 sm:px-0'>
                     <div className="py-5 sm:py-7 sm:px-16 md:px-20">
                         <p className="text-sm sm:text-base font-semibold text-txtPrimary opacity-70 sm:opacity-90">Home | movies | {movie && movie.original_title} </p>
                     </div>
