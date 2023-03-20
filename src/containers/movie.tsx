@@ -26,7 +26,7 @@ export default function Movie(){
         <>
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0 sm:px-5'>
-                <div className="bgImageGrad text-txtPrimary px-5 sm:px-0">
+                <div className="w-full h-full bgImageGrad text-txtPrimary px-5 sm:px-0">
                     <div className="py-5 sm:py-7 sm:px-16 md:px-20">
                         <p className="text-sm sm:text-base font-semibold text-txtPrimary opacity-70 sm:opacity-90">Home | movies | {movie && movie.original_title} </p>
                     </div>
