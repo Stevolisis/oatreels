@@ -40,7 +40,6 @@ const personsSlice=createSlice({
               state.latest_persons=uniqueLatestPersons;
         })
         builder.addCase(fetchLatestPersons.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -58,7 +57,6 @@ const personsSlice=createSlice({
               state.popular_persons=uniquePopularPersons
         })
         builder.addCase(fetchPopularPersons.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,

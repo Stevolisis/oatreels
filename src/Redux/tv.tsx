@@ -53,7 +53,6 @@ const tvSlice=createSlice({
               state.tv_on_air=uniqueTvOnAir;
         })
         builder.addCase(fetchTvOnAir.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -71,7 +70,6 @@ const tvSlice=createSlice({
               state.tv_on_air_today=uniqueTvOnAirToday
         })
         builder.addCase(fetchTvOnAirToday.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -89,7 +87,6 @@ const tvSlice=createSlice({
               state.popular_tvs=uniquePopfetchPopularTvs
         })
         builder.addCase(fetchPopularTvs.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -107,7 +104,6 @@ const tvSlice=createSlice({
               state.top_rated_tvs=uniqueTopfetchTopRatedTvs
         })
         builder.addCase(fetchTopRatedTvs.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,

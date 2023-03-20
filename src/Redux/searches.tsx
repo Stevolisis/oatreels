@@ -29,7 +29,6 @@ const searchSlice=createSlice({
             state.searches=payload.results;
         })
         builder.addCase(searchMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error in Search',
                 error.message,

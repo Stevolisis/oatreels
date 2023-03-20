@@ -74,7 +74,6 @@ const movieSlice=createSlice({
             state.videos=payload.videos.results;
         })
         builder.addCase(fetchMovie.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -86,7 +85,6 @@ const movieSlice=createSlice({
             state.crew=payload.crew;
         })
         builder.addCase(fetchCasts.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -104,7 +102,6 @@ const movieSlice=createSlice({
               state.reviews=uniqueReviews
         })
         builder.addCase(fetchReviews.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -122,7 +119,6 @@ const movieSlice=createSlice({
               state.recommended_movies=uniqueRecommended_movies
         })
         builder.addCase(fetchRecommendedMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -140,7 +136,6 @@ const movieSlice=createSlice({
               state.similar_movies=uniqueSimilar_movies
         })
         builder.addCase(fetchSimilarMovies.rejected,(state,{error})=>{
-            console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
                 error.message,

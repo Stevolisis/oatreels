@@ -15,7 +15,8 @@ module.exports = {
         brSecondary:'#CAAE81',
         brTertiary:'#D8C29D',
         bgDark:'#11100b',
-        loaderShade:'#4d442f'
+        loaderShade:'#4d442f',
+        mainBg:'#0c0b08'
       },
       screens:{
         md:'800px'

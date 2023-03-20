@@ -5,6 +5,7 @@ import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import RectangleSlider from "../components/RectangleSliders";
 import SquareSlider from "../components/SquareSlider";
+import VideoPlayer from "../components/video_player";
 import { fetchCasts, fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getCasts, getCrew, getMovie, getPhotos, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
@@ -23,6 +24,7 @@ export default function Movie(){
     const [checkPhotos,setCheckPhotos]=useState(false);
     const [checkVideos,setCheckVideos]=useState(false);
     const [checkCrew,setCheckCrew]=useState(false);
+    const [playVideo,setPlayVideo]=useState(false);
     const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
 
 
@@ -40,24 +42,20 @@ export default function Movie(){
         }
     },[id]);
 
-
-    useEffect(()=>{
-        if(id&&checkCrew){
-            navigate('#crew');
-        }
-    },[id,dispatch,checkCrew]);
     
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
     // }
+    
 
 
-
+console.log(playVideo)
 
 
     return(
         <>
+        {playVideo&&<VideoPlayer setPlayVideo={setPlayVideo} id={movie&&movie.key}/>}
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0'>
                 <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+movie.backdrop_path)})`}} 
@@ -76,7 +74,7 @@ export default function Movie(){
                             })}
                         </div>
                         <div className="flex items-center py-4 flex-wrap text-bgDark">
-                            <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
+                            <button onClick={()=>setPlayVideo(true)} className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
                                 <FaPlay className="text-[12px] sm:text-[15px] mr-2"/>Watch Now</button>
                             <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
                                 <FaHeart className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Add to Favourites</button>
