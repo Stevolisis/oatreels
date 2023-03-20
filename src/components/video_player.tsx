@@ -7,24 +7,28 @@ export default function VideoPlayer({id,setPlayVideo}:any){
     const videos=useAppSelector(getVideos);
 
     return(
-        <div className="fixed w-full h-full z-30 bg-mainBg overflow-y-auto">
-            <div onClick={()=>setPlayVideo(false)}><FaCross/>Close</div>
-            <div>
-                <YouTube
-                    videoId={id}
-                />
-            </div>
-            <div className="py-5 px-3 text-txtPrimary">
-                {
-                    videos&&videos.map((video:any,i:number)=>{
-                        return(
-                                <div className="bg-bgPrimary my-3 p-4 flex items-center">
-                                    <FaPlay className="text-[12px]"/>
-                                    <p className='pl-3'>{video.name}</p>
-                                </div>
-                              )
-                    })
-                }
+        <div className="fixed w-full h-full z-30 bg-mainBg">
+            <div className="w-full h-full overflow-y-auto">
+                <div className="text-txtPrimary flex items-center p-3 bg-bgPrimary text-sm fixed" onClick={()=>setPlayVideo(false)}>
+                    <FaCross/>Close
+                </div>
+                <div>
+                    <YouTube
+                        videoId={id}
+                    />
+                </div>
+                <div className="py-5 px-3 text-txtPrimary">
+                    {
+                        videos&&videos.map((video:any,i:number)=>{
+                            return(
+                                    <div className="bg-bgPrimary my-3 p-4 flex items-center">
+                                        <FaPlay className="text-[12px]"/>
+                                        <p className='pl-3'>{video.name}</p>
+                                    </div>
+                                )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

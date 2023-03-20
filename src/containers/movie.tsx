@@ -55,7 +55,7 @@ console.log(playVideo)
 
     return(
         <>
-        {playVideo&&<VideoPlayer setPlayVideo={setPlayVideo} id={movie&&movie.key}/>}
+        {playVideo&&<VideoPlayer setPlayVideo={setPlayVideo} id={videos&&videos[0].key}/>}
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0'>
                 <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+movie.backdrop_path)})`}} 
