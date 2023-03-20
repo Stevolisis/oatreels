@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaHeart, FaMoneyBill, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar } from "react-icons/fa";
+import { FaHeart, FaImages, FaMoneyBill, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaVideo } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
 import { fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getMovie, getRecommendedMovies, getSimilarMovies, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
@@ -55,20 +55,26 @@ console.log(image_path)
                             })}
                         </div>
                         <div className="flex items-center py-4 flex-wrap text-bgDark">
-                            <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-sm w-[47%] sm:w-[200px] justify-center"><FaPlay size={15} className="mr-2"/>Watch Now</button>
-                            <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-sm w-[47%] sm:w-[200px] justify-center"><FaHeart size={15} className="mr-1 sm:mr-2"/>Add to Favourites</button>
-                            <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-sm"><FaShare size={15}/></button>
+                            <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
+                                <FaPlay className="text-[12px] sm:text-[15px] mr-2"/>Watch Now</button>
+                            <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
+                                <FaHeart className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Add to Favourites</button>
+                            <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm">
+                                <FaShare  className="text-[12px] sm:text-[15px]"/></button>
                         </div>
                     </div>                    
                 </div>
 
-                <div className="py-5 text-txtPrimary flex justify-between flex-row-reverse">
-                    <div className="flex-1 px-14">
+                <div className="py-5 text-txtPrimary flex justify-between">
+                    <div className="flex-2 hidden sm:block">
+                        <img className="w-[190px] h-[280px]" src={movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.poster_path)} alt='movie poster'/>
+                    </div>
+                    <div className="flex-1 px-5 sm:px-12 md:px-14">
                         <div>
-                            <p className="font-semibold text-3xl">{movie&&movie.original_title}</p>
+                            <p className="font-semibold text-xl sm:text-2xl md:text-3xl">{movie&&movie.original_title}</p>
                         </div>
                         <div>
-                            <p className="py-5">{movie&&movie.overview}</p>
+                            <p className="py-5 text-sm sm:text-base">{movie&&movie.overview}</p>
                         </div>
                         <div className="flex mb-3">
                             <div className="flex mx-2 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
@@ -76,16 +82,21 @@ console.log(image_path)
                             <div className="flex mx-2 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie.vote_average&&movie.vote_average.toFixed(2)}</p></div>
                             <div className="flex mx-2 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&moneyFormat.format(movie.revenue)}</p></div>
                         </div>
-                        <div>
+                        <div className="text-sm sm:text-base">
                             <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
                             <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
                             <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
                             <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
                         </div>
+
+                        <div className="flex justify-evenly items-center py-4 flex-wrap text-bgDark">
+                            <button className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                                <FaImages className="text-[12px] sm:text-[15px] mr-2"/>Photos</button>
+                            <button className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                                <FaVideo className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Vidoes</button>
                     </div>
-                    <div className="flex-2 hidden sm:block">
-                        <img className="w-[190px] h-[280px]" src={movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.poster_path)} alt='movie poster'/>
                     </div>
+
                 </div>
 
 
