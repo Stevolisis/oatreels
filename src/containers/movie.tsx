@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaHeart, FaPlay, FaShare } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import { fetchMovie, getMovie } from "../Redux/movie";
@@ -10,13 +10,15 @@ export default function Movie(){
     const dispatch=UseAppDispatch();
     const movie:any=useAppSelector(getMovie);
     const genres=useAppSelector(getGenres);
+    const [image_path,setImage_path]=useState('')
 
     useEffect(()=>{
         if(id){
             dispatch(fetchMovie(id));
+            setImage_path(movie&&process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.backdrop_path);
         }
     },[id]);
-
+console.log(image_path)
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
@@ -26,7 +28,7 @@ export default function Movie(){
         <>
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0 sm:px-5'>
-                <div className="w-full h-full bgImageGrad text-txtPrimary px-5 sm:px-0">
+                <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.backdrop_path)}) cover no-repeat`}} className={`w-full h-full text-txtPrimary px-5 sm:px-0`}>
                     <div className="py-5 sm:py-7 sm:px-16 md:px-20">
                         <p className="text-sm sm:text-base font-semibold text-txtPrimary opacity-70 sm:opacity-90">Home | movies | {movie && movie.original_title} </p>
                     </div>
