@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import CircleSliderLoader from "./loaders/circlesliders";
 
-export default function CircleSlider({slides,heading,gender}:any){
+export default function CircleSlider({slides,heading,gender,character}:any){
     const id=''+Math.random();
-
+console.log('ttt',slides)
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
         element.scrollLeft=element.scrollLeft+400;
@@ -26,15 +26,16 @@ export default function CircleSlider({slides,heading,gender}:any){
 					<div className="flex justify-between items-center">
 						<MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 						<div id={`${id}`} className="flex overflow-auto scrollbar-hide scroll-smooth w-[100%] ">
-							{slides.length===0? <CircleSliderLoader/> :slides.filter((fill:any)=>fill.gender===gender).map((slide:any,i:number):any=>{
+							{slides.length===0 ? <CircleSliderLoader/> :slides.filter((fill:any)=>fill.gender===gender).map((slide:any,i:number):any=>{
 								return <div className="mx-3 my-4" key={i}>
                                         <div className="bg-loaderShade rounded-full w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]">
                                         <Link to={`/movie/${slide.id}`} key={i} className='w-[180px] min-w-[180px] h-[180px] sm:w-[230px] sm:min-w-[230px] sm:h-[230px] md:w-[250px] md:min-w-[250px] md:h-[250px]'>
                                             <img className="object-cover w-full h-full rounded-full" src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.profile_path}`} alt='actors'/>
                                         </Link>
                                         </div>
-                                        <div className="flex justify-center items-center py-3 text-txtPrimary">
-                                            <p className="font-semibold text-base sm:text-lg">{slide.name}</p>
+                                        <div className="align-center py-3 text-txtPrimary">
+											<p className="font-semibold text-base text-center sm:text-lg">{slide.name||slide.original_name}</p>
+											{character&&<p className="text-sm text-center text-brSecondary">Character: {slide.character}</p>}
                                         </div>
                                        </div>
 							})}

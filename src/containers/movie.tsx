@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { FaHeart, FaImages, FaMoneyBill, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaVideo } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
-import { fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getMovie, getRecommendedMovies, getSimilarMovies, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
+import CircleSlider from "../components/CircleSliders";
+import RectangleSlider from "../components/RectangleSliders";
+import { fetchCasts, fetchMovie, fetchPhotos, fetchRecommendedMovies, fetchSimilarMovies, fetchVideos, getCasts, getMovie, getPhotos, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
@@ -10,10 +12,15 @@ export default function Movie(){
     const {id}:any=useParams();
     const dispatch=UseAppDispatch();
     const movie:any=useAppSelector(getMovie);
+    const casts:any=useAppSelector(getCasts);
+    const photos:any=useAppSelector(getPhotos);
+    const videos:any=useAppSelector(getVideos);
     const recommendedMovies:any=useAppSelector(getRecommendedMovies);
     const similarMovies:any=useAppSelector(getSimilarMovies);
-    const genres=useAppSelector(getGenres);
-    const [image_path,setImage_path]=useState('')
+    const [checkPhotos,setCheckPhotos]=useState(false);
+    const [checkVideos,setCheckVideos]=useState(false);
+    const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
+
 
     useEffect(()=>{
         if(id){
@@ -21,19 +28,33 @@ export default function Movie(){
             dispatch(resetRecommendedMovies());
             dispatch(resetSimilarMovies());
             dispatch(fetchMovie(id));
+            dispatch(fetchCasts(id));
             dispatch(fetchRecommendedMovies({id:id,page:1}));
             dispatch(fetchRecommendedMovies({id:id,page:2}));
             dispatch(fetchSimilarMovies({id:id,page:1}));
             dispatch(fetchSimilarMovies({id:id,page:2}));
-            setImage_path(movie&&process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.backdrop_path);
         }
     },[id]);
-console.log(image_path)
+
+    useEffect(()=>{
+        if(id&&checkPhotos){
+            dispatch(fetchPhotos(id))
+        }
+    },[photos]);
+
+    useEffect(()=>{
+        if(id&&checkVideos){
+            dispatch(fetchVideos(id))
+        }
+    },[videos]);
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
     // }
-    const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
+
+
+
+
 
     return(
         <>
@@ -74,13 +95,13 @@ console.log(image_path)
                             <p className="font-semibold text-xl sm:text-2xl md:text-3xl">{movie&&movie.original_title}</p>
                         </div>
                         <div>
-                            <p className="py-5 text-sm sm:text-base">{movie&&movie.overview}</p>
+                            <p className="py-5 text-[15px] sm:text-base">{movie&&movie.overview}</p>
                         </div>
-                        <div className="flex mb-3">
-                            <div className="flex mx-2 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
-                            <div className="flex mx-2 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.vote_count}</p></div>
-                            <div className="flex mx-2 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie.vote_average&&movie.vote_average.toFixed(2)}</p></div>
-                            <div className="flex mx-2 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&moneyFormat.format(movie.revenue)}</p></div>
+                        <div className="flex mb-2 sm:mb-3 flex-wrap">
+                            <div className="flex mx-2 my-1 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.vote_count}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie.vote_average&&movie.vote_average.toFixed(2)}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&moneyFormat.format(movie.revenue)}</p></div>
                         </div>
                         <div className="text-sm sm:text-base">
                             <p className='py-3 border-b border-b-brSecondary'>{movie&&movie.original_title}</p>
@@ -90,9 +111,9 @@ console.log(image_path)
                         </div>
 
                         <div className="flex justify-evenly items-center py-4 flex-wrap text-bgDark">
-                            <button className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                            <button onClick={()=>setCheckPhotos(false)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaImages className="text-[12px] sm:text-[15px] mr-2"/>Photos</button>
-                            <button className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                            <button onClick={()=>setCheckVideos(false)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaVideo className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Vidoes</button>
                     </div>
                     </div>
@@ -101,6 +122,10 @@ console.log(image_path)
 
 
                 <div className="px-3 sm:px-0">
+                    {checkPhotos&&<RectangleSlider heading='Photos' slides={photos}/>}
+                    {checkVideos&&<RectangleSlider heading='Videos' slides={videos}/>}
+                    <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
+                    <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
                     <Carousel heading='Similar Movies' slides={similarMovies}/>
                     <Carousel heading='Recommended Movies' slides={recommendedMovies}/>                    
                 </div>

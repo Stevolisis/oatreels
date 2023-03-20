@@ -55,8 +55,8 @@ export default function Home(){
                     <Listings slides={slides} heading='Top Box Office'/>
                     <Carousel slides={movies} heading='Movies'/>
                     <Carousel slides={upComing} heading='UpComing Movies'/>
-                    <CircleSlider gender={2} slides={popularPersons} heading='Popular Actors'/>
-                    <CircleSlider gender={1} slides={popularPersons} heading='Popular Actresses'/>
+                    <CircleSlider character={false} gender={2} slides={popularPersons} heading='Popular Actors'/>
+                    <CircleSlider character={false} gender={1} slides={popularPersons} heading='Popular Actresses'/>
                     <RectangleSliders slides={popularTvs} heading='Popular Tv Shows'/>
                     <Listings slides={slides} heading='Top Box Office'/>
                 </div>
