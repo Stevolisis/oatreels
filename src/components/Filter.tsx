@@ -14,7 +14,7 @@ export default function Filter(){
 
         if(searchKey.length>2){
             dispatch(resetSearch())
-            dispatch(searchMovies({type:'movies',key:searchKey}));
+            dispatch(searchMovies({type:'movie',key:searchKey}));
         }
         if(searchKey.length<=2){
             dispatch(resetSearch())

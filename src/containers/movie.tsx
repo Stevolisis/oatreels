@@ -58,7 +58,7 @@ console.log(image_path)
                             <p className="font-semibold text-3xl">{movie&&movie.original_title}</p>
                         </div>
                         <div>
-                            <p>{movie&&movie.overview}</p>
+                            <p className="py-5">{movie&&movie.overview}</p>
                         </div>
                         <div>
                             <p>{movie&&movie.original_title}</p>
