@@ -5,7 +5,7 @@ import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import RectangleSlider from "../components/RectangleSliders";
 import SquareSlider from "../components/SquareSlider";
-import { fetchCasts, fetchMovie, fetchPhotos, fetchRecommendedMovies, fetchSimilarMovies, fetchVideos, getCasts, getCrew, getMovie, getPhotos, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
+import { fetchCasts, fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getCasts, getCrew, getMovie, getPhotos, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
@@ -16,7 +16,7 @@ export default function Movie(){
     const movie:any=useAppSelector(getMovie);
     const casts:any=useAppSelector(getCasts);
     const crew:any=useAppSelector(getCrew);
-    const photos:any=useAppSelector(getPhotos);
+    // const photos:any=useAppSelector(getPhotos);
     const videos:any=useAppSelector(getVideos);
     const recommendedMovies:any=useAppSelector(getRecommendedMovies);
     const similarMovies:any=useAppSelector(getSimilarMovies);
@@ -40,20 +40,6 @@ export default function Movie(){
         }
     },[id]);
 
-    useEffect(()=>{
-        if(id&&checkPhotos){
-            console.log(photos)
-            navigate('#photos')
-            dispatch(fetchPhotos(id))
-        }
-    },[id,dispatch,checkPhotos]);
-
-    useEffect(()=>{
-        if(id&&checkVideos){
-            navigate('#videos')
-            dispatch(fetchVideos(id))
-        }
-    },[id,dispatch,checkVideos]);
 
     useEffect(()=>{
         if(id&&checkCrew){
@@ -122,18 +108,16 @@ export default function Movie(){
                                 .map((person:any)=>{return person.original_name+', '})}</p>
                             <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Producers:</span> {crew&&crew.filter((person:any)=>person.job==='Producer')
                                 .map((person:any)=>{return person.original_name+', '})}</p>
-                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Writers:</span> {crew&&crew.filter((person:any)=>person.job==='Writer')
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Executive Producers: </span>{crew&&crew.filter((person:any)=>person.job==='Executive Producer')
                                 .map((person:any)=>{return person.original_name+', '})}</p>
-                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Music: </span>{crew&&crew.filter((person:any)=>person.job==='Director')
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Writers:</span> {crew&&crew.filter((person:any)=>person.job==='Writer')
                                 .map((person:any)=>{return person.original_name+', '})}</p>
                         </div>
 
                         <div className="flex justify-evenly items-center py-4 flex-wrap text-bgDark">
-                            <button onClick={()=>setCheckPhotos(true)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
-                                <FaImages className="text-[12px] sm:text-[15px] mr-2"/>Photos</button>
-                            <button onClick={()=>setCheckVideos(true)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                            <button onClick={()=>setCheckVideos(!checkVideos)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaVideo className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Vidoes</button>
-                            <button onClick={()=>setCheckCrew(true)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                            <button onClick={()=>setCheckCrew(!checkCrew)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaPeopleArrows className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>All Crew</button>
                     </div>
                     </div>
@@ -142,7 +126,7 @@ export default function Movie(){
 
 
                 <div className="px-3 sm:px-0">
-                    {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>}
+                    {/* {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>} */}
                     {checkVideos&&<div id="videos"><RectangleSlider heading='Videos' slides={videos}/></div>}
                     {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>

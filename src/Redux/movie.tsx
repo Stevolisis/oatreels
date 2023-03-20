@@ -3,22 +3,12 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export const fetchMovie=createAsyncThunk('movie/fetchMovie',async(id:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&append_to_response=videos,images`);
     return response.data;
 });
 
 export const fetchCasts=createAsyncThunk('movie/fetchCasts',async(id:number)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`);
-    return response.data;
-});
-
-export const fetchPhotos=createAsyncThunk('movie/fetchPhotos',async(id:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}/images?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`);
-    return response.data;
-});
-
-export const fetchVideos=createAsyncThunk('movie/fetchVideos',async(id:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}/videos?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`);
     return response.data;
 });
 
@@ -79,7 +69,9 @@ const movieSlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder.addCase(fetchMovie.fulfilled,(state,{payload})=>{
-              state.movie=payload;
+            state.movie=payload;
+            state.photos=payload.images.backdrops;
+            state.videos=payload.videos.results;
         })
         builder.addCase(fetchMovie.rejected,(state,{error})=>{
             console.log('error Redux',error)
@@ -112,28 +104,6 @@ const movieSlice=createSlice({
               state.reviews=uniqueReviews
         })
         builder.addCase(fetchReviews.rejected,(state,{error})=>{
-            console.log('error Redux',error)
-            Swal.fire(
-                'Error Occured',
-                error.message,
-                'error'
-            )
-        })
-        builder.addCase(fetchPhotos.fulfilled,(state,{payload})=>{
-              state.photos=payload.backdrops;
-        })
-        builder.addCase(fetchPhotos.rejected,(state,{error})=>{
-            console.log('error Redux',error)
-            Swal.fire(
-                'Error Occured',
-                error.message,
-                'error'
-            )
-        })
-        builder.addCase(fetchVideos.fulfilled,(state,{payload})=>{
-            state.videos=payload.results;
-        })
-        builder.addCase(fetchVideos.rejected,(state,{error})=>{
             console.log('error Redux',error)
             Swal.fire(
                 'Error Occured',
