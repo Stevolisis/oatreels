@@ -108,9 +108,9 @@ export default function Movie(){
                                 .map((person:any)=>{return person.original_name+', '})}</p>
                         </div>
 
-                        <div className="flex justify-evenly items-center py-4 flex-wrap text-bgDark">
-                            <button onClick={()=>setCheckVideos(!checkVideos)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
-                                <FaVideo className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Vidoes</button>
+                        <div className="flex justify-start items-center py-4 flex-wrap text-bgDark">
+                            {/* <button onClick={()=>setCheckVideos(!checkVideos)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
+                                <FaVideo className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Vidoes</button> */}
                             <button onClick={()=>setCheckCrew(!checkCrew)} className="flex rounded-lg items-center bg-brPrimary p-[12px] sm:p-3 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[43%] sm:w-[180px] justify-center">
                                 <FaPeopleArrows className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>All Crew</button>
                     </div>
@@ -121,7 +121,7 @@ export default function Movie(){
 
                 <div className="px-3 sm:px-2 md:px-0">
                     {/* {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>} */}
-                    {checkVideos&&<div id="videos"><RectangleSlider heading='Videos' slides={videos}/></div>}
+                    {/* {checkVideos&&<div id="videos"><RectangleSlider heading='Videos' slides={videos}/></div>} */}
                     {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
