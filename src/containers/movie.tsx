@@ -119,7 +119,7 @@ export default function Movie(){
                 </div>
 
 
-                <div className="px-3 sm:px-0">
+                <div className="px-3 sm:px-2 md:px-0">
                     {/* {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>} */}
                     {checkVideos&&<div id="videos"><RectangleSlider heading='Videos' slides={videos}/></div>}
                     {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}

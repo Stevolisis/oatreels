@@ -13,7 +13,26 @@ export default function VideoPlayer({setPlayVideo}:any){
     useEffect(()=>{
         console.log(trailer[0]);
         if(videos) setVideoId(trailer[0].key)
-    },[trailer,videos])
+    },[videos])
+
+    function player(){
+        return  <YouTube
+                    videoId={videoId}
+                    opts={{
+                        width:'100%',
+                        height:'250px',
+                        boxSizing:'border-box',
+                        playerVars: {
+                            autoplay: 1,
+                        },
+                    }}
+                />
+    }
+
+    useEffect(()=>{
+        console.log('player id changed', videoId)
+        player();
+    },[videoId])
 
     return(
         <div className="bg-[rgba(0,0,0,0.8)] top-0 fixed h-full sm:py-5 z-30 flex flex-col justify-center items-center w-full">
@@ -22,7 +41,7 @@ export default function VideoPlayer({setPlayVideo}:any){
                     <FaDropbox/><p className="pl-2">Close</p>
                 </div>
                 <div className="w-full h-300px skeleton-load">
-                    <YouTube
+                    {/* <YouTube
                         videoId={videoId}
                         opts={{
                             width:'100%',
@@ -32,7 +51,8 @@ export default function VideoPlayer({setPlayVideo}:any){
                                 autoplay: 1,
                               },
                         }}
-                    />
+                    /> */}
+                    {player()}
                 </div>
                 <div className="py-5 text-txtPrimary w-full h-full">
                     {
