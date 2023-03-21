@@ -8,7 +8,7 @@ import { fetchLatestMovies, fetchMovies, fetchPopularMovies, fetchTopRatedMovies
 import { UseAppDispatch, useAppSelector } from '../Redux/store';
 import { fetchPopularPersons, getPopularPersons } from '../Redux/persons';
 import CircleSlider from '../components/CircleSliders';
-import { fetchPopularTvs, getPopularTvs } from '../Redux/tv';
+import { fetchPopularTvs, getPopularTvs } from '../Redux/tvs';
 
 export default function Home(){
     const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg','/pexel13.jpg',
@@ -57,7 +57,7 @@ export default function Home(){
                     <Carousel slides={upComing} heading='UpComing Movies'/>
                     <CircleSlider character={false} gender={2} slides={popularPersons} heading='Popular Actors'/>
                     <CircleSlider character={false} gender={1} slides={popularPersons} heading='Popular Actresses'/>
-                    <RectangleSliders slides={popularTvs} heading='Popular Tv Shows'/>
+                    <RectangleSliders tv={true} slides={popularTvs} heading='Popular Tv Shows'/>
                     <Listings slides={slides} heading='Top Box Office'/>
                 </div>
             </div>

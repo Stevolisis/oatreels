@@ -4,8 +4,7 @@ import YouTube from "react-youtube";
 import { getVideos } from "../Redux/movie"
 import { useAppSelector } from "../Redux/store"
 
-export default function VideoPlayer({setPlayVideo}:any){
-    const videos=useAppSelector(getVideos);
+export default function VideoPlayer({videos,setPlayVideo}:any){
     const [videoId,setVideoId]=useState('');
     const trailer=videos.filter((video:any)=>{return video.type==='Trailer'});
     console.log(videoId);

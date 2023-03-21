@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { FaHeart, FaMoneyBill, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar } from "react-icons/fa";
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
-import { fetchCasts, fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getCasts, getCrew, getMovie, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
+import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resettv } from "../Redux/tv";
+import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
-export default function Movie(){
+export default function TvShow(){
     const {id}:any=useParams();
     const dispatch=UseAppDispatch();
-    const movie:any=useAppSelector(getMovie);
+    const videos=useAppSelector(getVideos);
+    const tv:any=useAppSelector(gettv);
     const casts:any=useAppSelector(getCasts);
     const crew:any=useAppSelector(getCrew);
-    const videos=useAppSelector(getVideos);
-    // const photos:any=useAppSelector(getPhotos);
-    const recommendedMovies:any=useAppSelector(getRecommendedMovies);
-    const similarMovies:any=useAppSelector(getSimilarMovies);
+    const recommendedTvs:any=useAppSelector(getRecommendedtvs);
+    const similarTvs:any=useAppSelector(getSimilartvs);
     const [checkCrew,setCheckCrew]=useState(false);
     const [playVideo,setPlayVideo]=useState(false);
     const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
@@ -25,15 +25,15 @@ export default function Movie(){
 
     useEffect(()=>{
         if(id){
-            dispatch(resetMovie());
-            dispatch(resetRecommendedMovies());
-            dispatch(resetSimilarMovies());
-            dispatch(fetchMovie(id));
+            dispatch(resettv());
+            dispatch(resetRecommendedtvs());
+            dispatch(resetSimilartvs());
+            dispatch(fetchTv(id));
             dispatch(fetchCasts(id));
-            dispatch(fetchRecommendedMovies({id:id,page:1}));
-            dispatch(fetchRecommendedMovies({id:id,page:2}));
-            dispatch(fetchSimilarMovies({id:id,page:1}));
-            dispatch(fetchSimilarMovies({id:id,page:2}));
+            dispatch(fetchRecommendedTvs({id:id,page:1}));
+            dispatch(fetchRecommendedTvs({id:id,page:2}));
+            dispatch(fetchSimilarTvs({id:id,page:1}));
+            dispatch(fetchSimilarTvs({id:id,page:2}));
         }
     },[id]);
 
@@ -49,18 +49,18 @@ export default function Movie(){
         {playVideo&&<VideoPlayer videos={videos} setPlayVideo={setPlayVideo}/>}
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0'>
-                <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+movie.backdrop_path)})`}} 
+                <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${tv&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+tv.backdrop_path)})`}} 
                 className='bgImageGrad w-full h-full text-txtPrimary px-5 sm:px-0'>
                     <div className="py-5 sm:py-7 sm:px-16 md:px-20">
-                        <p className="text-sm sm:text-base font-semibold text-txtPrimary opacity-70 sm:opacity-90">Home | movies | {movie && movie.original_title} </p>
+                        <p className="text-sm sm:text-base font-semibold text-txtPrimary opacity-70 sm:opacity-90">Home | Tvs | {tv && tv.original_title} </p>
                     </div>
                     <div className="py-[6rem] pb-10 sm:py-28 sm:px-20 sm:pb-10 md:py-40 md:px-36 md:pb-20">
                         <div>
                             <p className="text-brSecondary font-semibold text-sm sm:text-[17px] md:text-lg">WATCH</p>
-                            <p className="font-bold text-3xl sm:text-4xl md:text-5xl ">{movie && movie.original_title}</p>
+                            <p className="font-bold text-3xl sm:text-4xl md:text-5xl ">{tv && tv.original_title}</p>
                         </div>
                         <div className="flex items-center py-4 flex-wrap">
-                            {movie.genres&&movie.genres.map((genre:any,i:number)=>{
+                            {tv.genres&&tv.genres.map((genre:any,i:number)=>{
                                 return <p key={i} className="py-2 px-5 sm:px-6 mx-1 sm:mx-2 my-1 text-[11px] sm:text-sm rounded-full border border-txtPrimary bg-bgPrimary  flex justify-center items-center">{genre.name}</p>
                             })}
                         </div>
@@ -77,20 +77,20 @@ export default function Movie(){
 
                 <div className="py-5 text-txtPrimary flex justify-between">
                     <div className="flex-2 hidden sm:block">
-                        <img className="w-[190px] h-[280px]" src={movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w500'+movie.poster_path)} alt='movie poster'/>
+                        <img className="w-[190px] h-[280px]" src={tv&&(process.env.REACT_APP_MOVIE_IMAGE+'/w500'+tv.poster_path)} alt='movie poster'/>
                     </div>
                     <div className="flex-1 px-5 sm:px-12 md:px-14">
                         <div>
-                            <p className="font-semibold text-xl sm:text-2xl md:text-3xl">{movie&&movie.original_title}</p>
+                            <p className="font-semibold text-xl sm:text-2xl md:text-3xl">{tv&&tv.original_title}</p>
                         </div>
                         <div>
-                            <p className="py-5 text-[15px] sm:text-base">{movie&&movie.overview}</p>
+                            <p className="py-5 text-[15px] sm:text-base">{tv&&tv.overview}</p>
                         </div>
                         <div className="flex mb-2 sm:mb-3 flex-wrap">
-                            <div className="flex mx-2 my-1 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.release_date}</p></div>
-                            <div className="flex mx-2 my-1 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&movie.vote_count}</p></div>
-                            <div className="flex mx-2 my-1 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie.vote_average&&movie.vote_average.toFixed(2)}</p></div>
-                            <div className="flex mx-2 my-1 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{movie&&moneyFormat.format(movie.revenue)}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.release_date}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.vote_count}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv.vote_average&&tv.vote_average.toFixed(2)}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&moneyFormat.format(tv.revenue)}</p></div>
                         </div>
                         <div className="text-sm sm:text-base">
                             <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Director:</span> {crew&&crew.filter((person:any)=>person.job==='Director')
@@ -120,8 +120,8 @@ export default function Movie(){
                     {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
-                    <Carousel heading='Similar Movies' slides={similarMovies}/>
-                    <Carousel heading='Recommended Movies' slides={recommendedMovies}/>                    
+                    <Carousel tv={true} heading='Similar Movies' slides={similarTvs}/>
+                    <Carousel tv={true} heading='Recommended Movies' slides={recommendedTvs}/>                    
                 </div>
             </div>
         </div>

@@ -1,109 +1,119 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export const fetchTvOnAir=createAsyncThunk('tv/fetchTvOnAir',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/on_the_air?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&language=en-US&page=${page}`);
+export const fetchTv=createAsyncThunk('tv/fetchTv',async(id:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}?api_key=${process.env.REACT_APP_tv_KEY}&language=en-US&append_to_response=videos,images`);
     return response.data;
 });
 
-export const fetchTvOnAirToday=createAsyncThunk('tv/fetchTvOnAirToday',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/airing_today?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&language=en-US&page=${page}`);
+export const fetchCasts=createAsyncThunk('tv/fetchCasts',async(id:number)=>{
+    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}/credits?api_key=${process.env.REACT_APP_tv_KEY}&language=en-US`);
     return response.data;
 });
 
-export const fetchPopularTvs=createAsyncThunk('tv/fetchPopularTvs',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&language=en-US&page=${page}`);
+export const fetchRecommendedTvs=createAsyncThunk('tv/fetchRecommendedTvs',async({id:id,page:page}:any)=>{
+    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}/recommendations?api_key=${process.env.REACT_APP_tv_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
 
-export const fetchTopRatedTvs=createAsyncThunk('tv/fetchTopRatedTvs',async(page:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/top_rated?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&language=en-US&page=${page}`);
+export const fetchSimilarTvs=createAsyncThunk('tv/fetchSimilarTvs',async({id:id,page:page}:any)=>{
+    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}/similar?api_key=${process.env.REACT_APP_tv_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
+
+
+
 
 
 type InitialState={
-    tv_on_air:any[],
-    tv_on_air_today:any[],
-    popular_tvs:any[],
-    top_rated_tvs:any[]
+    tv:any,
+    casts:any[],
+    crew:any[],
+    photos:any[],
+    recommended_tvs:any[],
+    reviews:any[],
+    similar_tvs:any[],
+    videos:any[],
 }
 
 const initialState:InitialState={
-    tv_on_air:[],
-    tv_on_air_today:[],
-    popular_tvs:[],
-    top_rated_tvs:[]
+    tv:{},
+    casts:[],
+    crew:[],
+    reviews:[],
+    photos:[],
+    videos:[],
+    recommended_tvs:[],
+    similar_tvs:[],
 };
 
 const tvSlice=createSlice({
     name:'tv',
     initialState,
-    reducers:{},
+    reducers:{
+        resettv:(state)=>{
+            state.tv={};
+        },
+        resetRecommendedtvs:(state)=>{
+            state.recommended_tvs=[];
+        },
+        resetSimilartvs:(state)=>{
+            state.similar_tvs=[];
+        }
+    },
     extraReducers:(builder)=>{
-        builder.addCase(fetchTvOnAir.fulfilled,(state,{payload})=>{
-            state.tv_on_air=state.tv_on_air.concat(payload.results);
-            const uniqueTvOnAir = state.tv_on_air.reduce((a:any,b:any) => {
-                if (!a.find((movie:any) => movie.id === b.id)) {
-                  a.push(b);
-                }
-                return a;
-              }, []);
-              state.tv_on_air=uniqueTvOnAir;
+        builder.addCase(fetchTv.fulfilled,(state,{payload})=>{
+            state.tv=payload;
+            state.photos=payload.images.backdrops;
+            state.videos=payload.videos.results;
         })
-        builder.addCase(fetchTvOnAir.rejected,(state,{error})=>{
+        builder.addCase(fetchTv.rejected,(state,{error})=>{
             Swal.fire(
                 'Error Occured',
                 error.message,
                 'error'
             )
         })
-        builder.addCase(fetchTvOnAirToday.fulfilled,(state,{payload})=>{
-            state.tv_on_air_today=state.tv_on_air_today.concat(payload.results);
-            const uniqueTvOnAirToday = state.tv_on_air_today.reduce((a:any,b:any) => {
-                if (!a.find((movie:any) => movie.id === b.id)) {
-                  a.push(b);
-                }
-                return a;
-              }, []);
-              state.tv_on_air_today=uniqueTvOnAirToday
+        builder.addCase(fetchCasts.fulfilled,(state,{payload})=>{
+            state.casts=payload.cast;
+            state.crew=payload.crew;
         })
-        builder.addCase(fetchTvOnAirToday.rejected,(state,{error})=>{
+        builder.addCase(fetchCasts.rejected,(state,{error})=>{
             Swal.fire(
                 'Error Occured',
                 error.message,
                 'error'
             )
         })
-        builder.addCase(fetchPopularTvs.fulfilled,(state,{payload})=>{
-            state.popular_tvs=state.popular_tvs.concat(payload.results);
-            const uniquePopfetchPopularTvs = state.popular_tvs.reduce((a:any,b:any) => {
-                if (!a.find((movie:any) => movie.id === b.id)) {
+        builder.addCase(fetchRecommendedTvs.fulfilled,(state,{payload})=>{
+            state.recommended_tvs=state.recommended_tvs.concat(payload.results);
+            const uniqueRecommended_tvs = state.recommended_tvs.reduce((a:any,b:any) => {
+                if (!a.find((tv:any) => tv.id === b.id)) {
                   a.push(b);
                 }
                 return a;
               }, []);
-              state.popular_tvs=uniquePopfetchPopularTvs
+              state.recommended_tvs=uniqueRecommended_tvs;
         })
-        builder.addCase(fetchPopularTvs.rejected,(state,{error})=>{
+        builder.addCase(fetchRecommendedTvs.rejected,(state,{error})=>{
             Swal.fire(
                 'Error Occured',
                 error.message,
                 'error'
             )
         })
-        builder.addCase(fetchTopRatedTvs.fulfilled,(state,{payload})=>{
-            state.top_rated_tvs=state.top_rated_tvs.concat(payload.results);
-            const uniqueTopfetchTopRatedTvs = state.top_rated_tvs.reduce((a:any,b:any) => {
-                if (!a.find((movie:any) => movie.id === b.id)) {
+        builder.addCase(fetchSimilarTvs.fulfilled,(state,{payload})=>{
+            state.similar_tvs=state.similar_tvs.concat(payload.results);
+            const uniqueSimilar_tvs = state.similar_tvs.reduce((a:any,b:any) => {
+                if (!a.find((tv:any) => tv.id === b.id)) {
                   a.push(b);
                 }
                 return a;
               }, []);
-              state.top_rated_tvs=uniqueTopfetchTopRatedTvs
+              state.similar_tvs=uniqueSimilar_tvs;
         })
-        builder.addCase(fetchTopRatedTvs.rejected,(state,{error})=>{
+        builder.addCase(fetchSimilarTvs.rejected,(state,{error})=>{
             Swal.fire(
                 'Error Occured',
                 error.message,
@@ -114,8 +124,13 @@ const tvSlice=createSlice({
 });
 
 
-export const getTvOnAir=(state:any)=>state.tvReducer.tv_on_air;
-export const getTvOnAirToday=(state:any)=>state.tvReducer.tv_on_air_today;
-export const getPopularTvs=(state:any)=>state.tvReducer.popular_tvs;
-export const getTopRatedTvs=(state:any)=>state.tvReducer.top_rated_tvs;
+export const gettv=(state:any)=>state.tvReducer.tv;
+export const getCasts=(state:any)=>state.tvReducer.casts;
+export const getCrew=(state:any)=>state.tvReducer.crew;
+export const getReviews=(state:any)=>state.tvReducer.reviews;
+// export const getPhotos=(state:any)=>state.tvReducer.photos;
+export const getVideos=(state:any)=>state.tvReducer.videos;
+export const getRecommendedtvs=(state:any)=>state.tvReducer.recommended_tvs;
+export const getSimilartvs=(state:any)=>state.tvReducer.similar_tvs;
+export const {resettv, resetRecommendedtvs, resetSimilartvs}=tvSlice.actions;
 export default tvSlice.reducer;

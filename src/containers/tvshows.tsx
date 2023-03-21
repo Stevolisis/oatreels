@@ -3,7 +3,7 @@ import Carousel from '../components/Carousel';
 import RectangleSlider from '../components/RectangleSliders';
 import { fetchTrends, getTrends } from '../Redux/movies';
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
-import { fetchPopularTvs, fetchTopRatedTvs, fetchTvOnAir, fetchTvOnAirToday, getPopularTvs, getTopRatedTvs, getTvOnAir, getTvOnAirToday } from '../Redux/tv';
+import { fetchPopularTvs, fetchTopRatedTvs, fetchTvOnAir, fetchTvOnAirToday, getPopularTvs, getTopRatedTvs, getTvOnAir, getTvOnAirToday } from '../Redux/tvs';
 
 export default function TvShows(){
     const dispatch=UseAppDispatch();
@@ -32,11 +32,11 @@ export default function TvShows(){
         <>
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
-            <RectangleSlider slides={TvsOnAirToday} heading="Today's Tv Shows"/>
-            <Carousel slides={TvsOnAir} heading='Tv Shows On Air'/>
-            <Carousel slides={topRatedTvs} heading='Top Rated Tvs'/>
-            <Carousel slides={trends} heading='Trending Tv Shows'/>
-            <RectangleSlider slides={popularTvs} heading="Popular Tv Shows"/>
+            <RectangleSlider tv={true} slides={TvsOnAirToday} heading="Today's Tv Shows"/>
+            <Carousel tv={true} slides={TvsOnAir} heading='Tv Shows On Air'/>
+            <Carousel tv={true} slides={topRatedTvs} heading='Top Rated Tvs'/>
+            <Carousel tv={true} slides={trends} heading='Trending Tv Shows'/>
+            <RectangleSlider tv={true} slides={popularTvs} heading="Popular Tv Shows"/>
             </div>
         </div>
         </>
