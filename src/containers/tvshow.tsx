@@ -6,7 +6,6 @@ import CircleSlider from "../components/CircleSliders";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
 import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resettv } from "../Redux/tv";
-import { getGenres } from "../Redux/movies";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
 export default function TvShow(){
@@ -21,7 +20,6 @@ export default function TvShow(){
     const [checkCrew,setCheckCrew]=useState(false);
     const [playVideo,setPlayVideo]=useState(false);
     const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
-
 
     useEffect(()=>{
         if(id){
@@ -120,8 +118,8 @@ export default function TvShow(){
                     {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
-                    <Carousel tv={true} heading='Similar Movies' slides={similarTvs}/>
-                    <Carousel tv={true} heading='Recommended Movies' slides={recommendedTvs}/>                    
+                    <Carousel tv={true} heading='Similar Tvs' slides={similarTvs}/>
+                    <Carousel tv={true} heading='Recommended Tvs' slides={recommendedTvs}/>                    
                 </div>
             </div>
         </div>

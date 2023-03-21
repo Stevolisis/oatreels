@@ -3,22 +3,22 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export const fetchTv=createAsyncThunk('tv/fetchTv',async(id:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}?api_key=${process.env.REACT_APP_tv_KEY}&language=en-US&append_to_response=videos,images`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/${id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&append_to_response=videos,images`);
     return response.data;
 });
 
 export const fetchCasts=createAsyncThunk('tv/fetchCasts',async(id:number)=>{
-    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}/credits?api_key=${process.env.REACT_APP_tv_KEY}&language=en-US`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`);
     return response.data;
 });
 
 export const fetchRecommendedTvs=createAsyncThunk('tv/fetchRecommendedTvs',async({id:id,page:page}:any)=>{
-    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}/recommendations?api_key=${process.env.REACT_APP_tv_KEY}&page=${page}&language=en-US`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/${id}/recommendations?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
 
 export const fetchSimilarTvs=createAsyncThunk('tv/fetchSimilarTvs',async({id:id,page:page}:any)=>{
-    const response=await axios.get(`${process.env.REACT_APP_tv_BASEURL}/tv/${id}/similar?api_key=${process.env.REACT_APP_tv_KEY}&page=${page}&language=en-US`);
+    const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/${id}/similar?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
 
