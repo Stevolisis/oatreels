@@ -115,8 +115,8 @@ export default function TvShow(){
 
                 <div className="px-3 sm:px-2 md:px-0">
                     {/* {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>} */}
-                    {seasons&&<div id="Seasons"><Carousel tv={true} heading='Seasons' slides={seasons}/></div>}
                     {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}
+                    {seasons&&<div id="Seasons"><Carousel tv={true} heading='Seasons' slides={seasons}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
                     <Carousel tv={true} heading='Similar Tvs' slides={similarTvs}/>
