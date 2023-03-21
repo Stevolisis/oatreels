@@ -27,7 +27,7 @@ export default function Person(){
         }
     },[id]);
 
-    console.log(person.image)
+    console.log('hjjj',person.images&&person.images&&person.images.profiles)
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
@@ -105,7 +105,7 @@ export default function Person(){
 
                 <div className="px-3 sm:px-2 md:px-0">
                     {/* {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>} */}
-                    {/* {person.images&&person.images.profiles&&<div id="crew"><SquareSlider heading='Crew' slides={person.images.profile} character={true}/></div>} */}
+                    {person.images&&person.images.profiles&&<div id="crew"><SquareSlider heading='Photos' slides={person.images.profiles} character={true}/></div>}
                     {/* {seasons&&<div id="Seasons"><Carousel tv={true} heading='Seasons' slides={seasons}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
