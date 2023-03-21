@@ -45,7 +45,7 @@ export default function Carousel({slides,heading,tv}:any){
                                         <div>
                                         { 
                                             slide.episode_count ? 
-                                            <><FaPlayCircle className="fa fa-star text-[gold]"/>
+                                            <><FaPlayCircle className="fa fa-star text-[#FF0000]"/>
                                             <span className="text-[11px] sm:text-[12px] pl-2">{(slide.vote_average&&slide.vote_average.toFixed(2))||slide.episode_count}</span>
                                             </>
                                             :

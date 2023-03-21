@@ -94,13 +94,11 @@ export default function TvShow(){
                             <div className="flex mx-2 my-1 items-center"><FaPlayCircle className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.number_of_episodes}</p></div>
                         </div>
                         <div className="text-sm sm:text-base">
-                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Director:</span> {crew&&crew.filter((person:any)=>person.job==='Director')
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Director:</span> {tv.created_by&&tv.created_by
+                                .map((person:any)=>{return person.name+', '})}</p>
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Casters:</span> {crew&&crew.filter((person:any)=>person.job==='Casting')
                                 .map((person:any)=>{return person.original_name+', '})}</p>
-                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Producers:</span> {crew&&crew.filter((person:any)=>person.job==='Producer')
-                                .map((person:any)=>{return person.original_name+', '})}</p>
-                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Executive Producers: </span>{crew&&crew.filter((person:any)=>person.job==='Executive Producer')
-                                .map((person:any)=>{return person.original_name+', '})}</p>
-                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Writers:</span> {crew&&crew.filter((person:any)=>person.job==='Writer')
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Writers:</span> {crew&&crew.filter((person:any)=>person.department==='Writing')
                                 .map((person:any)=>{return person.original_name+', '})}</p>
                         </div>
 
