@@ -109,8 +109,8 @@ export default function Person(){
                     {/* {seasons&&<div id="Seasons"><Carousel tv={true} heading='Seasons' slides={seasons}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>
-                    <Carousel tv={true} heading='Similar Tvs' slides={similarTvs}/>
-                    <Carousel tv={true} heading='Recommended Tvs' slides={recommendedTvs}/>   */}
+                    <Carousel tv={true} heading='Similar Tvs' slides={similarTvs}/> */}
+                    <Carousel heading='Movies Acted' slides={movie_credits}/>  
                 </div>
             </div>
         </div>
