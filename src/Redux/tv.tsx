@@ -30,7 +30,7 @@ type InitialState={
     tv:any,
     casts:any[],
     crew:any[],
-    photos:any[],
+    seasons:any[],
     recommended_tvs:any[],
     reviews:any[],
     similar_tvs:any[],
@@ -42,7 +42,7 @@ const initialState:InitialState={
     casts:[],
     crew:[],
     reviews:[],
-    photos:[],
+    seasons:[],
     videos:[],
     recommended_tvs:[],
     similar_tvs:[],
@@ -65,7 +65,7 @@ const tvSlice=createSlice({
     extraReducers:(builder)=>{
         builder.addCase(fetchTv.fulfilled,(state,{payload})=>{
             state.tv=payload;
-            state.photos=payload.images.backdrops;
+            state.seasons=payload.seasons;
             state.videos=payload.videos.results;
         })
         builder.addCase(fetchTv.rejected,(state,{error})=>{
@@ -128,7 +128,7 @@ export const gettv=(state:any)=>state.tvReducer.tv;
 export const getCasts=(state:any)=>state.tvReducer.casts;
 export const getCrew=(state:any)=>state.tvReducer.crew;
 export const getReviews=(state:any)=>state.tvReducer.reviews;
-// export const getPhotos=(state:any)=>state.tvReducer.photos;
+export const getSeasons=(state:any)=>state.tvReducer.seasons;
 export const getVideos=(state:any)=>state.tvReducer.videos;
 export const getRecommendedtvs=(state:any)=>state.tvReducer.recommended_tvs;
 export const getSimilartvs=(state:any)=>state.tvReducer.similar_tvs;

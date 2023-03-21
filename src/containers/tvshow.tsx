@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import { FaHeart, FaMoneyBill, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar } from "react-icons/fa";
+import { FaHeart, FaFilm, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaPlayCircle } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
-import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resettv } from "../Redux/tv";
+import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSeasons, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resettv } from "../Redux/tv";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
+import RectangleSlider from "../components/RectangleSliders";
 
 export default function TvShow(){
     const {id}:any=useParams();
     const dispatch=UseAppDispatch();
     const videos=useAppSelector(getVideos);
     const tv:any=useAppSelector(gettv);
+    const seasons:any=useAppSelector(getSeasons);
     const casts:any=useAppSelector(getCasts);
     const crew:any=useAppSelector(getCrew);
     const recommendedTvs:any=useAppSelector(getRecommendedtvs);
@@ -50,12 +52,12 @@ export default function TvShow(){
                 <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${tv&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+tv.backdrop_path)})`}} 
                 className='bgImageGrad w-full h-full text-txtPrimary px-5 sm:px-0'>
                     <div className="py-5 sm:py-7 sm:px-16 md:px-20">
-                        <p className="text-sm sm:text-base font-semibold text-txtPrimary opacity-70 sm:opacity-90">Home | Tvs | {tv && tv.original_title} </p>
+                        <p className="text-sm sm:text-base font-semibold text-txtPrimary opacity-70 sm:opacity-90">Home | Tvs | {tv && tv.original_title||tv.name} </p>
                     </div>
                     <div className="py-[6rem] pb-10 sm:py-28 sm:px-20 sm:pb-10 md:py-40 md:px-36 md:pb-20">
                         <div>
                             <p className="text-brSecondary font-semibold text-sm sm:text-[17px] md:text-lg">WATCH</p>
-                            <p className="font-bold text-3xl sm:text-4xl md:text-5xl ">{tv && tv.original_title}</p>
+                            <p className="font-bold text-3xl sm:text-4xl md:text-5xl ">{tv && tv.original_title||tv.name}</p>
                         </div>
                         <div className="flex items-center py-4 flex-wrap">
                             {tv.genres&&tv.genres.map((genre:any,i:number)=>{
@@ -79,16 +81,17 @@ export default function TvShow(){
                     </div>
                     <div className="flex-1 px-5 sm:px-12 md:px-14">
                         <div>
-                            <p className="font-semibold text-xl sm:text-2xl md:text-3xl">{tv&&tv.original_title}</p>
+                            <p className="font-semibold text-xl sm:text-2xl md:text-3xl">{tv&&tv.original_title||tv.name}</p>
                         </div>
                         <div>
                             <p className="py-5 text-[15px] sm:text-base">{tv&&tv.overview}</p>
                         </div>
                         <div className="flex mb-2 sm:mb-3 flex-wrap">
-                            <div className="flex mx-2 my-1 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.release_date}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaRocket className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.release_date||tv.first_air_date}</p></div>
                             <div className="flex mx-2 my-1 items-center"><FaRegArrowAltCircleUp className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.vote_count}</p></div>
                             <div className="flex mx-2 my-1 items-center"><FaStar className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv.vote_average&&tv.vote_average.toFixed(2)}</p></div>
-                            <div className="flex mx-2 my-1 items-center"><FaMoneyBill className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&moneyFormat.format(tv.revenue)}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaFilm className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.number_of_seasons}</p></div>
+                            <div className="flex mx-2 my-1 items-center"><FaPlayCircle className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.number_of_episodes}</p></div>
                         </div>
                         <div className="text-sm sm:text-base">
                             <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Director:</span> {crew&&crew.filter((person:any)=>person.job==='Director')
@@ -114,7 +117,7 @@ export default function TvShow(){
 
                 <div className="px-3 sm:px-2 md:px-0">
                     {/* {checkPhotos&&<div id="photos"><RectangleSlider heading='Photos' slides={photos}/></div>} */}
-                    {/* {checkVideos&&<div id="videos"><RectangleSlider heading='Videos' slides={videos}/></div>} */}
+                    {seasons&&<div id="Seasons"><Carousel tv={true} heading='Seasons' slides={seasons}/></div>}
                     {checkCrew&&<div id="crew"><SquareSlider heading='Crew' slides={crew} character={true}/></div>}
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={2}/>
                     <CircleSlider heading='Casts' slides={casts} character={true} gender={1}/>

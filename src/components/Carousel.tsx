@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaPlayCircle, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import CarouselLoader from "./loaders/carousel";
 
@@ -39,12 +39,20 @@ export default function Carousel({slides,heading,tv}:any){
                                         <img src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.poster_path}`} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
                                 <div className="py-3">
-                                    <div><p className="line-clamp-2 font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">{slide.original_name||slide.title}</p></div>
+                                    <div><p className="line-clamp-2 font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">{slide.original_name||slide.title||slide.name}</p></div>
                                     <div><p className="text-[12px] sm:text-sm text-txtSecondary ">Action/Rivelry</p></div>
                                     <div className="flex justify-between items-center text-txtPrimary">
                                         <div>
-                                        <i className="fa fa-star text-[gold]"/>
-                                        <span className="text-[11px] sm:text-[12px] pl-2">{slide.vote_average&&slide.vote_average.toFixed(2)}</span>
+                                        { 
+                                            slide.episode_count ? 
+                                            <><FaPlayCircle className="fa fa-star text-[gold]"/>
+                                            <span className="text-[11px] sm:text-[12px] pl-2">{(slide.vote_average&&slide.vote_average.toFixed(2))||slide.episode_count}</span>
+                                            </>
+                                            :
+                                            <><i className="fa fa-star text-[gold]"/>
+                                            <span className="text-[11px] sm:text-[12px] pl-2">{slide.vote_average&&slide.vote_average.toFixed(2)}</span>
+                                            </>
+                                        }
                                         </div>
                                         <div> {favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>} </div>
                                         
