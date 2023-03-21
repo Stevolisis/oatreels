@@ -67,6 +67,6 @@ const personsSlice=createSlice({
 });
 
 
-export const getLatestPersons=(state:any)=>state.personReducer.latest_persons;
-export const getPopularPersons=(state:any)=>state.personReducer.popular_persons;
+export const getLatestPersons=(state:any)=>state.personsReducer.latest_persons;
+export const getPopularPersons=(state:any)=>state.personsReducer.popular_persons;
 export default personsSlice.reducer;
