@@ -12,7 +12,7 @@ export default function VideoPlayer({setPlayVideo}:any){
 
     useEffect(()=>{
         console.log(trailer[0]);
-        if(videos) setVideoId(trailer[0].key)
+        if(videos.length!==0) setVideoId(trailer[0].key)
     },[videos])
 
     function player(){
@@ -40,7 +40,7 @@ export default function VideoPlayer({setPlayVideo}:any){
                 <div className="z-40 cursor-pointer text-txtPrimary flex items-center p-3 bg-bgPrimary text-sm fixed" onClick={()=>setPlayVideo(false)}>
                     <FaDropbox/><p className="pl-2">Close</p>
                 </div>
-                <div className="w-full h-300px skeleton-load">
+                <div className="w-full min-h-300px h-300px skeleton-load">
                     {/* <YouTube
                         videoId={videoId}
                         opts={{
@@ -56,7 +56,12 @@ export default function VideoPlayer({setPlayVideo}:any){
                 </div>
                 <div className="py-5 text-txtPrimary w-full h-full">
                     {
-                        videos&&videos.map((video:any,i:number)=>{
+                        videos.length===0 ? 
+                        <div className="my-1 cursor-pointer bg-bgPrimary p-4 flex items-center">
+                                        <FaPlay className="text-[12px]"/>
+                                        <p className='pl-3'>No Videos Found</p>
+                                    </div>
+                        : videos.map((video:any,i:number)=>{
                             return(
                                     <div key={i} onClick={()=>setVideoId(video.key)} className="my-1 cursor-pointer bg-bgPrimary p-4 flex items-center">
                                         <FaPlay className="text-[12px]"/>
