@@ -27,15 +27,18 @@ export default function VideoPlayer({setPlayVideo}:any){
                         opts={{
                             width:'100%',
                             height:'300px',
-                            boxSizing:'border-box'
+                            boxSizing:'border-box',
+                            playerVars: {
+                                autoplay: 1,
+                              },
                         }}
                     />
                 </div>
-                <div className="py-5 px-3 text-txtPrimary w-full h-full">
+                <div className="py-5 text-txtPrimary w-full h-full">
                     {
                         videos&&videos.map((video:any,i:number)=>{
                             return(
-                                    <div key={i} onClick={()=>setVideoId(video.key)} className="cursor-pointer bg-bgPrimary p-3 p-4 flex items-center">
+                                    <div key={i} onClick={()=>setVideoId(video.key)} className="my-1 cursor-pointer bg-bgPrimary p-4 flex items-center">
                                         <FaPlay className="text-[12px]"/>
                                         <p className='pl-3'>{video.name}</p>
                                     </div>
