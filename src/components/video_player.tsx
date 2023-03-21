@@ -34,7 +34,7 @@ export default function VideoPlayer({videos,setPlayVideo}:any){
     return(
         <div className="bg-[rgba(0,0,0,0.8)] top-0 fixed h-full sm:py-5 z-30 flex flex-col justify-center items-center w-full">
             <div className="h-full overflow-y-auto w-full sm:w-[80vw] md:w-[50vw] bg-mainBg">
-                <div className="z-40 cursor-pointer text-txtPrimary flex items-center p-3 bg-bgPrimary text-sm fixed" onClick={()=>setPlayVideo(false)}>
+                <div className="z-40 cursor-pointer text-bgPrimary flex items-center p-3 bg-brPrimary text-sm fixed" onClick={()=>setPlayVideo(false)}>
                     <FaDropbox/><p className="pl-2">Close</p>
                 </div>
                 <div className="w-full min-h-300px h-300px skeleton-load">

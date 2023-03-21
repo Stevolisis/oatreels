@@ -52,7 +52,7 @@ const tvSlice=createSlice({
     name:'tv',
     initialState,
     reducers:{
-        resettv:(state)=>{
+        resetTv:(state)=>{
             state.tv={};
         },
         resetRecommendedtvs:(state)=>{
@@ -132,5 +132,5 @@ export const getSeasons=(state:any)=>state.tvReducer.seasons;
 export const getVideos=(state:any)=>state.tvReducer.videos;
 export const getRecommendedtvs=(state:any)=>state.tvReducer.recommended_tvs;
 export const getSimilartvs=(state:any)=>state.tvReducer.similar_tvs;
-export const {resettv, resetRecommendedtvs, resetSimilartvs}=tvSlice.actions;
+export const {resetTv, resetRecommendedtvs, resetSimilartvs}=tvSlice.actions;
 export default tvSlice.reducer;

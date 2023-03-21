@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import moviesReducer from './movies';
 import searchReducer from './searches';
-import personReducer from './persons';
+import personsReducer from './persons';
+import personReducer from './person';
 import tvsReducer from './tvs';
 import tvReducer from './tv';
 import movieReducer from './movie';
@@ -14,6 +15,7 @@ const combinedReducers=combineReducers({
     movieReducer:movieReducer,
     tvsReducer:tvsReducer,
     tvReducer:tvReducer,
+    personsReducer:personsReducer,
     personReducer:personReducer,
     searchReducer:searchReducer,
 });

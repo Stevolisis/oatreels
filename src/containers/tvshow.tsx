@@ -5,7 +5,7 @@ import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
-import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSeasons, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resettv } from "../Redux/tv";
+import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSeasons, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resetTv } from "../Redux/tv";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import RectangleSlider from "../components/RectangleSliders";
 
@@ -25,7 +25,7 @@ export default function TvShow(){
 
     useEffect(()=>{
         if(id){
-            dispatch(resettv());
+            dispatch(resetTv());
             dispatch(resetRecommendedtvs());
             dispatch(resetSimilartvs());
             dispatch(fetchTv(id));
@@ -94,7 +94,7 @@ export default function TvShow(){
                             <div className="flex mx-2 my-1 items-center"><FaPlayCircle className="text-[12px]"/> <p className="px-2 text-[11px] flex">{tv&&tv.number_of_episodes}</p></div>
                         </div>
                         <div className="text-sm sm:text-base">
-                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Director:</span> {tv.created_by&&tv.created_by
+                            <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Created By:</span> {tv.created_by&&tv.created_by
                                 .map((person:any)=>{return person.name+', '})}</p>
                             <p className='py-3 border-b border-b-brSecondary text-brSecondary'><span className="text-base text-txtPrimary sm:text-lg font-semibold">Casters:</span> {crew&&crew.filter((person:any)=>person.job==='Casting')
                                 .map((person:any)=>{return person.original_name+', '})}</p>
