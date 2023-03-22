@@ -8,6 +8,7 @@ import VideoPlayer from "../components/video_player";
 import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSeasons, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resetTv } from "../Redux/tv";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import RectangleSlider from "../components/RectangleSliders";
+import WebShare from "../components/webShare";
 
 export default function TvShow(){
     const {id}:any=useParams();
@@ -69,8 +70,10 @@ export default function TvShow(){
                                 <FaPlay className="text-[12px] sm:text-[15px] mr-2"/>Watch Now</button>
                             <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
                                 <FaHeart className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Add to Favourites</button>
+                            <WebShare title={tv.original_title||tv.name}>
                             <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm">
                                 <FaShare  className="text-[12px] sm:text-[15px]"/></button>
+                            </WebShare>
                         </div>
                     </div>                    
                 </div>

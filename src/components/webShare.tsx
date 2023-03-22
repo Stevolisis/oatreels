@@ -6,12 +6,12 @@ export default function WebShare({link,title,children}:any){
         <RWebShare
             data={{
             text: "Get your favourite movie, tv show and much more...",
-            url: link,
+            url: window.location.href,
             title: title,
             }}
             onClick={() => console.log("shared successfully!")}
         >
-            {/* {children} */}
+            {children}
         </RWebShare>
     )
 }

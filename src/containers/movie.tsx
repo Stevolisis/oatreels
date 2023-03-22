@@ -5,6 +5,7 @@ import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
+import WebShare from "../components/webShare";
 import { fetchCasts, fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getCasts, getCrew, getMovie, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
@@ -69,8 +70,10 @@ export default function Movie(){
                                 <FaPlay className="text-[12px] sm:text-[15px] mr-2"/>Watch Now</button>
                             <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
                                 <FaHeart className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Add to Favourites</button>
+                            <WebShare title={movie.original_title}>
                             <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm">
                                 <FaShare  className="text-[12px] sm:text-[15px]"/></button>
+                            </WebShare>
                         </div>
                     </div>                    
                 </div>

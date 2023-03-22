@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { FaHeart, FaFilm, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaPlayCircle } from "react-icons/fa";
+import { useEffect } from "react";
+import { FaShare } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
 import CircleSlider from "../components/CircleSliders";
 import SquareSlider from "../components/SquareSlider";
-import {  } from "../Redux/tv";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
-import RectangleSlider from "../components/RectangleSliders";
 import { fetchMovieCredits, fetchPerson, fetchTvCredits, getMovieCredits, getPerson, getTvCredits, resetMovieCredits, resetPerson, resetTvCredits } from "../Redux/person";
 import { fetchPopularPersons, getPopularPersons } from "../Redux/persons";
 import WebShare from "../components/webShare";
