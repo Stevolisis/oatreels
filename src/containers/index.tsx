@@ -41,7 +41,9 @@ export default function Home(){
         dispatch(fetchPopularPersons(2));
         dispatch(fetchPopularTvs(3));
         dispatch(fetchPopularTvs(2));
-    },[])
+    },[]);
+
+    
 
     return(
         <>

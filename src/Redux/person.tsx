@@ -68,7 +68,7 @@ const personSlice=createSlice({
             )
         })
         builder.addCase(fetchTvCredits.fulfilled,(state,{payload})=>{
-            state.movie_credits=payload.cast;
+            state.tv_credits=payload.cast;
         })
         builder.addCase(fetchTvCredits.rejected,(state,{error})=>{
             Swal.fire(
