@@ -15,6 +15,7 @@ export default function Sidelist({heading}:any){
                         {heading}
                     </p>
                 </div>
+{/* ll */}
                 <div className="flex md:block flex-wrap justify-evenly">
                 {
                     slides.length===0?<SidelistLoader/>:slides.map((slide:any,i:number)=>{
