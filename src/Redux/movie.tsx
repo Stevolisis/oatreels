@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -12,17 +12,17 @@ export const fetchCasts=createAsyncThunk('movie/fetchCasts',async(id:number)=>{
     return response.data;
 });
 
-export const fetchReviews=createAsyncThunk('movie/fetchReviews',async({id:id,page:page}:any)=>{
+export const fetchReviews=createAsyncThunk('movie/fetchReviews',async({id,page}:any)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}/reviews?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
 
-export const fetchRecommendedMovies=createAsyncThunk('movie/fetchRecommendedMovies',async({id:id,page:page}:any)=>{
+export const fetchRecommendedMovies=createAsyncThunk('movie/fetchRecommendedMovies',async({id,page}:any)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}/recommendations?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
 
-export const fetchSimilarMovies=createAsyncThunk('movie/fetchSimilarMovies',async({id:id,page:page}:any)=>{
+export const fetchSimilarMovies=createAsyncThunk('movie/fetchSimilarMovies',async({id,page}:any)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/movie/${id}/similar?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}&language=en-US`);
     return response.data;
 });

@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -7,7 +7,7 @@ export const fetchMovies=createAsyncThunk('movies/fetchMovies',async(page:number
     return response.data;
 });
 
-export const fetchTrends=createAsyncThunk('movies/fetchTrends',async({type:type,page:page}:any)=>{
+export const fetchTrends=createAsyncThunk('movies/fetchTrends',async({type,page}:any)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/trending/${type}/week?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=${page}`);
     return response.data;
 });

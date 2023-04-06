@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -12,12 +12,12 @@ export const fetchCasts=createAsyncThunk('tv/fetchCasts',async(id:number)=>{
     return response.data;
 });
 
-export const fetchRecommendedTvs=createAsyncThunk('tv/fetchRecommendedTvs',async({id:id,page:page}:any)=>{
+export const fetchRecommendedTvs=createAsyncThunk('tv/fetchRecommendedTvs',async({id,page}:any)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/${id}/recommendations?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
 
-export const fetchSimilarTvs=createAsyncThunk('tv/fetchSimilarTvs',async({id:id,page:page}:any)=>{
+export const fetchSimilarTvs=createAsyncThunk('tv/fetchSimilarTvs',async({id,page}:any)=>{
     const response=await axios.get(`${process.env.REACT_APP_MOVIE_BASEURL}/tv/${id}/similar?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=${page}&language=en-US`);
     return response.data;
 });
