@@ -14,8 +14,14 @@ const initialState:InitialState={
 const favouriteSlice=createSlice({
     name:'favourites',
     initialState,
-    reducers:{},
+    reducers:{
+        addfavourite:(state,{payload})=>{
+            console.log(payload)
+            state.favourites=[...state.favourites,]
+        }
+    },
 });
 
 
+export const {addfavourite}=favouriteSlice.actions;
 export default favouriteSlice.reducer;

@@ -3,12 +3,15 @@ import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import { FaHeart, FaPlayCircle, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import CarouselLoader from "./loaders/carousel";
+import { UseAppDispatch } from "../Redux/store";
+import { addfavourite } from "../Redux/favourites";
 
 
 
 export default function Carousel({slides,heading,tv}:any){
     const id=''+Math.random();
-	const [favourite,setFavourite]=useState(false);
+	const [favourite,setFavourite]=useState(0);
+    const dispatch=UseAppDispatch();
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -18,6 +21,11 @@ export default function Carousel({slides,heading,tv}:any){
     const prevslide=()=>{
         let element:any=document.getElementById(`${id}`);
         element.scrollLeft=element.scrollLeft-400;
+    }
+
+    function insertFavourite(slide:any){
+        setFavourite(slide.id);
+        dispatch(addfavourite(slide));
     }
     
 
@@ -54,7 +62,7 @@ export default function Carousel({slides,heading,tv}:any){
                                             </>
                                         }
                                         </div>
-                                        <div> {favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>} </div>
+                                        <div> {favourite===slide.id ?<FaHeart className="text-pink-500" onClick={()=>setFavourite(slide.id)}/>:<FaRegHeart onClick={()=>insertFavourite(slide)}/>} </div>
                                         
                                     </div>
                                 </div>

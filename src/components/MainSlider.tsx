@@ -2,7 +2,6 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import Sidelist from "./Sidelist";
-import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import MainSliderLoader from "./loaders/MainSlider";
 
 export default function MainSlider({slides}:any){
@@ -52,7 +51,7 @@ export default function MainSlider({slides}:any){
                                     <div className="flex px-3 sm:px-7 pb-6 sm:pb-9 mt-[-38px] sm:mt-[-60px] items-end text-txtPrimary bg-bgDark">
                                         <div className="bg-loaderShade w-[70px] min-w-[70px] h-[100px] sm:w-[90px] sm:h-[140px] md:w-[100px] md:h-[150px] border-[5px] sm:border-[8px] border-bgDark">
                                             <img className="object-cover w-[100%] h-[100%]" 
-                                            src={process.env.REACT_APP_MOVIE_IMAGE+slide.poster_path} alt="mainslider"/>
+                                            src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.poster_path}`} alt="mainslider"/>
                                         </div>
                                         <div className="pl-3 sm:px-7">
                                         <p className="font-semibold text-xl sm:text-2xl sm:font-bold line-clamp-1">{slide.original_title}</p>
