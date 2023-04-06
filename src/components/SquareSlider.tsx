@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
-import SquareSliderLoader from "./loaders/squaresliders";
+import SquareSliderLoader from "./loaders/squareSlides";
 
 export default function SquareSlider({slides,heading,character}:any){
     const id=''+Math.random();

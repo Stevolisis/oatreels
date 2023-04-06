@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Carousel from '../components/Carousel';
-import RectangleSlider from '../components/RectangleSliders';
+import RectangleSlider from '../components/RectangleSlider';
 import { fetchTrends, getTrends } from '../Redux/movies';
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import { fetchPopularTvs, fetchTopRatedTvs, fetchTvOnAir, fetchTvOnAirToday, getPopularTvs, getTopRatedTvs, getTvOnAir, getTvOnAirToday } from '../Redux/tvs';

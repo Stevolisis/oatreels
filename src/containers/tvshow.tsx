@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import { FaHeart, FaFilm, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar, FaPlayCircle } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
-import CircleSlider from "../components/CircleSliders";
+import CircleSlider from "../components/CircleSlider";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
 import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSeasons, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resetTv } from "../Redux/tv";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
-import RectangleSlider from "../components/RectangleSliders";
 import WebShare from "../components/webShare";
 
 export default function TvShow(){

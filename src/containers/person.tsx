@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { FaShare } from "react-icons/fa";
 import { useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
-import CircleSlider from "../components/CircleSliders";
+import CircleSlider from "../components/CircleSlider";
 import SquareSlider from "../components/SquareSlider";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import { fetchMovieCredits, fetchPerson, fetchTvCredits, getMovieCredits, getPerson, getTvCredits, resetMovieCredits, resetPerson, resetTvCredits } from "../Redux/person";

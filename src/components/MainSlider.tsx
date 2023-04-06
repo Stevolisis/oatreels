@@ -2,7 +2,7 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import Sidelist from "./Sidelist";
-import MainSliderLoader from "./loaders/MainSlider";
+import MainSliderLoader from "./loaders/mainSlides";
 
 export default function MainSlider({slides}:any){
     const [currentslide,setCurrentslide]=useState(0);

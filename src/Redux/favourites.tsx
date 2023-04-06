@@ -1,6 +1,4 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { createSlice } from '@reduxjs/toolkit'
 
 
 type InitialState={
@@ -15,13 +13,18 @@ const favouriteSlice=createSlice({
     name:'favourites',
     initialState,
     reducers:{
-        addfavourite:(state,{payload})=>{
-            console.log(payload)
-            state.favourites=[...state.favourites,]
+        addFavourite:(state,{payload})=>{
+            let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload.id);
+            console.log(favouriteIndex);
+            if(favouriteIndex >= 0) state.favourites=[...state.favourites,{id:payload.id}]
+        },
+        deleteFavourite:(state,{payload})=>{
+            let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload.id);
+            if(favouriteIndex >=0) state.favourites=state.favourites.filter(movie=>movie.id===payload);
         }
     },
 });
 
 
-export const {addfavourite}=favouriteSlice.actions;
+export const {addFavourite, deleteFavourite}=favouriteSlice.actions;
 export default favouriteSlice.reducer;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
-import RectangleSliderLoader from "./loaders/RectangleSliders";
+import RectangleSliderLoader from "./loaders/rectangleSlides";
 
 export default function RectangleSlider({slides,heading,tv}:any){
     const id=''+Math.random();

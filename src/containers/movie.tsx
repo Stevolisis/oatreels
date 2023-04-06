@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaHeart, FaMoneyBill, FaPeopleArrows, FaPlay, FaRegArrowAltCircleUp, FaRocket, FaShare, FaStar } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom"
 import Carousel from "../components/Carousel";
-import CircleSlider from "../components/CircleSliders";
+import CircleSlider from "../components/CircleSlider";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
 import WebShare from "../components/webShare";

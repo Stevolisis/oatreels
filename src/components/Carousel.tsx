@@ -4,7 +4,7 @@ import { FaHeart, FaPlayCircle, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import CarouselLoader from "./loaders/carousel";
 import { UseAppDispatch } from "../Redux/store";
-import { addfavourite } from "../Redux/favourites";
+import { addFavourite } from "../Redux/favourites";
 
 
 
@@ -25,7 +25,7 @@ export default function Carousel({slides,heading,tv}:any){
 
     function insertFavourite(slide:any){
         setFavourite(slide.id);
-        dispatch(addfavourite(slide));
+        dispatch(addFavourite(slide));
     }
     
 

@@ -1,66 +1,112 @@
-import MainSlider from '../components/MainSlider';
-import RectangleSliders from '../components/RectangleSliders';
-import Carousel from '../components/Carousel';
-import Listings from '../components/Listings';
-import Footer from '../components/Footer';
-import { useEffect } from 'react';
-import { fetchLatestMovies, fetchMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrends, fetchUpComingMovies, getLatest, getMovies, getPopular, getTopRated, getTrends, getUpComing } from '../Redux/movies';
+import { lazy, Suspense, useEffect } from 'react';
 import { UseAppDispatch, useAppSelector } from '../Redux/store';
+import { fetchLatestMovies, fetchMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrends, fetchUpComingMovies, getLatest, getMovies, getPopular, getTopRated, getTrends, getUpComing } from '../Redux/movies';
 import { fetchPopularPersons, getPopularPersons } from '../Redux/persons';
-import CircleSlider from '../components/CircleSliders';
 import { fetchPopularTvs, getPopularTvs } from '../Redux/tvs';
 
-export default function Home(){
-    const slides:string[]=['/pexel1.jpg','/pexel8.jpg','/pexel9.jpg','/pexel11.jpg','/pexel13.jpg',
-    '/pexel14.jpg','/pexel1.jpg','/pexel8.jpg','/pexel9.jpg'];
-    const dispatch=UseAppDispatch();
-    const trends=useAppSelector(getTrends);
-    const popular=useAppSelector(getPopular);
-    const movies=useAppSelector(getMovies);
-    const upComing=useAppSelector(getUpComing);
-    const topRated=useAppSelector(getTopRated);
-    const popularPersons=useAppSelector(getPopularPersons);
-    const popularTvs=useAppSelector(getPopularTvs);
+import MainSliderLoader from '../components/loaders/mainSlides';
+import CarouselLoader from '../components/loaders/carousel';
+import ListingsLoader from '../components/loaders/listings';
+import CircleSliderLoader from '../components/loaders/circleSlides';
+import RectangleSliderLoader from '../components/loaders/rectangleSlides';
 
+const MainSlider = lazy(() => import('../components/MainSlider'));
+const RectangleSliders = lazy(() => import('../components/RectangleSlider'));
+const Carousel = lazy(() => import('../components/Carousel'));
+const Listings = lazy(() => import('../components/Listings'));
+const CircleSlider = lazy(() => import('../components/CircleSlider'));
 
-    useEffect(()=>{
-        dispatch(fetchMovies(4));
-        dispatch(fetchMovies(3));
-        dispatch(fetchMovies(2));
-        dispatch(fetchTrends({type:'movie',page:2}));
-        dispatch(fetchTrends({type:'movie',page:3}));
-        dispatch(fetchPopularMovies(2));
-        dispatch(fetchPopularMovies(3));
-        dispatch(fetchLatestMovies(2));
-        dispatch(fetchLatestMovies(3));
-        dispatch(fetchUpComingMovies(2));
-        dispatch(fetchUpComingMovies(3));
-        dispatch(fetchTopRatedMovies(2));
-        dispatch(fetchTopRatedMovies(3));
-        dispatch(fetchPopularPersons(3));
-        dispatch(fetchPopularPersons(2));
-        dispatch(fetchPopularTvs(3));
-        dispatch(fetchPopularTvs(2));
-    },[]);
+export default function Home() {
+  const slides = ['/pexel1.jpg', '/pexel8.jpg', '/pexel9.jpg', '/pexel11.jpg', '/pexel13.jpg', '/pexel14.jpg', '/pexel1.jpg', '/pexel8.jpg', '/pexel9.jpg'];
+  const dispatch = UseAppDispatch();
+  const trends = useAppSelector(getTrends);
+  const popular = useAppSelector(getPopular);
+  const movies = useAppSelector(getMovies);
+  const upComing = useAppSelector(getUpComing);
+  const topRated = useAppSelector(getTopRated);
+  const popularPersons = useAppSelector(getPopularPersons);
+  const popularTvs = useAppSelector(getPopularTvs);
 
-    
+  useEffect(() => {
+    dispatch(fetchMovies(4));
+    dispatch(fetchMovies(3));
+    dispatch(fetchMovies(2));
+  }, []);
+  
+  useEffect(() => {
+    dispatch(fetchTrends({ type: 'movie', page: 2 }));
+    dispatch(fetchTrends({ type: 'movie', page: 3 }));
+  }, []);
+  
+  useEffect(() => {
+    dispatch(fetchPopularMovies(2));
+    dispatch(fetchPopularMovies(3));
+  }, []);
+  
+  useEffect(() => {
+    dispatch(fetchLatestMovies(2));
+    dispatch(fetchLatestMovies(3));
+  }, []);
+  
+  useEffect(() => {
+    dispatch(fetchUpComingMovies(2));
+    dispatch(fetchUpComingMovies(3));
+  }, []);
+  
+  useEffect(() => {
+    dispatch(fetchTopRatedMovies(2));
+    dispatch(fetchTopRatedMovies(3));
+  }, []);
+  
+  useEffect(() => {
+    dispatch(fetchPopularPersons(3));
+    dispatch(fetchPopularPersons(2));
+  }, []);
+  
+  useEffect(() => {
+    dispatch(fetchPopularTvs(3));
+    dispatch(fetchPopularTvs(2));
+  }, []);
+  
 
-    return(
-        <>
-            <div className="text-primary">
-                
-                <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
-                    <MainSlider slides={popular}/>
-                    <RectangleSliders slides={topRated} heading='Top Rated Movies'/> 
-                    <Carousel slides={trends} heading='Trending Movies'/>
-                    <Carousel slides={popular} heading='Popular Movies'/>
-                    <Listings slides={slides} heading='Top Box Office'/>
-                    <Carousel slides={movies} heading='Movies'/>
-                    <Carousel slides={upComing} heading='UpComing Movies'/>
-                    <CircleSlider character={false} gender={2} slides={popularPersons} heading='Popular Actors'/>
-                    <CircleSlider character={false} gender={1} slides={popularPersons} heading='Popular Actresses'/>
-                    <RectangleSliders tv={true} slides={popularTvs} heading='Popular Tv Shows'/>
-                    <Listings slides={slides} heading='Top Box Office'/>
+  return (
+    <>
+    <div className="text-primary">
+      <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
+        <Suspense fallback={<MainSliderLoader/>}>
+          <MainSlider slides={popular} />
+        </Suspense>
+        <Suspense fallback={<RectangleSliderLoader/>}>
+          <RectangleSliders slides={topRated} heading='Top Rated Movies' />
+        </Suspense>
+        <Suspense fallback={<CarouselLoader/>}>
+          <Carousel slides={trends} heading='Trending Movies' />
+        </Suspense>
+        <Suspense fallback={<CarouselLoader/>}>
+          <Carousel slides={popular} heading='Popular Movies' />
+        </Suspense>
+        <Suspense fallback={<ListingsLoader/>}>
+          <Listings slides={slides} heading='Top Box Office' />
+        </Suspense>
+        <Suspense fallback={<CarouselLoader/>}>
+          <Carousel slides={movies} heading='Movies' />
+        </Suspense>
+        <Suspense fallback={<CarouselLoader/>}>
+            <Carousel slides={upComing} heading='UpComing Movies'/>
+        </Suspense>
+        <Suspense fallback={<CarouselLoader/>}>
+            <CircleSlider character={false} gender={2} slides={popularPersons} heading='Popular Actors'/>
+        </Suspense>
+        <Suspense fallback={<CircleSliderLoader/>}>
+            <CircleSlider character={false} gender={1} slides={popularPersons} heading='Popular Actresses'/>
+        </Suspense>
+        <Suspense fallback={<RectangleSliderLoader/>}>
+            <RectangleSliders tv={true} slides={popularTvs} heading='Popular Tv Shows'/>
+        </Suspense>
+        <Suspense fallback={<ListingsLoader/>}>
+            <Listings slides={slides} heading='Top Box Office'/>
+        </Suspense>
+
                 </div>
             </div>
         </>

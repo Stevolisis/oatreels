@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
-import CircleSliderLoader from "./loaders/circlesliders";
+import CircleSliderLoader from "./loaders/circleSlides";
 
 export default function CircleSlider({slides,heading,gender,character}:any){
     const id=''+Math.random();
