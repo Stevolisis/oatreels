@@ -57,7 +57,7 @@ export default function Carousel({slides,heading,tv}:any){
                                     <div><p className="line-clamp-2 font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">{slide.original_name||slide.title||slide.name}</p></div>
                                     <div><p className="text-[12px] sm:text-sm text-txtSecondary ">
                                         {slide&&genres.filter((genre:any)=>genre.id===slide.genre_ids[0])
-                                        .map((genree:any)=> <div>{genree.name}</div>)}
+                                        .map((genree:any)=> genree.name)}
                                         </p>
                                     </div>
                                     <div className="flex justify-between items-center text-txtPrimary">

@@ -1,11 +1,25 @@
-import { FaBookmark, FaFilm, FaHeart, FaTv } from "react-icons/fa";
+import { useState, useMemo } from 'react';
+import {  FaFilm, FaHeart, FaTv } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { getFavourites } from "../Redux/favourites";
-import { useAppSelector } from "../Redux/store";
+import { getFavourites, getFavTrigger, offTrigger } from "../Redux/favourites";
+import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
 export default function Navbar(){
-    const newFav=useAppSelector(getFavourites);
-    console.log('newFav',newFav)
+    const favourites=useAppSelector(getFavourites);
+    const triggerStatus=useAppSelector(getFavTrigger);
+    const [newfavNotify,setNewfavNotify]=useState('');
+    const dispatch=UseAppDispatch();
+    
+    useMemo(()=>{
+        let resetVal:any;
+        if(triggerStatus){
+            resetVal=setTimeout(() => {
+                dispatch(offTrigger());
+            }, 2000);
+          
+        }
+     return ()=> clearTimeout(resetVal) ;
+    },[triggerStatus])
 
     return(
         <nav className="flex flex-row mt-0 sm:mt-2 md:flex-col h-auto w-full md:w-auto
@@ -17,7 +31,10 @@ export default function Navbar(){
                 <Link to='/'  className="my-0 md:my-3 mx-3"><FaFilm size={17}/></Link>
                 <Link to='/tvshows'  className="my-0 md:my-3 mx-3"><FaTv size={17}/></Link>
                 {/* <Link to='/'  className="my-0 md:my-3 mx-3"><FaBookmark size={17}/></Link> */}
-                <Link to='/favourites'  className="my-0 md:my-3 mx-3"><FaHeart size={17}/></Link>
+                <Link to='/favourites'  className="my-0 md:my-3 mx-3 flex">
+                    <FaHeart size={17}/>
+                    <sup className={`text-[8px] sm:text-[10px] ${triggerStatus ? 'bg-pink-500' : 'bg-bgDark'} text-txtPrimary rounded-full sm:w-3.5 sm:h-3.5 w-3 h-3 flex justify-center items-center`}>{favourites.length==0 ? '' : favourites.length}</sup>
+                </Link>
             </div>
 
             <div>
