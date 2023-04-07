@@ -20,7 +20,7 @@ export default function Navbar(){
     },[triggerStatus])
 
 
-    
+
     return(
         <nav className="flex flex-row mt-0 sm:mt-2 md:flex-col h-auto w-full md:w-auto
          bg-brPrimary md:h-[90%] py-3 px-4 sm:p-5 mx-5 rounded-none sm:rounded-full">
@@ -33,7 +33,7 @@ export default function Navbar(){
                 {/* <Link to='/'  className="my-0 md:my-3 mx-3"><FaBookmark size={17}/></Link> */}
                 <Link to='/favourites'  className="my-0 md:my-3 mx-3 flex">
                     <FaHeart size={17}/>
-                    <sup className={`text-[8px] sm:text-[10px] ${triggerStatus ? 'bg-pink-500' : 'bg-bgDark'} text-txtPrimary rounded-full sm:w-3.5 sm:h-3.5 w-3 h-3 flex justify-center items-center`}>{favourites.length==0 ? '' : favourites.length}</sup>
+                    <sup className={`text-[8px] sm:text-[10px] ${triggerStatus ? 'bg-pink-500' : favourites.length>0 ? 'bg-bgDark' : ''} text-txtPrimary rounded-full sm:w-3.5 sm:h-3.5 w-3 h-3 flex justify-center items-center`}>{favourites.length==0 ? '' : favourites.length}</sup>
                 </Link>
             </div>
 

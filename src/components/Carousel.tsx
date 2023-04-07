@@ -56,7 +56,7 @@ export default function Carousel({slides,heading,tv}:any){
                                 <div className="py-3">
                                     <div><p className="line-clamp-2 font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">{slide.original_name||slide.title||slide.name}</p></div>
                                     <div><p className="text-[12px] sm:text-sm text-txtSecondary ">
-                                        {slide&&genres.filter((genre:any)=>genre.id===slide.genre_ids[0])
+                                        {slide.genre_ids&&genres.filter((genre:any)=>genre.id===slide.genre_ids[0])
                                         .map((genree:any)=> genree.name)}
                                         </p>
                                     </div>

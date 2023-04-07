@@ -8,7 +8,7 @@ import { getGenres } from "../Redux/movies";
 
 
 
-export default function FavouritesListing({slides,heading,tv}:any){
+export default function FavouritesListing({slides,heading}:any){
     const id=''+Math.random();
 	const [favourite,setFavourite]=useState(0);
     const genres=useAppSelector(getGenres);
@@ -29,15 +29,16 @@ export default function FavouritesListing({slides,heading,tv}:any){
                         {heading}
                     </p>   
                 </div>             
-            <div className="flex justify-between items-start flex-wrap py-4">
+            <div className="flex justify-start items-start flex-wrap py-4">
 				{slides.length===0?<CarouselLoader/>:slides.map((slide:any,i:number):any=>{
 					return  <div key={i}  className='duration-300 hover:scale-105 mx-2 my-3 sm:my-5 w-[130px] min-w-[130px] sm:w-[150px] sm:min-w-[150px] md:w-[180px] md:min-w-[180px]'>
-                                <Link to={`/${tv ? 'tvshow' : 'movie'}/${slide.id}`} className='w-[100%] h-[280px] sm:h-[343px] block bg-loaderShade'>
+                                <Link to={`/${slide.tv ? 'tvshow' : 'movie'}/${slide.id}`} className='w-[100%] h-[280px] sm:h-[343px] block bg-loaderShade'>
                                         <img loading="lazy" src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.poster_path}`} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
                                 <div className="py-3">
                                     <div><p className="line-clamp-2 font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">{slide.original_name||slide.title||slide.name}</p></div>
-                                    <div><p className="text-[12px] sm:text-sm text-txtSecondary ">
+                                    <div>
+                                        <p className="text-[12px] sm:text-sm text-txtSecondary ">
                                         {slide&&genres.filter((genre:any)=>genre.id===slide.genre_ids[0])
                                         .map((genree:any)=> genree.name)}
                                         </p>
