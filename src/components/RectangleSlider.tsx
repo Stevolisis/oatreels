@@ -32,7 +32,7 @@ export default function RectangleSlider({slides,heading,tv}:any){
 							{slides.length===0? <RectangleSliderLoader/> :slides.map((slide:any,i:number):any=>{
 								return <Link to={`/${tv ? 'tvshow' : 'movie'}/${slide.id}`} key={i} className='w-[250px] min-w-[250px]  md:w-[300px] md:min-w-[300px] m-3'>
 											<div className="bg-loaderShade w-[100%]">
-												<img src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.backdrop_path}`} className="object-cover h-[130px] md:h-[150px] w-[100%]" alt='movie'/>
+												<img loading="lazy" src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.backdrop_path}`} className="object-cover h-[130px] md:h-[150px] w-[100%]" alt='movie'/>
 											</div>
 											<div className="text-txtPrimary pt-2">
 												<p className="text-txtSecondary text-[11px]">{slide.vote_count}.{slide.adult?'PG':'All'}.{slide.release_date||slide.first_air_date}</p>

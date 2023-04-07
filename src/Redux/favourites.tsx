@@ -16,7 +16,7 @@ const favouriteSlice=createSlice({
         addFavourite:(state,{payload})=>{
             let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload.id);
             console.log(favouriteIndex);
-            if(favouriteIndex >= 0) state.favourites=[...state.favourites,{id:payload.id}]
+            if(favouriteIndex < 0) state.favourites=[...state.favourites,{id:payload.id}]
         },
         deleteFavourite:(state,{payload})=>{
             let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload.id);

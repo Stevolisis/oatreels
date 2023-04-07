@@ -17,7 +17,6 @@ const Listings = lazy(() => import('../components/Listings'));
 const CircleSlider = lazy(() => import('../components/CircleSlider'));
 
 export default function Home() {
-  const slides = ['/pexel1.jpg', '/pexel8.jpg', '/pexel9.jpg', '/pexel11.jpg', '/pexel13.jpg', '/pexel14.jpg', '/pexel1.jpg', '/pexel8.jpg', '/pexel9.jpg'];
   const dispatch = UseAppDispatch();
   const trends = useAppSelector(getTrends);
   const popular = useAppSelector(getPopular);
@@ -85,9 +84,6 @@ export default function Home() {
         <Suspense fallback={<CarouselLoader/>}>
           <Carousel slides={popular} heading='Popular Movies' />
         </Suspense>
-        <Suspense fallback={<ListingsLoader/>}>
-          <Listings slides={slides} heading='Top Box Office' />
-        </Suspense>
         <Suspense fallback={<CarouselLoader/>}>
           <Carousel slides={movies} heading='Movies' />
         </Suspense>
@@ -102,9 +98,6 @@ export default function Home() {
         </Suspense>
         <Suspense fallback={<RectangleSliderLoader/>}>
             <RectangleSliders tv={true} slides={popularTvs} heading='Popular Tv Shows'/>
-        </Suspense>
-        <Suspense fallback={<ListingsLoader/>}>
-            <Listings slides={slides} heading='Top Box Office'/>
         </Suspense>
 
                 </div>
