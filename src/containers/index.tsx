@@ -70,7 +70,7 @@ export default function Home() {
 
   return (
     <>
-    <div className="text-primary">
+    <div className="text-txtPrimary">
       <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
         <Suspense fallback={<MainSliderLoader/>}>
           <MainSlider slides={popular} />

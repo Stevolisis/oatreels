@@ -30,7 +30,7 @@ export default function TvShows(){
 
     return(
         <>
-        <div className="text-primary">                
+        <div className="text-txtPrimary">                
             <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
             <RectangleSlider tv={true} slides={TvsOnAirToday} heading="Today's Tv Shows"/>
             <Carousel tv={true} slides={TvsOnAir} heading='Tv Shows On Air'/>

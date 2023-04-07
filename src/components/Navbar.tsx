@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import {  FaFilm, FaHeart, FaTv } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { getFavourites, getFavTrigger, offTrigger } from "../Redux/favourites";
@@ -7,7 +7,6 @@ import { UseAppDispatch, useAppSelector } from "../Redux/store";
 export default function Navbar(){
     const favourites=useAppSelector(getFavourites);
     const triggerStatus=useAppSelector(getFavTrigger);
-    const [newfavNotify,setNewfavNotify]=useState('');
     const dispatch=UseAppDispatch();
     
     useMemo(()=>{
@@ -16,11 +15,12 @@ export default function Navbar(){
             resetVal=setTimeout(() => {
                 dispatch(offTrigger());
             }, 2000);
-          
         }
      return ()=> clearTimeout(resetVal) ;
     },[triggerStatus])
 
+
+    
     return(
         <nav className="flex flex-row mt-0 sm:mt-2 md:flex-col h-auto w-full md:w-auto
          bg-brPrimary md:h-[90%] py-3 px-4 sm:p-5 mx-5 rounded-none sm:rounded-full">
