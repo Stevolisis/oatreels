@@ -3,15 +3,22 @@ import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import { FaHeart, FaPlayCircle, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import CarouselLoader from "./loaders/carousel";
-import { UseAppDispatch } from "../Redux/store";
+import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import { addFavourite } from "../Redux/favourites";
+import { getGenres } from "../Redux/movies";
 
 
 
 export default function Carousel({slides,heading,tv}:any){
     const id=''+Math.random();
 	const [favourite,setFavourite]=useState(0);
+    const genres=useAppSelector(getGenres);
     const dispatch=UseAppDispatch();
+    
+    // function getGenre(id:number){
+    //     return genres.filter((genre:any)=>genre.id===id);
+        
+    // }
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -48,7 +55,11 @@ export default function Carousel({slides,heading,tv}:any){
                                 </Link>
                                 <div className="py-3">
                                     <div><p className="line-clamp-2 font-semibold md:font-bold text-txtPrimary text-base sm:text-lg ">{slide.original_name||slide.title||slide.name}</p></div>
-                                    <div><p className="text-[12px] sm:text-sm text-txtSecondary ">Action/Rivelry</p></div>
+                                    <div><p className="text-[12px] sm:text-sm text-txtSecondary ">
+                                        {slide&&genres.filter((genre:any)=>genre.id===slide.genre_ids[0])
+                                        .map((genree:any)=> <div>{genree.name}</div>)}
+                                        </p>
+                                    </div>
                                     <div className="flex justify-between items-center text-txtPrimary">
                                         <div>
                                         { 

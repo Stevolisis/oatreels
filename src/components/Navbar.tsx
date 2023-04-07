@@ -1,7 +1,11 @@
 import { FaBookmark, FaFilm, FaHeart, FaTv } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { getFavourites } from "../Redux/favourites";
+import { useAppSelector } from "../Redux/store";
 
 export default function Navbar(){
+    const newFav=useAppSelector(getFavourites);
+    console.log('newFav',newFav)
 
     return(
         <nav className="flex flex-row mt-0 sm:mt-2 md:flex-col h-auto w-full md:w-auto

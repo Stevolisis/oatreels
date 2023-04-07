@@ -30,7 +30,6 @@ export default function Person(){
         }
     },[id]);
 
-    console.log('hjjj',person.images&&person.images&&person.images.profiles)
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
