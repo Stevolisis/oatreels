@@ -43,7 +43,7 @@ export default function Filter(){
                     {(searchTrigger&&filters.length===0&&searchKey.length>2)?<FiltersLoader/>:searchTrigger&&filters.map((filter:any,i:number):any=>{
                         return <Link to={`/movie/${filter.id}`} onClick={()=>(setSearchTrigger(false),setSearchkey(''))} key={i} className='flex py-2 border-b' >
                                     <div className="bg-loaderShade w-[50px] h-[60px] sm:w-[60px] sm:h-[80px]">
-                                        <img src={process.env.REACT_APP_MOVIE_IMAGE+filter.poster_path} alt='filterImg' className="w-full h-full object-cover"/>
+                                        <img src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${filter.poster_path}`} alt='filterImg' className="w-full h-full object-cover"/>
                                     </div>
                                     <div className="pl-3">
                                     <p className="font-bold text-[13px] md:text-[15px] line-clamp-2">{filter.original_name||filter.original_title}</p>

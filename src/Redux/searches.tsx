@@ -25,7 +25,6 @@ const searchSlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder.addCase(searchMovies.fulfilled,(state,{payload})=>{
-            console.log('payload',payload)
             state.searches=payload.results;
         })
         builder.addCase(searchMovies.rejected,(state,{error})=>{
