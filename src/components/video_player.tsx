@@ -36,7 +36,7 @@ export default function VideoPlayer({videos,setPlayVideo}:any){
                 <div className="z-40 cursor-pointer text-bgPrimary flex items-center p-3 bg-brPrimary text-sm fixed" onClick={()=>setPlayVideo(false)}>
                     <FaDropbox/><p className="pl-2">Close</p>
                 </div>
-                <div className="w-full min-h-300px h-500px skeleton-load">
+                <div className=" skeleton-load">
                     {/* <YouTube
                         videoId={videoId}
                         opts={{
