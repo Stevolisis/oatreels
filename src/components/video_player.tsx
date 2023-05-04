@@ -22,6 +22,7 @@ export default function VideoPlayer({videos,setPlayVideo}:any){
                             autoplay: 1,
                         },
                     }}
+                    className='youtube-player'
                 />
     }
 
