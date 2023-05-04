@@ -13,11 +13,6 @@ export default function FavouritesListing({slides,heading}:any){
 	const [favourite,setFavourite]=useState(0);
     const genres=useAppSelector(getGenres);
     const dispatch=UseAppDispatch();
-
-    function insertFavourite(slide:any){
-        setFavourite(slide.id);
-        dispatch(addFavourite(slide));
-    }
     
 
 

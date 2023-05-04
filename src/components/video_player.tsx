@@ -8,7 +8,6 @@ export default function VideoPlayer({videos,setPlayVideo}:any){
     const trailer=videos.filter((video:any)=>{return video.type==='Trailer'});
 
     useEffect(()=>{
-        console.log(trailer[0]);
         if(videos.length!==0) setVideoId(trailer[0].key)
     },[videos])
 
@@ -27,7 +26,6 @@ export default function VideoPlayer({videos,setPlayVideo}:any){
     }
 
     useEffect(()=>{
-        console.log('player id changed', videoId)
         player();
     },[videoId])
 
@@ -37,7 +35,7 @@ export default function VideoPlayer({videos,setPlayVideo}:any){
                 <div className="z-40 cursor-pointer text-bgPrimary flex items-center p-3 bg-brPrimary text-sm fixed" onClick={()=>setPlayVideo(false)}>
                     <FaDropbox/><p className="pl-2">Close</p>
                 </div>
-                <div className="w-full min-h-300px h-300px skeleton-load">
+                <div className="w-full min-h-300px h-500px skeleton-load">
                     {/* <YouTube
                         videoId={videoId}
                         opts={{

@@ -6,6 +6,7 @@ import CircleSlider from "../components/CircleSlider";
 import SquareSlider from "../components/SquareSlider";
 import VideoPlayer from "../components/video_player";
 import WebShare from "../components/webShare";
+import { addFavourite } from "../Redux/favourites";
 import { fetchCasts, fetchMovie, fetchRecommendedMovies, fetchSimilarMovies, getCasts, getCrew, getMovie, getRecommendedMovies, getSimilarMovies, getVideos, resetMovie, resetRecommendedMovies, resetSimilarMovies } from "../Redux/movie";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 
@@ -19,6 +20,7 @@ export default function Movie(){
     // const photos:any=useAppSelector(getPhotos);
     const recommendedMovies:any=useAppSelector(getRecommendedMovies);
     const similarMovies:any=useAppSelector(getSimilarMovies);
+    const [favourite,setFavourite]=useState(0);
     const [checkCrew,setCheckCrew]=useState(false);
     const [playVideo,setPlayVideo]=useState(false);
     const moneyFormat=new Intl.NumberFormat(undefined,{currency:"USD",style:"currency"});
@@ -38,18 +40,23 @@ export default function Movie(){
         }
     },[id]);
 
-    
+    console.log('movvvvie',movie.id)
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
     // }
-    
+    function insertFavourite(slide:any){
+        setFavourite(slide.id);
+        dispatch(addFavourite(slide));
+    }
+
 
     return(
         <>
         {playVideo&&<VideoPlayer videos={videos} setPlayVideo={setPlayVideo}/>}
         <div className="text-primary">                
             <div className='md:ml-[120px] ml-0'>
+
                 <div style={{ backgroundImage: `linear-gradient(180deg,rgba(12, 11, 8,0.4),rgba(12, 11, 8,0.7),rgba(12, 11, 8,0.9),rgba(12, 11, 8,1)),url(${movie&&(process.env.REACT_APP_MOVIE_IMAGE+'/w780'+movie.backdrop_path)})`}} 
                 className='bgImageGrad w-full h-full text-txtPrimary px-5 sm:px-0'>
                     <div className="py-5 sm:py-7 sm:px-16 md:px-20">
@@ -65,18 +72,21 @@ export default function Movie(){
                                 return <p key={i} className="py-2 px-5 sm:px-6 mx-1 sm:mx-2 my-1 text-[11px] sm:text-sm rounded-full border border-txtPrimary bg-bgPrimary  flex justify-center items-center">{genre.name}</p>
                             })}
                         </div>
+
                         <div className="flex items-center py-4 flex-wrap text-bgDark">
                             <button onClick={()=>setPlayVideo(true)} className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
                                 <FaPlay className="text-[12px] sm:text-[15px] mr-2"/>Watch Now</button>
-                            <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
-                                <FaHeart className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Add to Favourites</button>
+                            <button onClick={()=>insertFavourite(movie)} className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
+                                <FaHeart  className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Add to Favourites</button>
                             <WebShare title={movie.original_title}>
                             <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm">
                                 <FaShare  className="text-[12px] sm:text-[15px]"/></button>
                             </WebShare>
                         </div>
+
                     </div>                    
                 </div>
+
 
                 <div className="py-5 text-txtPrimary flex justify-between">
                     <div className="flex-2 hidden sm:block">
