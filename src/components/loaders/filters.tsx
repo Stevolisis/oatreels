@@ -8,7 +8,7 @@ export default function FiltersLoader(){
     return(
         <>
             {slides.map((filter:number,i:number):any=>{
-                return <Link to='/' key={i} className='flex py-2 border-b'>
+                return <Link to='#' key={i} className='flex py-2 border-b'>
                             <div className="w-[50px] h-[60px] sm:w-[60px] sm:h-[80px] skeleton-load">
                             </div>
                             <div className="pl-3 w-[70%]">
