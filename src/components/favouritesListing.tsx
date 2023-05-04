@@ -24,9 +24,9 @@ export default function FavouritesListing({slides,heading}:any){
                         {heading}
                     </p>   
                 </div>             
-            <div className="flex justify-start items-start flex-wrap py-4">
+            <div className="flex-wrap flex justify-center py-4">
 				{slides.map((slide:any,i:number):any=>{
-					return  <div key={i}  className='duration-300 hover:scale-105 mx-2 my-3 sm:my-5 w-[130px] min-w-[130px] sm:w-[150px] sm:min-w-[150px] md:w-[180px] md:min-w-[180px]'>
+					return  <div key={i}  className='duration-300 hover:scale-105 mx-2 my-3 sm:my-5 w-[45%] md:w-[23%]'>
                                 <Link to={`/${slide.tv ? 'tvshow' : 'movie'}/${slide.id}`} className='w-[100%] h-[280px] sm:h-[343px] block bg-loaderShade'>
                                         <img loading="lazy" src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.poster_path}`} className='object-cover w-[100%] h-[100%]' alt='movie'/>
                                 </Link>
