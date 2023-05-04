@@ -8,10 +8,12 @@ import VideoPlayer from "../components/video_player";
 import { fetchCasts, fetchRecommendedTvs, fetchSimilarTvs, fetchTv, getCasts, getCrew, getRecommendedtvs, getSeasons, getSimilartvs, gettv, getVideos, resetRecommendedtvs, resetSimilartvs, resetTv } from "../Redux/tv";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
 import WebShare from "../components/webShare";
+import { addFavourite, deleteFavourite } from "../Redux/favourites";
 
 export default function TvShow(){
     const {id}:any=useParams();
     const dispatch=UseAppDispatch();
+    const [favourite,setFavourite]=useState(0);
     const videos=useAppSelector(getVideos);
     const tv:any=useAppSelector(gettv);
     const seasons:any=useAppSelector(getSeasons);
@@ -37,7 +39,17 @@ export default function TvShow(){
         }
     },[id]);
 
-    
+    function insertFavourite(slide:any){
+        if(favourite){
+            console.log('unFav',favourite)
+            setFavourite(0);
+            dispatch(deleteFavourite(slide.id))
+        }else{
+            console.log('Fav',favourite)
+            setFavourite(slide.id);
+            dispatch(addFavourite(slide));
+        }
+    }
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
@@ -67,8 +79,8 @@ export default function TvShow(){
                         <div className="flex items-center py-4 flex-wrap text-bgDark">
                             <button onClick={()=>setPlayVideo(true)} className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
                                 <FaPlay className="text-[12px] sm:text-[15px] mr-2"/>Watch Now</button>
-                            <button className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
-                                <FaHeart className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>Add to Favourites</button>
+                                <button onClick={()=>insertFavourite(tv)} className={`flex rounded-lg items-center bg-brPrimary ${favourite ? 'opacity-70' : 'opacity-100'} p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center`}>
+                                <FaHeart  className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>{!favourite ? 'Add to' : 'Remove from'} Favourites</button>
                             <WebShare title={tv.original_title||tv.name}>
                             <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm">
                                 <FaShare  className="text-[12px] sm:text-[15px]"/></button>

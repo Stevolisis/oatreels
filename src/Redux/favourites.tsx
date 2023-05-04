@@ -26,7 +26,7 @@ const favouriteSlice=createSlice({
             state.trigger=false;
         },
         deleteFavourite:(state,{payload})=>{
-            console.log('delete',payload)
+            state.trigger=true;
             let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload);
             if(favouriteIndex >=0) state.favourites=state.favourites.filter(movie=>movie.id!==payload);
         }
