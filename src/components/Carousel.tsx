@@ -48,7 +48,9 @@ export default function Carousel({slides,heading,tv}:any){
             <div className="flex justify-between items-center">
             <MdChevronLeft size={60} onClick={()=>prevslide()} className='hidden sm:block mr-[-40px] scrollBtn'/>
 			<div id={`${id}`} className="w-[100%] flex justify-start items-start scrollbar-hide overflow-x-scroll py-4 scroll-smooth">
-				{slides.length===0?<CarouselLoader/>:slides.map((slide:any,i:number):any=>{
+				{slides.length===0 ? 
+                <CarouselLoader/>
+                :slides.map((slide:any,i:number):any=>{
 					return  <div key={i}  className='duration-300 hover:scale-105 mx-3 w-[130px] min-w-[130px] sm:w-[150px] sm:min-w-[150px] md:w-[180px] md:min-w-[180px]'>
                                 <Link to={`/${tv ? 'tvshow' : 'movie'}/${slide.id}`} className='w-[100%] h-[280px] sm:h-[343px] block bg-loaderShade'>
                                         <img loading="lazy" src={`${process.env.REACT_APP_MOVIE_IMAGE}/w500${slide.poster_path}`} className='object-cover w-[100%] h-[100%]' alt='movie'/>
@@ -73,7 +75,10 @@ export default function Carousel({slides,heading,tv}:any){
                                             </>
                                         }
                                         </div>
-                                        <div> {favourite===slide.id ?<FaHeart className="text-pink-500" onClick={()=>setFavourite(slide.id)}/>:<FaRegHeart onClick={()=>insertFavourite(slide)}/>} </div>
+                                        <div className="cursor-pointer"> {favourite===slide.id 
+                                        ?<FaHeart className="text-pink-500" onClick={()=>setFavourite(slide.id)}/>
+                                        :<FaRegHeart onClick={()=>insertFavourite(slide)}/>} 
+                                        </div>
                                         
                                     </div>
                                 </div>

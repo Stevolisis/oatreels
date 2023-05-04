@@ -72,12 +72,14 @@ export default function Home() {
     <>
     <div className="text-txtPrimary">
       <div className='md:ml-[120px] ml-0 px-3 sm:px-5'>
+        
         <Suspense fallback={<MainSliderLoader/>}>
           <MainSlider slides={popular} />
         </Suspense>
         <Suspense fallback={<RectangleSliderLoader/>}>
           <RectangleSliders slides={topRated} heading='Top Rated Movies' />
         </Suspense>
+
         <Suspense fallback={<CarouselLoader/>}>
           <Carousel slides={trends} heading='Trending Movies' />
         </Suspense>
@@ -93,6 +95,7 @@ export default function Home() {
         <Suspense fallback={<CarouselLoader/>}>
             <CircleSlider character={false} gender={2} slides={popularPersons} heading='Popular Actors'/>
         </Suspense>
+
         <Suspense fallback={<CircleSliderLoader/>}>
             <CircleSlider character={false} gender={1} slides={popularPersons} heading='Popular Actresses'/>
         </Suspense>

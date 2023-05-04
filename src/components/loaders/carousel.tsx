@@ -15,7 +15,7 @@ export default function CarouselLoader(){
                                 <div><p className="w-full h-2 rounded-full skeleton-load"></p></div>
                                 <div><p className="my-2 w-[68px] sm:w-[80px] h-2 rounded-full skeleton-load"></p></div>
                                 <div className="flex justify-between items-center">
-                                    <div className="w-[90px] sm:w-[110px] h-2 rounded-full skeleton-load">----</div>                                    
+                                    <div className="w-[90px] sm:w-[110px] h-2 rounded-full skeleton-load"></div>                                    
                                 </div>
                             </div>
                         </div>
