@@ -17,7 +17,6 @@ const favouriteSlice=createSlice({
     reducers:{
         addFavourite:(state,{payload})=>{
             let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload.id);
-            console.log(favouriteIndex);
             if(favouriteIndex < 0){
                 state.favourites=[...state.favourites,{id:payload.id,poster_path:payload.poster_path,vote_average:payload.vote_average,genre_ids:payload.genre_ids,name:payload.original_title||payload.original_name,tv:payload.original_name? true : false}];
                 state.trigger=true;
@@ -27,8 +26,9 @@ const favouriteSlice=createSlice({
             state.trigger=false;
         },
         deleteFavourite:(state,{payload})=>{
-            let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload.id);
-            if(favouriteIndex >=0) state.favourites=state.favourites.filter(movie=>movie.id===payload);
+            console.log('delete',payload)
+            let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload);
+            if(favouriteIndex >=0) state.favourites=state.favourites.filter(movie=>movie.id!==payload);
         }
     },
 });

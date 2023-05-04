@@ -3,10 +3,13 @@ import {MdChevronRight, MdChevronLeft} from 'react-icons/md'
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import RectangleSliderLoader from "./loaders/rectangleSlides";
+import { useDispatch } from "react-redux";
+import { addFavourite } from "../Redux/favourites";
 
 export default function RectangleSlider({slides,heading,tv}:any){
     const id=''+Math.random();
 	const [favourite,setFavourite]=useState(false);
+	const dispatch=useDispatch();
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -17,6 +20,11 @@ export default function RectangleSlider({slides,heading,tv}:any){
         let element:any=document.getElementById(`${id}`);
         element.scrollLeft=element.scrollLeft-400;
     }
+
+	function insertFavourite(slide:any){
+		setFavourite(slide.id);
+		dispatch(addFavourite(slide));
+	;}
 
 	return(
 		<>
@@ -37,9 +45,11 @@ export default function RectangleSlider({slides,heading,tv}:any){
 											<div className="text-txtPrimary pt-2">
 												<p className="text-txtSecondary text-[11px]">{slide.vote_count}.{slide.adult?'PG':'All'}.{slide.release_date||slide.first_air_date}</p>
 											</div>
-											<div className="flex justify-between items-center text-txtPrimary">
+											<div className="flex justify-between items-center text-txtPrimary cursor-pointer">
 												<p className="font-semibold md:font-bold line-clamp-2">{slide.original_name||slide.original_title||slide.name}</p>
-												{favourite?<FaHeart className="text-pink-500"onClick={()=>setFavourite(!favourite)}/>:<FaRegHeart onClick={()=>setFavourite(!favourite)}/>}
+												{favourite===slide.id 
+												?<FaHeart className="text-pink-500" onClick={()=>setFavourite(slide.id)}/>
+												:<FaRegHeart onClick={()=>insertFavourite(slide)}/>} 											
 											</div>
 									</div>
 							})}

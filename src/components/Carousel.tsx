@@ -14,7 +14,6 @@ export default function Carousel({slides,heading,tv}:any){
 	const [favourite,setFavourite]=useState(0);
     const genres=useAppSelector(getGenres);
     const dispatch=UseAppDispatch();
-    
     // function getGenre(id:number){
     //     return genres.filter((genre:any)=>genre.id===id);
         
@@ -75,7 +74,8 @@ export default function Carousel({slides,heading,tv}:any){
                                             </>
                                         }
                                         </div>
-                                        <div className="cursor-pointer"> {favourite===slide.id 
+                                        <div className="cursor-pointer"> 
+                                        {favourite===slide.id 
                                         ?<FaHeart className="text-pink-500" onClick={()=>setFavourite(slide.id)}/>
                                         :<FaRegHeart onClick={()=>insertFavourite(slide)}/>} 
                                         </div>

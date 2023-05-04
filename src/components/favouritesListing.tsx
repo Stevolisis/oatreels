@@ -3,7 +3,7 @@ import { FaHeart, FaPlayCircle, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import CarouselLoader from "./loaders/carousel";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
-import { addFavourite } from "../Redux/favourites";
+import { addFavourite, deleteFavourite } from "../Redux/favourites";
 import { getGenres } from "../Redux/movies";
 
 
@@ -56,7 +56,7 @@ export default function FavouritesListing({slides,heading}:any){
                                             </>
                                         }
                                         </div>
-                                        <div> {favourite===slide.id ?<FaHeart className="text-pink-500" onClick={()=>setFavourite(slide.id)}/>:<FaRegHeart onClick={()=>insertFavourite(slide)}/>} </div>
+                                        <div className="cursor-pointer"> <FaHeart className="text-pink-500" onClick={()=>dispatch(deleteFavourite(slide.id))}/> </div>
                                         
                                     </div>
                                 </div>
