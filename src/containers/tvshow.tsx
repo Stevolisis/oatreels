@@ -80,7 +80,7 @@ export default function TvShow(){
                             <button onClick={()=>setPlayVideo(true)} className="flex rounded-lg items-center bg-brPrimary p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center">
                                 <FaPlay className="text-[12px] sm:text-[15px] mr-2"/>Watch Now</button>
                                 <button onClick={()=>insertFavourite(tv)} className={`flex rounded-lg items-center bg-brPrimary ${favourite ? 'opacity-70' : 'opacity-100'} p-[14px] sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm w-[47%] sm:w-[200px] justify-center`}>
-                                <FaHeart  className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>{!favourite ? 'Add to' : 'Remove from'} Favourites</button>
+                                <FaHeart  className="text-[12px] sm:text-[15px] mr-1 sm:mr-2"/>{!favourite ? 'Add to Favourites' : 'Remove from List'}</button>
                             <WebShare title={tv.original_title||tv.name}>
                             <button className="flex rounded-lg items-center bg-brPrimary p-4 sm:p-5 mx-1 sm:mx-2 my-1 text-[12px] sm:text-sm">
                                 <FaShare  className="text-[12px] sm:text-[15px]"/></button>
