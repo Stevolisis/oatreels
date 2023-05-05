@@ -14,10 +14,6 @@ export default function Carousel({slides,heading,tv}:any){
 	const [favourite,setFavourite]=useState(0);
     const genres=useAppSelector(getGenres);
     const dispatch=UseAppDispatch();
-    // function getGenre(id:number){
-    //     return genres.filter((genre:any)=>genre.id===id);
-        
-    // }
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
@@ -30,7 +26,6 @@ export default function Carousel({slides,heading,tv}:any){
     }
 
     function insertFavourite(slide:any){
-        setFavourite(slide.id);
         dispatch(addFavourite(slide));
     }
     
@@ -75,7 +70,7 @@ export default function Carousel({slides,heading,tv}:any){
                                         }
                                         </div>
                                         <div className="cursor-pointer"> 
-                                        {favourite===slide.id 
+                                        {slide.vote_count===-1 
                                         ?<FaHeart className="text-pink-500" onClick={()=>setFavourite(slide.id)}/>
                                         :<FaRegHeart onClick={()=>insertFavourite(slide)}/>} 
                                         </div>
