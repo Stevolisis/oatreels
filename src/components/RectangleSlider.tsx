@@ -23,6 +23,9 @@ export default function RectangleSlider({slides,heading,tv}:any){
 
 	function insertFavourite(slide:any){
 		setFavourite(slide.id);
+		setTimeout(() => {
+            setFavourite(false);
+        }, 900);
 		dispatch(addFavourite(slide));
 	;}
 
