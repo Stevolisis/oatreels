@@ -18,7 +18,6 @@ export default function Carousel({slides,heading,tv}:any){
     //     return genres.filter((genre:any)=>genre.id===id);
         
     // }
-    console.log('process.env.REACT_APP_MOVIE_IMAGE',process.env.REACT_APP_MOVIE_IMAGE)
 
     const nextslide=()=>{
         let element:any=document.getElementById(`${id}`);
