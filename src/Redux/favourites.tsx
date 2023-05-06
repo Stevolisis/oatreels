@@ -29,6 +29,9 @@ const favouriteSlice=createSlice({
             state.trigger=true;
             let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload);
             if(favouriteIndex >=0) state.favourites=state.favourites.filter(movie=>movie.id!==payload);
+        },
+        clearFavourite:(state)=>{
+            state.favourites=[];
         }
     },
 });
@@ -36,5 +39,5 @@ const favouriteSlice=createSlice({
 
 export const getFavourites=(state:any)=>state.favouriteReducer.favourites;
 export const getFavTrigger=(state:any)=>state.favouriteReducer.trigger;
-export const {addFavourite, offTrigger, deleteFavourite}=favouriteSlice.actions;
+export const {addFavourite, offTrigger, deleteFavourite, clearFavourite}=favouriteSlice.actions;
 export default favouriteSlice.reducer;

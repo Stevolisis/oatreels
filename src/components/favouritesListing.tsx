@@ -3,7 +3,7 @@ import { FaHeart, FaPlayCircle, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import CarouselLoader from "./loaders/carousel";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
-import { addFavourite, deleteFavourite } from "../Redux/favourites";
+import { addFavourite, clearFavourite, deleteFavourite } from "../Redux/favourites";
 import { getGenres } from "../Redux/movies";
 
 
@@ -19,10 +19,11 @@ export default function FavouritesListing({slides,heading}:any){
     return(
         <>
 			<div className="md:mr-[30px] pt-8">
-                <div className="border-l-8 pl-3 border-brTertiary">
+                <div className="border-l-8 pl-3 border-brTertiary flex justify-between">
                     <p className="font-semibold md:font-bold text-2xl md:text-3xl pl-0 md:pl-3 text-txtPrimary">
                         {heading}
                     </p>   
+                    <button className="py-2 px-3 bg-bgPrimary rounded-md text-sm font-bold" onClick={()=>dispatch(clearFavourite())}>Clear Data</button>
                 </div>             
             <div className="flex-wrap flex justify-center py-4">
 				{slides.map((slide:any,i:number):any=>{
