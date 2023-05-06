@@ -1,4 +1,4 @@
-import {FaTwitter, FaInstagram, FaFacebook, FaTiktok, FaYoutube} from 'react-icons/fa'
+import {FaTwitter, FaInstagram, FaFacebook, FaTiktok, FaYoutube, FaGithub, FaLinkedin} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 export default function Footer(){
 
@@ -23,6 +23,16 @@ export default function Footer(){
                         <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaFacebook/></Link>
                         <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaTiktok/></Link>
                         <Link className='px-3 hover:text-brSecondary transition-5' to='/'><FaYoutube/></Link>
+                    </div>
+                    <div className=''>
+                        <a className='py-2 flex items-center hover:text-brSecondary transition-5 ' href='https://www.linkedin.com/in/steven-joseph-6871a2237/'>
+                            <FaLinkedin/>
+                            <p className='text-xs pl-2'>https://www.linkedin.com/in/steven-joseph-6871a2237/</p>
+                        </a>
+                        <a className='flex items-center hover:text-brSecondary transition-5 ' href='https://github.com/Stevolisis'>
+                            <FaGithub/>
+                            <p className='text-xs pl-2'>https://github.com/Stevolisis</p>
+                        </a>
                     </div>
                 </div>
 

@@ -38,7 +38,9 @@ export default function Navbar(){
             </div>
 
             <div>
-            <img src="/profilePic.jpg" alt='navbar' className="w-10 h-10 rounded-full"/>
+                <a href='https://www.linkedin.com/in/steven-joseph-6871a2237/'>
+                    <img src="/profilePic.png" alt='navbar' className="w-10 h-10 rounded-full object-cover"/>
+                </a>
             </div>
 
         </nav>
