@@ -33,7 +33,7 @@ export default function Navbar(){
                 {/* <Link to='/'  className="my-0 md:my-3 mx-3"><FaBookmark size={17}/></Link> */}
                 <Link to='/favourites'  className="my-0 md:my-3 mx-3 flex">
                     <FaHeart size={17}/>
-                    <sup className={`ml-[-5px] border border-[txtSecondary] text-[8px] sm:text-[10px] ${triggerStatus ? 'bg-pink-500' : favourites.length>0 ? 'bg-bgDark' : ''} text-txtPrimary rounded-full sm:w-3.5 sm:h-3.5 w-3 h-3 flex justify-center items-center`}>{favourites.length===0 ? '' : favourites.length}</sup>
+                    <sup className={`ml-[-5px] text-[8px] sm:text-[10px] ${triggerStatus ? 'bg-pink-500 border border-[txtSecondary]' : favourites.length>0 ? 'bg-bgDark border border-[txtSecondary]' : ''} text-txtPrimary rounded-full sm:w-3.5 sm:h-3.5 w-3 h-3 flex justify-center items-center `}>{favourites.length===0 ? '' : favourites.length}</sup>
                 </Link>
             </div>
 
