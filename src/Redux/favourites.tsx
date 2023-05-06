@@ -18,7 +18,7 @@ const favouriteSlice=createSlice({
         addFavourite:(state,{payload})=>{
             let favouriteIndex=state.favourites.findIndex(movie=>movie.id===payload.id);
             if(favouriteIndex < 0){
-                state.favourites=[...state.favourites,{id:payload.id,poster_path:payload.poster_path,vote_average:payload.vote_average,genre_ids:payload.genre_ids||payload.genres,name:payload.original_title||payload.original_name,tv:payload.original_name? true : false}];
+                state.favourites=[...state.favourites,{id:payload.id, poster_path:payload.poster_path, vote_average:payload.vote_average||'', genre_ids:payload.genre_ids||payload.genres||'', name:payload.original_title||payload.original_name||payload.name, tv:payload.original_name? true : false, episode_count:payload.episode_count||''}];
                 state.trigger=true;
             }
         },
