@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom"
-import { FaHeart, FaPlayCircle, FaRegHeart } from "react-icons/fa";
-import { useState } from "react";
-import CarouselLoader from "./loaders/carousel";
+import { FaHeart, FaPlayCircle } from "react-icons/fa";
 import { UseAppDispatch, useAppSelector } from "../Redux/store";
-import { addFavourite, clearFavourite, deleteFavourite } from "../Redux/favourites";
+import { clearFavourite, deleteFavourite } from "../Redux/favourites";
 import { getGenres } from "../Redux/movies";
 
 
 
 export default function FavouritesListing({slides,heading}:any){
-    const id=''+Math.random();
-	const [favourite,setFavourite]=useState(0);
     const genres=useAppSelector(getGenres);
     const dispatch=UseAppDispatch();
     

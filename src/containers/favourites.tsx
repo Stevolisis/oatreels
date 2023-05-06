@@ -1,10 +1,9 @@
 import FavouritesListing from "../components/favouritesListing";
 import { getFavourites } from "../Redux/favourites"
-import { UseAppDispatch, useAppSelector } from "../Redux/store"
+import { useAppSelector } from "../Redux/store"
 
 
 export default function Favourites(){
-    const dispatch=UseAppDispatch();
     const favourites=useAppSelector(getFavourites);
 
     return(
