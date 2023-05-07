@@ -1,46 +1,10 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Oatreels
 
-## Available Scripts
+Oatreel is a movie website that lets you discover and explore a vast collection of movies, TV shows, actors, actresses, plays, and official trailers. Built using React, Redux Toolkit, TypeScript, Tailwind CSS, and Axios, Oatreel is a responsive and user-friendly web app that makes it easy to find and watch your favorite movies and TV shows online.
 
-In the project directory, you can run:
+With Oatreel, you can browse through an extensive library of popular movies and TV shows, explore detailed information about your favorite actors and actresses, watch official trailers, and stay up-to-date with the latest releases. The app features an intuitive and modern user interface that allows you to easily search, filter, and sort through content, and provides rich and informative details about each item in the library.
 
-### `npm start`
+Whether you're a movie enthusiast, a TV show fan, or just looking for something to watch, Oatreel has got you covered. With its extensive collection of content and powerful search and discovery tools, Oatreel is the perfect companion for your movie and TV show watching experience. So why wait? Start exploring today and discover your next favorite movie or TV show on Oatreel!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
