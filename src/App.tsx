@@ -19,7 +19,7 @@ function App() {
 
       <div>
         <BrowserRouter>
-        <ScrollToTop/>
+          <ScrollToTop/>
           <div className='md:fixed relative h-[100%] flex flex-col justify-center items-center'>
             <Navbar/>
           </div>
